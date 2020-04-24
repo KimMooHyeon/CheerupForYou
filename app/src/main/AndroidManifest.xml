@@ -11,15 +11,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MakingCheerUpTextActivity"></activity>
+        <activity android:name=".MakingCheerUpTextActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-3614963972934708~9611091822" />
 
-        <activity android:name=".CheerUpViewActivity" />
+        <activity android:name=".CheerUpViewActivity"
+            android:screenOrientation="landscape"/>
         <activity android:name=".MainActivity" />
         <activity android:name=".SplashActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
