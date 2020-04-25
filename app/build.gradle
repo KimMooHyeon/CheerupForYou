@@ -56,10 +56,11 @@ dependencies {
     // Test helpers
     testImplementation "androidx.room:room-testing:2.2.3"
     //애드몹
-    implementation 'com.google.android.gms:play-services-ads:19.0.1'
+    implementation 'com.google.android.gms:play-services-ads:+'
 
     // Cannot fit requested classes in a single dex file (# methods: 75506 > 65536) 오류 해결
     implementation 'com.android.support:multidex:1.0.3'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
 
 
 }
