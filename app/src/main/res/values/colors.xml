@@ -3,4 +3,11 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+
+    <!-->2020.04.25 최선필 , activity_main.xml 배경색 추가<-->
+    <color name="colorBackground">#1d2029</color>
+
+    <!-->2020.04.25 최선필, activity_main.xml 리사이클러뷰 배경 색상 추가<-->
+    <color name="colorRecyclerViewBackground">#2a2d3a</color>
+
 </resources>
