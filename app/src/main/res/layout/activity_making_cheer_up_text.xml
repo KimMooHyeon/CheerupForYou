@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="181dp">
         <ImageView
+            android:elevation="1dp"
             android:id="@+id/iv_making_back_button"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
@@ -21,6 +22,7 @@
             android:layout_width="24dp"
             android:layout_height="24dp"/>
         <ImageView
+            android:elevation="1dp"
             android:id="@+id/iv_making_expand_button"
             android:layout_marginRight="6dp"
             android:layout_marginBottom="6dp"
@@ -29,6 +31,26 @@
             android:src="@drawable/ic_expand"
             android:layout_width="27dp"
             android:layout_height="24dp"/>
+
+
+        <HorizontalScrollView
+            android:scrollbars="none"
+            android:id="@+id/hs_makingtext"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:textSize="100dp"
+            android:textColor="#ffffff"
+            android:id="@+id/tv_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+        </HorizontalScrollView>
+
     </RelativeLayout>
     <LinearLayout
         android:focusable="true"
@@ -444,7 +466,7 @@
 
 
                     <TextView
-                        android:id="@+id/tv_making_textcolor_black"
+                        android:id="@+id/tv_making_textcolor_white"
                         android:background="@drawable/selector_backgorund_color_white"
                         android:gravity="center"
                         android:layout_width="0dp"
@@ -572,8 +594,10 @@
                         app:layout_constraintWidth_percent="0.0694" />
 
 
-                    <TextView
-                        android:id="@+id/tv_making_direction_right"
+                    <ImageView
+                        android:padding="6dp"
+                        android:src="@drawable/selector_direction_right"
+                        android:id="@+id/iv_making_direction_right"
                         android:background="@drawable/maing_text_selector"
                         android:gravity="center"
                         android:layout_width="0dp"
@@ -607,8 +631,10 @@
                         app:layout_constraintVertical_bias="0.5"
                         app:layout_constraintWidth_default="percent"
                         app:layout_constraintWidth_percent="0.12" />
-                    <TextView
-                        android:id="@+id/tv_making_direction_left"
+                    <ImageView
+                        android:padding="6dp"
+                        android:src="@drawable/selector_direction_left"
+                        android:id="@+id/iv_making_direction_left"
                         android:background="@drawable/maing_text_selector"
                         android:gravity="center"
                         android:layout_width="0dp"
@@ -681,7 +707,7 @@
                         android:gravity="center"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:text="작게"
+                        android:text="보통"
                         android:textColor="@drawable/text_selector_inmaking"
                         android:textSize="12sp"
                         app:layout_constraintBottom_toBottomOf="parent"
