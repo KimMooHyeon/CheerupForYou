@@ -26,7 +26,8 @@
 
 
         <activity android:name=".CheerUpViewActivity"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="landscape"
+            android:theme="@style/FullTheme"/>
         <activity android:name=".MainActivity" />
         <activity android:name=".SplashActivity"
             android:screenOrientation="portrait"

@@ -44,11 +44,11 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
         fromX = screenWidth
 
         //초기값 보통 검정 하얀 작게
-        tv_making_text_size_normal.isSelected=true
+  /*      tv_making_text_size_normal.isSelected=true
         tv_making_color_black.isSelected=true
         tv_making_textcolor_white.isSelected=true
         tv_making_text_speed_normal.isSelected =true
-        tv_making_direction_stop.isSelected=true
+        tv_making_direction_stop.isSelected=true*/
         //edit text 바뀔때마다 text 바꾸게하기
         edt_making_text.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {

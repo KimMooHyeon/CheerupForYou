@@ -14,6 +14,13 @@
         <item name="colorPrimaryDark">#1d2029</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    <style name="FullTheme" parent="Theme.AppCompat.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:windowFullscreen">true</item>
+        <item name="colorPrimary">#1d2029</item>
+        <item name="colorPrimaryDark">#1d2029</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
 
 
 </resources>

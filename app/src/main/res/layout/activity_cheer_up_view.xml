@@ -1,22 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/scrollView_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/black"
-    android:scrollbars="none"
     tools:context=".CheerUpViewActivity">
 
-    <TextView
-        android:gravity="center_vertical"
-        android:fontFamily="sans-serif-medium"
-        android:textColor="#FFFFFF"
-        android:id="@+id/tv_cheer_up_view_Text"
+    <ImageView
+        android:id="@+id/iv_cheerup_delete"
+        android:elevation="1dp"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_delete"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.05"
+        app:layout_constraintHorizontal_bias="0.005"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.01"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.05"/>
+
+    <ImageView
+        android:id="@+id/iv_cheerup_lock"
+        android:elevation="1dp"
+        android:layout_margin="16dp"
+        android:src="@drawable/selector_lock"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.05"
+        app:layout_constraintHorizontal_bias="0.005"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.99"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.05"/>
+
+
+    <ImageView
+        android:elevation="1dp"
+        android:layout_margin="16dp"
+        android:src="@drawable/image_character"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.1"
+        app:layout_constraintHorizontal_bias="0.99"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.01"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.11"/>
+
+    <HorizontalScrollView
+        android:clickable="false"
+        android:id="@+id/hs_cheerup_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:textSize="200dp"
-        />
+        android:scrollbars="none"
+        tools:layout_editor_absoluteX="127dp"
+        tools:layout_editor_absoluteY="0dp">
 
-</HorizontalScrollView>
+        <TextView
+            android:id="@+id/tv_cheer_up_view_Text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:textSize="200dp" />
+    </HorizontalScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
