@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo"
@@ -11,14 +12,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-5263527473804623~2650031418" />
+
         <activity android:name=".MakingCheerUpTextActivity"
             android:screenOrientation="portrait">
 
         </activity>
 
-        <meta-data
-            android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3614963972934708~9611091822" />
+
 
         <activity android:name=".CheerUpViewActivity"
             android:screenOrientation="landscape"/>
