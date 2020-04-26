@@ -70,11 +70,11 @@
         tools:layout_editor_absoluteY="0dp">
 
         <TextView
+            android:includeFontPadding="false"
             android:id="@+id/tv_cheer_up_view_Text"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center_vertical"
-            android:textSize="200dp" />
+            android:gravity="center_vertical" />
     </HorizontalScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

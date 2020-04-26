@@ -2,7 +2,7 @@ package com.sabuzak.yeonamplace.cheerypforyou
 
 import android.graphics.Color
 import android.graphics.Point
-import android.opengl.Visibility
+import android.graphics.Typeface
 import android.os.Bundle
 import android.view.View
 import android.view.Window
@@ -46,6 +46,24 @@ class CheerUpViewActivity : AppCompatActivity() {
 
         tv_cheer_up_view_Text.setText(intent.getStringExtra("edt_making_text"))
 
+        // 폰트 받기
+        if(intent.getIntExtra("font",0)==0){
+            tv_cheer_up_view_Text.setTypeface(Typeface.createFromAsset(getAssets(), "font/nanum.ttf"))
+        }else if (intent.getIntExtra("font",0)==1){
+            tv_cheer_up_view_Text.setTypeface(Typeface.createFromAsset(getAssets(), "font/hansuwon.ttf"))
+        }else if (intent.getIntExtra("font",0)==2){
+            tv_cheer_up_view_Text.setTypeface(Typeface.createFromAsset(getAssets(), "font/uljiro.ttf"))
+        }else if (intent.getIntExtra("font",0)==3){
+            tv_cheer_up_view_Text.setTypeface(Typeface.createFromAsset(getAssets(), "font/hanna.ttf"))
+        }else if (intent.getIntExtra("font",0)==4){
+            tv_cheer_up_view_Text.setTypeface(Typeface.createFromAsset(getAssets(), "font/yanolza.ttf"))
+        }else if (intent.getIntExtra("font",0)==5){
+            tv_cheer_up_view_Text.setTypeface(Typeface.createFromAsset(getAssets(), "font/jua.ttf"))
+        }else if (intent.getIntExtra("font",0)==6){
+            tv_cheer_up_view_Text.setTypeface(Typeface.createFromAsset(getAssets(), "font/tvn.ttf"))
+        }
+
+
         // 글자 색 받기
         if(intent.getIntExtra("text_color",0) ==0 ) {
             tv_cheer_up_view_Text.setTextColor(Color.parseColor("#ffffff"))
@@ -79,13 +97,13 @@ class CheerUpViewActivity : AppCompatActivity() {
 
         //글자 크기 변경
         if (intent.getIntExtra("text_size",0) ==0){
-            tv_cheer_up_view_Text.setTextSize(Dimension.SP, 50.0f);
+            tv_cheer_up_view_Text.setTextSize(Dimension.SP, 50.0f)
         } else if (intent.getIntExtra("text_size",0) == 1){
-            tv_cheer_up_view_Text.setTextSize(Dimension.SP, 70.0f);
+            tv_cheer_up_view_Text.setTextSize(Dimension.SP, 70.0f)
         } else if (intent.getIntExtra("text_size",0) ==2){
-            tv_cheer_up_view_Text.setTextSize(Dimension.SP, 130.0f);
+            tv_cheer_up_view_Text.setTextSize(Dimension.SP, 130.0f)
         } else if (intent.getIntExtra("text_size",0) ==3){
-            tv_cheer_up_view_Text.setTextSize(Dimension.SP, 200.0f);
+            tv_cheer_up_view_Text.setTextSize(Dimension.SP, 200.0f)
         }
 
 
