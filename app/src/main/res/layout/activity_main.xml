@@ -21,33 +21,106 @@
         ></ImageView>
     </LinearLayout>
 
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorRecyclerViewBackground"
         android:orientation="vertical">
+
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="104dp">
-            <TextView
-                android:layout_width="212dp"
-                android:layout_height="30dp"
-                android:background="@drawable/save_button_color">
-            </TextView>
+            android:layout_height="196dp"
+            android:orientation="vertical">
+         <LinearLayout
+             android:layout_marginTop="20dp"
+             android:layout_marginLeft="8dp"
+             android:layout_marginRight="8dp"
+             android:layout_width="match_parent"
+             android:layout_height="75dp"
+             android:gravity="center"
+             android:background="@color/colorBackground">
+             <TextView
+
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:textColor="#FFFFFF"
+                 android:text="배너 이미지는 따로"
+                 android:textSize="25sp"
+
+                 >
+             </TextView>
+         </LinearLayout>
+
+
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:orientation="vertical"
+             android:layout_marginBottom="8dp"
+             android:layout_marginTop="20dp"
+             >
+            <Button
+             android:layout_marginLeft="97dp"
+             android:layout_width="212dp"
+             android:layout_height="35dp"
+             android:background="@drawable/bt_newcreate_box"
+             android:drawableLeft="@drawable/ic_plus"
+             android:paddingLeft="20dp"
+             android:paddingRight="19dp"
+             android:textSize = '18sp'
+             android:text="새로운 응원 만들기"
+             android:textColor="#ffffff">
+
+            </Button>
+             <LinearLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 android:orientation="horizontal">
+
+                 <!--><-->
+                 <TextView
+                     android:layout_marginTop="16dp"
+                     android:layout_marginLeft="16dp"
+                     android:drawableLeft="@drawable/ic_folder"
+                     android:drawablePadding="5dp"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:text="저장함 2/5"
+                     android:textColor="#ffffff"
+                     ></TextView>
+
+                 <TextView
+                     android:layout_marginLeft="252dp"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginTop="16dp"
+                     android:drawableLeft="@drawable/ic_trash"
+                     android:drawablePadding="5dp"
+                     android:text="삭제"
+                     android:textColor="#fd5858"
+                     >
+
+                 </TextView>
+             </LinearLayout>
+         </LinearLayout>
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_weight="10">
+            android:layout_weight="10"
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id = "@+id/banner_recyclerview"
-            android:layout_weight="9"
-            android:layout_width="match_parent"
-            android:layout_height="0dp">
-        </androidx.recyclerview.widget.RecyclerView>
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/banner_recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="9"></androidx.recyclerview.widget.RecyclerView>
 
             <com.google.android.gms.ads.AdView
                 android:id="@+id/adView"
@@ -65,7 +138,6 @@
             <!--ca-app-pub-5263527473804623/2281052671-->
 
         </LinearLayout>
-
 
 
     </LinearLayout>
