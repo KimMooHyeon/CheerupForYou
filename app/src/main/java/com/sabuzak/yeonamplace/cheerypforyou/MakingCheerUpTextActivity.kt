@@ -135,23 +135,29 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
         tv_making_cheerup_effect2.setOnClickListener {
             if(tv_making_cheerup_effect2.isSelected==false){
                 tv_making_cheerup_effect2.isSelected = true
-                //깜빡임 효과
+                tv_making_cheerup_effect3.isSelected = false
+                tv_text.setShadowLayer(10.0f,0.0f,0.0f,Color.parseColor("#ffffff"))
                 effect2=1
+
             }else {
                 tv_making_cheerup_effect2.isSelected=false
-                //깜빡임 효과 끄기
+                //빛나게 효과 끄기
                 effect2=0
+                tv_text.setShadowLayer(0.0f,0.0f,0.0f,Color.parseColor("#ffffff"))
             }
         }
         tv_making_cheerup_effect3.setOnClickListener {
             if(tv_making_cheerup_effect3.isSelected==false){
                 tv_making_cheerup_effect3.isSelected = true
-                //깜빡임 효과
+                tv_making_cheerup_effect2.isSelected = false
+                //그림자 효과
                 effect3=1
+                tv_text.setShadowLayer(2.0f,6.0f,3.0f,Color.parseColor("#2AEFF5"))
             }else {
                 tv_making_cheerup_effect3.isSelected=false
-                //깜빡임 효과 끄기
+                //그림자 효과 끄기
                 effect3=0
+                tv_text.setShadowLayer(0.0f,0.0f,0.0f,Color.parseColor("#ffffff"))
             }
         }
 
@@ -475,7 +481,7 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
         // 확대 하기
         iv_making_expand_button.setOnClickListener {
             if (edt_making_text.text.toString().isNotEmpty()){
-                startActivity<CheerUpViewActivity>("edt_making_text" to edt_making_text.text.toString(),"text_size" to text_size , "background_color" to background_color , "text_color" to text_color , "speed" to speed , "direction" to direction,"font" to font)
+                startActivity<CheerUpViewActivity>("edt_making_text" to edt_making_text.text.toString(),"text_size" to text_size , "background_color" to background_color , "text_color" to text_color , "speed" to speed , "direction" to direction,"font" to font , "effect0" to effect0,"effect1" to effect1,"effect2" to effect2,"effect3" to effect3)
             }else {
                 toast("메세지를 입력해주세요")
             }
@@ -516,6 +522,7 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
         alphaAnim.repeatCount = -1
         set.addAnimation(alphaAnim)
         }
+
         set.addAnimation(animation)
         tv_text.animation=set
         tv_text.animation.start()

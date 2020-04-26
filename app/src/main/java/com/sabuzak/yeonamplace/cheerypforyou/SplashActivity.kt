@@ -12,7 +12,7 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
         val handler = Handler()
         handler.postDelayed(Runnable { // 5초 뒤에 작동!! -> 5s = 5000ms
-            startActivity<MakingCheerUpTextActivity>()
+            startActivity<MainActivity>()
             finish()
         }, 500)
 

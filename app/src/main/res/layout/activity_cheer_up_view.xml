@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/cl_cheerup_all"
     tools:context=".CheerUpViewActivity">
 
     <ImageView
@@ -69,7 +70,10 @@
         tools:layout_editor_absoluteX="127dp"
         tools:layout_editor_absoluteY="0dp">
 
-        <TextView
+        <com.sabuzak.yeonamplace.cheerypforyou.OutlineTextView
+            app:textStroke="false"
+            app:textStrokeWidth="6.0"
+            app:textStrokeColor="#2AEFF5"
             android:includeFontPadding="false"
             android:id="@+id/tv_cheer_up_view_Text"
             android:layout_width="match_parent"

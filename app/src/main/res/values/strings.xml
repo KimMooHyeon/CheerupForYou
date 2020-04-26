@@ -1,3 +1,32 @@
 <resources>
     <string name="app_name">응원해</string>
+    <string name="maketext_hint_message">응원할 문구를 작성해주세요.</string>
+    <string name="maketext_font">글꼴</string>
+    <string name="maketext_size">크기</string>
+    <string name="maketext_background_color">배경</string>
+    <string name="maketext_text_color">색깔</string>
+    <string name="maketext_direction">방향</string>
+    <string name="maketext_speed">속도</string>
+    <string name="maketext_effection">효과</string>
+    <string name="making_text_font0">나눔체</string>
+    <string name="making_text_font1">한수원체</string>
+    <string name="making_text_font2">을지로체</string>
+    <string name="making_text_font3">한나체</string>
+    <string name="making_text_font4">야놀자체</string>
+    <string name="making_text_font5">주아체</string>
+    <string name="making_text_font6">tvn체</string>
+    <string name="making_text_size0">아주 작게</string>
+    <string name="making_text_size1">작게</string>
+    <string name="making_text_size2">보통</string>
+    <string name="making_text_size3">크게</string>
+    <string name="making_text_direction_stop">멈춤</string>
+    <string name="making_text_direction_speed0">빠름</string>
+    <string name="making_text_direction_speed1">중간</string>
+    <string name="making_text_direction_speed2">느림</string>
+    <string name="making_text_effectrion0">깜빡임</string>
+    <string name="making_text_effectrion1">외곽선</string>
+    <string name="making_text_effectrion2">빛나게</string>
+    <string name="making_text_effectrion3">그림자</string>
+    <string name="making_text_save">저장하기</string>
+    <string name="main_new_maketext">새로운 응원 만들기</string>
 </resources>

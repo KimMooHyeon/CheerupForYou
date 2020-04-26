@@ -17,12 +17,19 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.activity_main.view.banner_recyclerview
 import kotlinx.android.synthetic.main.banner_recyclerview_item.view.*
+import org.jetbrains.anko.startActivity
 
 class MainActivity : AppCompatActivity() {
     lateinit var mAdView : AdView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        btn_main_make_new_cheerup_text.setOnClickListener {
+            startActivity<MakingCheerUpTextActivity>()
+        }
+
+
 
         banner_recyclerview.adapter = BannerRecyclerViewAdapter()
         banner_recyclerview.layoutManager = LinearLayoutManager(this)
