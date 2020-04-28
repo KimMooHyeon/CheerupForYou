@@ -1,21 +1,37 @@
 package com.sabuzak.yeonamplace.cheerypforyou
 
+import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Point
-import androidx.appcompat.app.AppCompatActivity
+import android.graphics.Typeface
 import android.os.Bundle
+import android.os.Handler
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.View
-import android.view.animation.*
+import android.view.animation.AlphaAnimation
+import android.view.animation.AnimationSet
+import android.view.animation.AnimationUtils
+import android.view.animation.TranslateAnimation
 import androidx.annotation.Dimension
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_making_cheer_up_text.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
+
 class MakingCheerUpTextActivity : AppCompatActivity() {
+    // 각 값 초기값 설정
+    var text_size = 2
+    var background_color = 0
+    var text_color = 0
     var direction = 1
     var speed = 1
+    var font = 0
+    //효과가 없으면 0 있으면 1
+    var effect0 = 0
+    var effect1 = 0
+    var effect2 = 0
+    var effect3 = 0
     private var screenWidth = 0f
     private var screenHeight = 0f
     private var fromX = 0f
@@ -24,16 +40,26 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_making_cheer_up_text)
 
+        // DEFAULT 값 설정
+        tv_making_text_size_normal.isSelected=true
+        tv_making_text_speed_normal.isSelected=true
+        tv_making_textcolor_white.isSelected=true
+        tv_making_direction_stop.isSelected=true
+        tv_making_color_black.isSelected=true
+        tv_making_text_font_nanum.isSelected=true
+
+        tv_making_text_font_hasuwon.setTypeface(Typeface.createFromAsset(getAssets(), "font/hansuwon.ttf"))
+        tv_making_text_font_uljiro.setTypeface(Typeface.createFromAsset(getAssets(), "font/uljiro.ttf"))
+        tv_making_text_font_hanna.setTypeface(Typeface.createFromAsset(getAssets(), "font/hanna.ttf"))
+        tv_making_text_font_yanolza.setTypeface(Typeface.createFromAsset(getAssets(), "font/yanolza.ttf"))
+        tv_making_text_font_jua.setTypeface(Typeface.createFromAsset(getAssets(), "font/jua.ttf"))
+        tv_making_text_font_tvn.setTypeface(Typeface.createFromAsset(getAssets(), "font/tvn.ttf"))
+
+
 
     }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
-
-        // 각 값 초기값 설정
-        var text_size = 2
-        var background_color = 0
-        var text_color = 0
-
 
         val display = windowManager.defaultDisplay
         val point = Point()
@@ -43,13 +69,16 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
         fromY = screenHeight
         fromX = screenWidth
 
-        //초기값 보통 검정 하얀 작게
-  /*      tv_making_text_size_normal.isSelected=true
-        tv_making_color_black.isSelected=true
-        tv_making_textcolor_white.isSelected=true
-        tv_making_text_speed_normal.isSelected =true
-        tv_making_direction_stop.isSelected=true*/
-        //edit text 바뀔때마다 text 바꾸게하기
+        tv_making_save_confirm.setOnClickListener {
+            tv_making_save_confirm.isClickable=false
+            toast(background_color.toString())
+            val handler = Handler()
+            handler.postDelayed(Runnable { // 저장하기 클릭후 2초 동안 클릭안되게하기
+                tv_making_save_confirm.isClickable=true
+            }, 2000)
+        }
+
+
         edt_making_text.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
                 if (tv_text.animation != null) {
@@ -68,10 +97,155 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
 
             }
         })
+        // 효과 선택
 
+        tv_making_cheerup_effect0.setOnClickListener {
+            if(tv_making_cheerup_effect0.isSelected==false){
+                tv_making_cheerup_effect0.isSelected = true
+                //깜빡임 효과
+                if (tv_text.animation != null) {
+                    tv_text.clearAnimation()
+                }
+                effect0=1
+                setAnim()
+            }else {
+                tv_making_cheerup_effect0.isSelected=false
+                //깜빡임 효과 끄기
+                if (tv_text.animation != null) {
+                    tv_text.clearAnimation()
+                }
+                effect0=0
+                setAnim()
+            }
+        }
+        tv_making_cheerup_effect1.setOnClickListener {
+            if(tv_making_cheerup_effect1.isSelected==false){
+                tv_making_cheerup_effect1.isSelected = true
+                //외곽선 효과
+                effect1=1
+                tv_text.setStroke(true)
+                tv_text.draw(Canvas())
+            }else {
+                tv_making_cheerup_effect1.isSelected=false
+                //외곽선 효과 끄기
+                tv_text.setStroke(false)
+                effect1=0
+            }
+        }
+        tv_making_cheerup_effect2.setOnClickListener {
+            if(tv_making_cheerup_effect2.isSelected==false){
+                tv_making_cheerup_effect2.isSelected = true
+                tv_making_cheerup_effect3.isSelected = false
+                tv_text.setShadowLayer(10.0f,0.0f,0.0f,Color.parseColor("#ffffff"))
+                effect2=1
 
+            }else {
+                tv_making_cheerup_effect2.isSelected=false
+                //빛나게 효과 끄기
+                effect2=0
+                tv_text.setShadowLayer(0.0f,0.0f,0.0f,Color.parseColor("#ffffff"))
+            }
+        }
+        tv_making_cheerup_effect3.setOnClickListener {
+            if(tv_making_cheerup_effect3.isSelected==false){
+                tv_making_cheerup_effect3.isSelected = true
+                tv_making_cheerup_effect2.isSelected = false
+                //그림자 효과
+                effect3=1
+                tv_text.setShadowLayer(2.0f,6.0f,3.0f,Color.parseColor("#2AEFF5"))
+            }else {
+                tv_making_cheerup_effect3.isSelected=false
+                //그림자 효과 끄기
+                effect3=0
+                tv_text.setShadowLayer(0.0f,0.0f,0.0f,Color.parseColor("#ffffff"))
+            }
+        }
 
-
+        // 폰트 선택
+        tv_making_text_font_nanum.setOnClickListener {
+            tv_making_text_font_nanum.isSelected=true
+            tv_making_text_font_hasuwon.isSelected=false
+            tv_making_text_font_uljiro.isSelected=false
+            tv_making_text_font_hanna.isSelected=false
+            tv_making_text_font_yanolza.isSelected=false
+            tv_making_text_font_jua.isSelected=false
+            tv_making_text_font_tvn.isSelected=false
+            font=0
+            tv_text.setTypeface(Typeface.createFromAsset(getAssets(), "font/nanum.ttf"))
+            edt_making_text.setTypeface(Typeface.createFromAsset(getAssets(), "font/nanum.ttf"))
+        }
+        tv_making_text_font_hasuwon.setOnClickListener {
+            tv_making_text_font_nanum.isSelected=false
+            tv_making_text_font_hasuwon.isSelected=true
+            tv_making_text_font_uljiro.isSelected=false
+            tv_making_text_font_hanna.isSelected=false
+            tv_making_text_font_yanolza.isSelected=false
+            tv_making_text_font_jua.isSelected=false
+            tv_making_text_font_tvn.isSelected=false
+            font=1
+            tv_text.setTypeface(Typeface.createFromAsset(getAssets(), "font/hansuwon.ttf"))
+            edt_making_text.setTypeface(Typeface.createFromAsset(getAssets(), "font/hansuwon.ttf"))
+        }
+        tv_making_text_font_uljiro.setOnClickListener {
+            tv_making_text_font_nanum.isSelected=false
+            tv_making_text_font_hasuwon.isSelected=false
+            tv_making_text_font_uljiro.isSelected=true
+            tv_making_text_font_hanna.isSelected=false
+            tv_making_text_font_yanolza.isSelected=false
+            tv_making_text_font_jua.isSelected=false
+            tv_making_text_font_tvn.isSelected=false
+            font=2
+            tv_text.setTypeface(Typeface.createFromAsset(getAssets(), "font/uljiro.ttf"))
+            edt_making_text.setTypeface(Typeface.createFromAsset(getAssets(), "font/uljiro.ttf"))
+        }
+        tv_making_text_font_hanna.setOnClickListener {
+            tv_making_text_font_nanum.isSelected=false
+            tv_making_text_font_hasuwon.isSelected=false
+            tv_making_text_font_uljiro.isSelected=false
+            tv_making_text_font_hanna.isSelected=true
+            tv_making_text_font_yanolza.isSelected=false
+            tv_making_text_font_jua.isSelected=false
+            tv_making_text_font_tvn.isSelected=false
+            font=3
+            tv_text.setTypeface(Typeface.createFromAsset(getAssets(), "font/hanna.ttf"))
+            edt_making_text.setTypeface(Typeface.createFromAsset(getAssets(), "font/hanna.ttf"))
+        }
+        tv_making_text_font_yanolza.setOnClickListener {
+            tv_making_text_font_nanum.isSelected=false
+            tv_making_text_font_hasuwon.isSelected=false
+            tv_making_text_font_uljiro.isSelected=false
+            tv_making_text_font_hanna.isSelected=false
+            tv_making_text_font_yanolza.isSelected=true
+            tv_making_text_font_jua.isSelected=false
+            tv_making_text_font_tvn.isSelected=false
+            font=4
+            tv_text.setTypeface(Typeface.createFromAsset(getAssets(), "font/yanolza.ttf"))
+            edt_making_text.setTypeface(Typeface.createFromAsset(getAssets(), "font/yanolza.ttf"))
+        }
+        tv_making_text_font_jua.setOnClickListener {
+            tv_making_text_font_nanum.isSelected=false
+            tv_making_text_font_hasuwon.isSelected=false
+            tv_making_text_font_uljiro.isSelected=false
+            tv_making_text_font_hanna.isSelected=false
+            tv_making_text_font_yanolza.isSelected=false
+            tv_making_text_font_jua.isSelected=true
+            tv_making_text_font_tvn.isSelected=false
+            font=5
+            tv_text.setTypeface(Typeface.createFromAsset(getAssets(), "font/jua.ttf"))
+            edt_making_text.setTypeface(Typeface.createFromAsset(getAssets(), "font/jua.ttf"))
+        }
+        tv_making_text_font_tvn.setOnClickListener {
+            tv_making_text_font_nanum.isSelected=false
+            tv_making_text_font_hasuwon.isSelected=false
+            tv_making_text_font_uljiro.isSelected=false
+            tv_making_text_font_hanna.isSelected=false
+            tv_making_text_font_yanolza.isSelected=false
+            tv_making_text_font_jua.isSelected=false
+            tv_making_text_font_tvn.isSelected=true
+            font=6
+            tv_text.setTypeface(Typeface.createFromAsset(getAssets(), "font/tvn.ttf"))
+            edt_making_text.setTypeface(Typeface.createFromAsset(getAssets(), "font/tvn.ttf"))
+        }
 
         //글자 크기 클릭 이벤트
         tv_making_text_size_very_small.setOnClickListener {
@@ -307,7 +481,7 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
         // 확대 하기
         iv_making_expand_button.setOnClickListener {
             if (edt_making_text.text.toString().isNotEmpty()){
-                startActivity<CheerUpViewActivity>("edt_making_text" to edt_making_text.text.toString(),"text_size" to text_size , "background_color" to background_color , "text_color" to text_color , "speed" to speed , "direction" to direction)
+                startActivity<CheerUpViewActivity>("edt_making_text" to edt_making_text.text.toString(),"text_size" to text_size , "background_color" to background_color , "text_color" to text_color , "speed" to speed , "direction" to direction,"font" to font , "effect0" to effect0,"effect1" to effect1,"effect2" to effect2,"effect3" to effect3)
             }else {
                 toast("메세지를 입력해주세요")
             }
@@ -342,12 +516,14 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
 
         animation.repeatCount= -1
 
+        if (effect0 == 1){
         val alphaAnim = AlphaAnimation(0F, 1.0F)
         alphaAnim.duration = 200
         alphaAnim.repeatCount = -1
+        set.addAnimation(alphaAnim)
+        }
 
         set.addAnimation(animation)
-        set.addAnimation(alphaAnim)
         tv_text.animation=set
         tv_text.animation.start()
     }

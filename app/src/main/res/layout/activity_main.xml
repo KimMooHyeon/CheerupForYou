@@ -26,7 +26,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorRecyclerViewBackground"
+        android:background="@drawable/back"
         android:orientation="vertical">
 
 
@@ -43,13 +43,13 @@
              android:gravity="center"
              android:background="@color/colorBackground">
              <TextView
-
+                 android:fontFamily="@font/nanum"
+                 android:includeFontPadding="false"
                  android:layout_width="wrap_content"
                  android:layout_height="wrap_content"
                  android:textColor="#FFFFFF"
                  android:text="배너 이미지는 따로"
                  android:textSize="25sp"
-
                  >
              </TextView>
          </LinearLayout>
@@ -63,15 +63,18 @@
              android:layout_marginTop="20dp"
              >
             <Button
-             android:layout_marginLeft="97dp"
-             android:layout_width="212dp"
+             android:id="@+id/btn_main_make_new_cheerup_text"
+             android:fontFamily="@font/nanum"
+             android:includeFontPadding="false"
+             android:layout_gravity="center_horizontal"
+             android:layout_width="wrap_content"
              android:layout_height="35dp"
              android:background="@drawable/bt_newcreate_box"
              android:drawableLeft="@drawable/ic_plus"
              android:paddingLeft="20dp"
              android:paddingRight="19dp"
              android:textSize = '18sp'
-             android:text="새로운 응원 만들기"
+             android:text="@string/main_new_maketext"
              android:textColor="#ffffff">
 
             </Button>
@@ -82,6 +85,8 @@
 
                  <!--><-->
                  <TextView
+                     android:fontFamily="@font/nanum"
+                     android:includeFontPadding="false"
                      android:layout_marginTop="16dp"
                      android:layout_marginLeft="16dp"
                      android:drawableLeft="@drawable/ic_folder"
@@ -90,9 +95,12 @@
                      android:layout_height="wrap_content"
                      android:text="저장함 2/5"
                      android:textColor="#ffffff"
+                     android:textSize="14sp"
                      ></TextView>
 
                  <TextView
+                     android:fontFamily="@font/nanum"
+                     android:includeFontPadding="false"
                      android:layout_marginLeft="252dp"
                      android:layout_width="wrap_content"
                      android:layout_height="wrap_content"
@@ -101,6 +109,7 @@
                      android:drawablePadding="5dp"
                      android:text="삭제"
                      android:textColor="#fd5858"
+                     android:textSize="14sp"
                      >
 
                  </TextView>

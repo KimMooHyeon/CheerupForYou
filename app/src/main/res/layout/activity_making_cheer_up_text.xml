@@ -10,7 +10,7 @@
         android:background="#252629"
         android:id="@+id/rl_making_exmample_text"
         android:layout_width="match_parent"
-        android:layout_height="181dp">
+        android:layout_height="215dp">
         <ImageView
             android:elevation="1dp"
             android:id="@+id/iv_making_back_button"
@@ -34,20 +34,26 @@
 
 
         <HorizontalScrollView
+            android:background="#111111"
             android:scrollbars="none"
             android:id="@+id/hs_makingtext"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-        <TextView
+        <com.sabuzak.yeonamplace.cheerypforyou.OutlineTextView
+
+            android:paddingLeft="8dp"
             android:layout_gravity="center_vertical"
             android:gravity="center_vertical"
-            android:textSize="100dp"
             android:textColor="#ffffff"
             android:id="@+id/tv_text"
+            android:textSize="90sp"
+            android:includeFontPadding="false"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
+            android:layout_height="match_parent"
+            app:textStroke="false"
+            app:textStrokeWidth="6.0"
+            app:textStrokeColor="#2AEFF5" />
 
         </HorizontalScrollView>
 
@@ -64,10 +70,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     <EditText
+        android:fontFamily="@font/nanum"
+        android:includeFontPadding="false"
         android:id="@+id/edt_making_text"
         android:textSize="18dp"
         android:paddingLeft="16dp"
-        android:hint="응원할 문구를 작성해주세요."
+        android:hint="@string/maketext_hint_message"
         android:layout_marginTop="24dp"
         android:layout_marginHorizontal="18dp"
         android:background="@drawable/making_main_round_shape"
@@ -90,11 +98,13 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:fontFamily="@font/nanum"
+                        android:includeFontPadding="false"
                         android:id="@+id/textView2"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:gravity="center_vertical"
-                        android:text="글꼴"
+                        android:text="@string/maketext_font"
                         android:textColor="#ffffff"
                         android:textSize="14sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -128,67 +138,93 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
                        <TextView
+                           android:id="@+id/tv_making_text_font_nanum"
+                           android:fontFamily="@font/nanum"
+                           android:includeFontPadding="false"
                            android:paddingVertical="6dp"
                            android:gravity="center"
                            android:textSize="14sp"
                            android:textColor="@drawable/text_selector_inmaking"
                            android:background="@drawable/maing_text_selector"
-                           android:text="을지로체"
+                           android:text="@string/making_text_font0"
                            android:layout_width="58dp"
                            android:layout_height="wrap_content">
                        </TextView>
                             <TextView
+                                android:id="@+id/tv_making_text_font_hasuwon"
+                                android:includeFontPadding="false"
                                 android:paddingVertical="6dp"
                                 android:layout_marginLeft="12dp"
                                 android:gravity="center"
                                 android:textSize="14sp"
                                 android:textColor="@drawable/text_selector_inmaking"
                                 android:background="@drawable/maing_text_selector"
-                                android:text="한수원체"
+                                android:text="@string/making_text_font1"
                                 android:layout_width="58dp"
                                 android:layout_height="wrap_content">
                             </TextView>
                             <TextView
+                                android:id="@+id/tv_making_text_font_uljiro"
+                                android:includeFontPadding="false"
                                 android:paddingVertical="6dp"
                                 android:layout_marginLeft="12dp"
                                 android:gravity="center"
                                 android:textSize="14sp"
                                 android:textColor="@drawable/text_selector_inmaking"
                                 android:background="@drawable/maing_text_selector"
-                                android:text="잘난체"
+                                android:text="@string/making_text_font2"
                                 android:layout_width="58dp"
                                 android:layout_height="wrap_content">
                             </TextView>
                             <TextView
+                                android:id="@+id/tv_making_text_font_hanna"
+                                android:includeFontPadding="false"
                                 android:paddingVertical="6dp"
                                 android:layout_marginLeft="12dp"
                                 android:gravity="center"
                                 android:textSize="14sp"
                                 android:textColor="@drawable/text_selector_inmaking"
                                 android:background="@drawable/maing_text_selector"
-                                android:text="한나체"
+                                android:text="@string/making_text_font3"
                                 android:layout_width="58dp"
                                 android:layout_height="wrap_content">
                             </TextView>
                             <TextView
+                                android:id="@+id/tv_making_text_font_yanolza"
+                                android:includeFontPadding="false"
                                 android:paddingVertical="6dp"
                                 android:layout_marginLeft="12dp"
                                 android:gravity="center"
                                 android:textSize="14sp"
                                 android:textColor="@drawable/text_selector_inmaking"
                                 android:background="@drawable/maing_text_selector"
-                                android:text="야놀자체"
+                                android:text="@string/making_text_font4"
                                 android:layout_width="58dp"
                                 android:layout_height="wrap_content">
                             </TextView>
                             <TextView
+                                android:id="@+id/tv_making_text_font_jua"
+                                android:includeFontPadding="false"
                                 android:paddingVertical="6dp"
                                 android:layout_marginLeft="12dp"
                                 android:gravity="center"
                                 android:textSize="14sp"
                                 android:textColor="@drawable/text_selector_inmaking"
                                 android:background="@drawable/maing_text_selector"
-                                android:text="배민체"
+                                android:text="@string/making_text_font5"
+                                android:layout_width="58dp"
+                                android:layout_height="wrap_content">
+                            </TextView>
+                            <TextView
+                                android:id="@+id/tv_making_text_font_tvn"
+                                android:includeFontPadding="false"
+                                android:paddingVertical="6dp"
+                                android:layout_marginLeft="12dp"
+                                android:gravity="center"
+                                android:textSize="14sp"
+                                android:textColor="@drawable/text_selector_inmaking"
+                                android:background="@drawable/maing_text_selector"
+                                android:text="@string/making_text_font6"
                                 android:layout_width="58dp"
                                 android:layout_height="wrap_content">
                             </TextView>
@@ -210,10 +246,12 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:fontFamily="@font/nanum"
+                    android:includeFontPadding="false"
                     android:gravity="center_vertical"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:text="크기"
+                    android:text="@string/maketext_size"
                     android:textColor="#ffffff"
                     android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -229,12 +267,14 @@
 
 
                 <TextView
+                    android:fontFamily="@font/nanum"
+                    android:includeFontPadding="false"
                     android:id="@+id/tv_making_text_size_very_small"
                     android:background="@drawable/maing_text_selector"
                     android:gravity="center"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:text="아주작게"
+                    android:text="@string/making_text_size0"
                     android:textColor="@drawable/text_selector_inmaking"
                     android:textSize="6sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -248,12 +288,14 @@
                     app:layout_constraintWidth_default="percent"
                     app:layout_constraintWidth_percent="0.12" />
                 <TextView
+                    android:fontFamily="@font/nanum"
+                    android:includeFontPadding="false"
                     android:id="@+id/tv_making_text_size_small"
                     android:background="@drawable/maing_text_selector"
                     android:gravity="center"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:text="작게"
+                    android:text="@string/making_text_size1"
                     android:textColor="@drawable/text_selector_inmaking"
                     android:textSize="10sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -267,12 +309,14 @@
                     app:layout_constraintWidth_default="percent"
                     app:layout_constraintWidth_percent="0.12" />
                 <TextView
+                    android:fontFamily="@font/nanum"
+                    android:includeFontPadding="false"
                     android:id="@+id/tv_making_text_size_normal"
                     android:background="@drawable/maing_text_selector"
                     android:gravity="center"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:text="보통"
+                    android:text="@string/making_text_size2"
                     android:textColor="@drawable/text_selector_inmaking"
                     android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -286,12 +330,14 @@
                     app:layout_constraintWidth_default="percent"
                     app:layout_constraintWidth_percent="0.12" />
                 <TextView
+                    android:fontFamily="@font/nanum"
+                    android:includeFontPadding="false"
                     android:id="@+id/tv_making_text_size_big"
                     android:background="@drawable/maing_text_selector"
                     android:gravity="center"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:text="크게"
+                    android:text="@string/making_text_size3"
                     android:textColor="@drawable/text_selector_inmaking"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -318,10 +364,12 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:fontFamily="@font/nanum"
+                        android:includeFontPadding="false"
                         android:gravity="center_vertical"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:text="배경"
+                        android:text="@string/maketext_background_color"
                         android:textColor="#ffffff"
                         android:textSize="14sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -447,10 +495,12 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:fontFamily="@font/nanum"
+                        android:includeFontPadding="false"
                         android:gravity="center_vertical"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:text="색깔"
+                        android:text="@string/maketext_text_color"
                         android:textColor="#ffffff"
                         android:textSize="14sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -576,10 +626,12 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:fontFamily="@font/nanum"
+                        android:includeFontPadding="false"
                         android:gravity="center_vertical"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:text="방향"
+                        android:text="@string/maketext_direction"
                         android:textColor="#ffffff"
                         android:textSize="14sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -613,12 +665,14 @@
                         app:layout_constraintWidth_default="percent"
                         app:layout_constraintWidth_percent="0.12" />
                     <TextView
+                        android:fontFamily="@font/nanum"
+                        android:includeFontPadding="false"
                         android:id="@+id/tv_making_direction_stop"
                         android:background="@drawable/maing_text_selector"
                         android:gravity="center"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:text="멈춤"
+                        android:text="@string/making_text_direction_stop"
                         android:textColor="@drawable/text_selector_inmaking"
                         android:textSize="12sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -664,10 +718,12 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:fontFamily="@font/nanum"
+                        android:includeFontPadding="false"
                         android:gravity="center_vertical"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:text="속도"
+                        android:text="@string/maketext_speed"
                         android:textColor="#ffffff"
                         android:textSize="14sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -683,12 +739,14 @@
 
 
                     <TextView
+                        android:fontFamily="@font/nanum"
+                        android:includeFontPadding="false"
                         android:id="@+id/tv_making_text_speed_fast"
                         android:background="@drawable/maing_text_selector"
                         android:gravity="center"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:text="빠름"
+                        android:text="@string/making_text_direction_speed0"
                         android:textColor="@drawable/text_selector_inmaking"
                         android:textSize="12sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -702,12 +760,14 @@
                         app:layout_constraintWidth_default="percent"
                         app:layout_constraintWidth_percent="0.12" />
                     <TextView
+                        android:fontFamily="@font/nanum"
+                        android:includeFontPadding="false"
                         android:id="@+id/tv_making_text_speed_normal"
                         android:background="@drawable/maing_text_selector"
                         android:gravity="center"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:text="보통"
+                        android:text="@string/making_text_direction_speed1"
                         android:textColor="@drawable/text_selector_inmaking"
                         android:textSize="12sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -721,12 +781,14 @@
                         app:layout_constraintWidth_default="percent"
                         app:layout_constraintWidth_percent="0.12" />
                     <TextView
+                        android:fontFamily="@font/nanum"
+                        android:includeFontPadding="false"
                         android:id="@+id/tv_making_text_speed_slow"
                         android:background="@drawable/maing_text_selector"
                         android:gravity="center"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:text="느림"
+                        android:text="@string/making_text_direction_speed2"
                         android:textColor="@drawable/text_selector_inmaking"
                         android:textSize="12sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -755,11 +817,13 @@
 
                     <TextView
                         android:gravity="center_vertical"
-                        android:layout_width="0dp"
+                        android:fontFamily="@font/nanum"
+                        android:includeFontPadding="false"
                         android:layout_height="0dp"
-                        android:text="효과"
+                        android:text="@string/maketext_effection"
                         android:textColor="#ffffff"
                         android:textSize="14sp"
+                        android:layout_width="0dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHeight_default="percent"
@@ -773,12 +837,14 @@
 
 
                     <TextView
-
+                        android:id="@+id/tv_making_cheerup_effect0"
+                        android:fontFamily="@font/nanum"
+                        android:includeFontPadding="false"
                         android:background="@drawable/maing_text_selector"
                         android:gravity="center"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:text="미정"
+                        android:text="@string/making_text_effectrion0"
                         android:textColor="@drawable/text_selector_inmaking"
                         android:textSize="12sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -790,7 +856,70 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.5"
                         app:layout_constraintWidth_default="percent"
-                        app:layout_constraintWidth_percent="0.12" />
+                        app:layout_constraintWidth_percent="0.14" />
+                    <TextView
+                        android:id="@+id/tv_making_cheerup_effect1"
+                        android:fontFamily="@font/nanum"
+                        android:includeFontPadding="false"
+                        android:background="@drawable/maing_text_selector"
+                        android:gravity="center"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:text="@string/making_text_effectrion1"
+                        android:textColor="@drawable/text_selector_inmaking"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHeight_default="percent"
+                        app:layout_constraintHeight_percent="0.5"
+                        app:layout_constraintHorizontal_bias="0.35"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.5"
+                        app:layout_constraintWidth_default="percent"
+                        app:layout_constraintWidth_percent="0.14" />
+                    <TextView
+                        android:id="@+id/tv_making_cheerup_effect2"
+                        android:fontFamily="@font/nanum"
+                        android:includeFontPadding="false"
+                        android:background="@drawable/maing_text_selector"
+                        android:gravity="center"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:text="@string/making_text_effectrion2"
+                        android:textColor="@drawable/text_selector_inmaking"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHeight_default="percent"
+                        app:layout_constraintHeight_percent="0.5"
+                        app:layout_constraintHorizontal_bias="0.54"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.5"
+                        app:layout_constraintWidth_default="percent"
+                        app:layout_constraintWidth_percent="0.14" />
+                    <TextView
+                        android:id="@+id/tv_making_cheerup_effect3"
+                        android:fontFamily="@font/nanum"
+                        android:includeFontPadding="false"
+                        android:background="@drawable/maing_text_selector"
+                        android:gravity="center"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:text="@string/making_text_effectrion3"
+                        android:textColor="@drawable/text_selector_inmaking"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHeight_default="percent"
+                        app:layout_constraintHeight_percent="0.5"
+                        app:layout_constraintHorizontal_bias="0.73"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.5"
+                        app:layout_constraintWidth_default="percent"
+                        app:layout_constraintWidth_percent="0.14" />
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -803,13 +932,15 @@
 
 
 <TextView
+    android:fontFamily="@font/nanum"
+    android:includeFontPadding="false"
     android:id="@+id/tv_making_save_confirm"
     android:textColor="#ffffff"
     android:background="@drawable/save_button_color"
     android:textSize="18dp"
     android:gravity="center"
     android:textStyle="bold"
-    android:text="저장하기"
+    android:text="@string/making_text_save"
     android:layout_alignParentBottom="true"
     android:layout_width="match_parent"
     android:layout_height="55dp"/>
