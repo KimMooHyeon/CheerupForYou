@@ -83,7 +83,6 @@
                  android:layout_height="match_parent"
                  android:orientation="horizontal">
 
-                 <!--><-->
                  <TextView
                      android:fontFamily="@font/nanum"
                      android:includeFontPadding="false"
@@ -97,7 +96,6 @@
                      android:textColor="#ffffff"
                      android:textSize="14sp"
                      ></TextView>
-
                  <TextView
                      android:fontFamily="@font/nanum"
                      android:includeFontPadding="false"

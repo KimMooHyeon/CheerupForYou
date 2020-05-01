@@ -8,11 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.room.Room
 import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
-import com.sabuzak.yeonamplace.cheerypforyou.model.Banner
+import com.sabuzak.yeonamplace.cheerypforyou.DataBase.AppDatabase
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.activity_main.view.banner_recyclerview
@@ -20,6 +21,7 @@ import kotlinx.android.synthetic.main.banner_recyclerview_item.view.*
 import org.jetbrains.anko.startActivity
 
 class MainActivity : AppCompatActivity() {
+    private var db:AppDatabase? =  null
     lateinit var mAdView : AdView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +40,12 @@ class MainActivity : AppCompatActivity() {
         mAdView = adView
         val adRequest = AdRequest.Builder().build()
         mAdView.loadAd(adRequest)
+
+
+        db = Room.databaseBuilder(
+            applicationContext,
+            AppDatabase::class.java, "banner-db"
+        ).build()
 
 
     }

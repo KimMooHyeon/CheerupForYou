@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-
+apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.1"
@@ -37,24 +37,11 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     //anko 라이브러리
     implementation "org.jetbrains.anko:anko:0.10.8"
-    // room db version
-
-    implementation "androidx.room:room-runtime:2.2.3"
-
-    annotationProcessor "androidx.room:room-compiler:2.2.3"
-    // For Kotlin use kapt instead of annotationProcessor
-
-    // optional - Kotlin Extensions and Coroutines support for Room
-    implementation "androidx.room:room-ktx:2.2.3"
-
-    // optional - RxJava support for Room
-    implementation "androidx.room:room-rxjava2:2.2.3"
-
-    // optional - Guava support for Room, including Optional and ListenableFuture
-    implementation "androidx.room:room-guava:2.2.3"
-
-    // Test helpers
-    testImplementation "androidx.room:room-testing:2.2.3"
+    // Room components
+    implementation "androidx.room:room-runtime:2.2.5"
+    implementation "androidx.room:room-ktx:2.2.5"
+    kapt "androidx.room:room-compiler:2.2.5"
+    androidTestImplementation "androidx.room:room-testing:2.2.5"
     //애드몹
     implementation 'com.google.android.gms:play-services-ads:+'
 
