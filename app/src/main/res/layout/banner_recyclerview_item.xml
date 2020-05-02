@@ -5,14 +5,14 @@
     android:layout_height="83dp"
     android:background="@color/colorRecyclerViewBackground">
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="75dp"
-        android:gravity="center"
         android:background="@color/colorBackground">
-    <TextView
+
+        <TextView
         android:gravity="center_vertical"
-        android:layout_gravity="center_vertical"
+        android:layout_gravity="center"
          android:fontFamily="@font/nanum"
          android:includeFontPadding="false"
         android:id ="@+id/banner_text"
@@ -20,9 +20,18 @@
         android:layout_height="75dp"
         android:textColor="#FFFFFF"
         android:text="미스터트롯 응원해"
-        android:textSize="50sp"
+        android:textSize="50sp">
+    </TextView>
+        <ImageView
+            android:id ="@+id/delete_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|top"
+            android:visibility="gone"
+            android:src ="@drawable/ic_delete"
+            >
+        </ImageView>
 
-    >
-</TextView>
-    </LinearLayout>
+
+    </FrameLayout>
 </LinearLayout>
