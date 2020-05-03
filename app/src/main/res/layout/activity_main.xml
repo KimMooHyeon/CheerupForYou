@@ -9,71 +9,37 @@
     android:id ="@+id/banner_item_view"
     android:background="@color/colorBackground">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="76dp">
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/image_logo"
-        android:layout_centerVertical="true"
+        android:layout_marginTop="24dp"
         android:layout_marginLeft="13dp"
         ></ImageView>
-     <LinearLayout
-         android:layout_marginRight="16dp"
-         android:layout_centerVertical="true"
-         android:gravity="center"
-         android:layout_alignParentRight="true"
-         android:id="@+id/ll_main_invite_friend"
-         android:orientation="vertical"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content">
-         <ImageView
-             android:src="@drawable/ic_userplus"
-             android:layout_width="24dp"
-             android:layout_height="24dp"/>
-         <TextView
-             android:layout_marginTop="2dp"
-             android:fontFamily="@font/nanum"
-             android:includeFontPadding="false"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:textSize="10sp"
-             android:textColor="#ffffff"
-             android:lineSpacingExtra="2sp"
-             android:text="친구초대"
-             />
 
-     </LinearLayout>
-        <LinearLayout
-            android:layout_marginRight="16dp"
-            android:layout_centerVertical="true"
-            android:gravity="center"
-            android:layout_toLeftOf="@+id/ll_main_invite_friend"
-            android:id="@+id/ll_main_request_templete"
-            android:orientation="vertical"
+        <ImageView
+            android:id ="@+id/req_image"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <ImageView
-                android:src="@drawable/ic_request"
-                android:layout_width="24dp"
-                android:layout_height="24dp"/>
-            <TextView
-                android:layout_marginTop="2dp"
-                android:fontFamily="@font/nanum"
-                android:includeFontPadding="false"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="10sp"
-                android:textColor="#ffffff"
-                android:lineSpacingExtra="2sp"
-                android:text="템플릿요청"
-                />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginLeft="210dp"
+            android:layout_marginRight="24dp"
+            android:src="@drawable/ic_request">
+        </ImageView>
+        <ImageView
+            android:id = "@+id/user_plus_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:src="@drawable/ic_userplus"
+            >
 
-        </LinearLayout>
+        </ImageView>
 
-
-    </RelativeLayout>
+    </LinearLayout>
 
 
 
@@ -130,6 +96,7 @@
              android:textSize = '18sp'
              android:text="@string/main_new_maketext"
              android:textColor="#ffffff">
+
             </Button>
              <LinearLayout
                  android:layout_width="match_parent"
@@ -137,7 +104,6 @@
                  android:orientation="horizontal">
 
                  <TextView
-                     android:id="@+id/tv_main_test_full_popup"
                      android:fontFamily="@font/nanum"
                      android:includeFontPadding="false"
                      android:layout_marginTop="16dp"
@@ -151,6 +117,7 @@
                      android:textSize="14sp"
                      ></TextView>
                  <TextView
+                     android:id="@+id/remove_button"
                      android:fontFamily="@font/nanum"
                      android:includeFontPadding="false"
                      android:layout_marginLeft="252dp"
