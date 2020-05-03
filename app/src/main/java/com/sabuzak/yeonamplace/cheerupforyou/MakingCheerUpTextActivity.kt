@@ -1,4 +1,4 @@
-package com.sabuzak.yeonamplace.cheerypforyou
+package com.sabuzak.yeonamplace.cheerupforyou
 
 import android.graphics.Canvas
 import android.graphics.Color
@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.animation.AlphaAnimation
 import android.view.animation.AnimationSet
 import android.view.animation.AnimationUtils
@@ -64,10 +65,11 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
         val display = windowManager.defaultDisplay
         val point = Point()
         display.getSize(point)
+        fromX = screenWidth
         screenWidth = point.x.toFloat()
         screenHeight = point.y.toFloat()
         fromY = screenHeight
-        fromX = screenWidth
+
 
         tv_making_save_confirm.setOnClickListener {
             tv_making_save_confirm.isClickable=false
@@ -81,18 +83,24 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
 
         edt_making_text.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
+                Log.e("size3"," before tv_text.text = "+tv_text.width + " " + tv_text.text )
+                tv_text.text = p0.toString()
+                Log.e("size3","after tv_text.text = "+tv_text.width + " " + tv_text.text)
+                Log.e("size3","tv_text_width "+tv_text.width + " " + tv_text.text)
                 if (tv_text.animation != null) {
                     tv_text.clearAnimation()
                 }
                 if (tv_text.text !=""){
-                    setAnim()
+                    tv_text.clearAnimation()
+                    setAnim(tv_text.width,p0.toString())
                 }
+
+
             }
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            override fun beforeTextChanged(p0: CharSequence?, start: Int, count: Int, after: Int) {
 
             }
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                tv_text.text = edt_making_text.text.toString()
 
 
             }
@@ -136,7 +144,7 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
             if(tv_making_cheerup_effect2.isSelected==false){
                 tv_making_cheerup_effect2.isSelected = true
                 tv_making_cheerup_effect3.isSelected = false
-                tv_text.setShadowLayer(10.0f,0.0f,0.0f,Color.parseColor("#ffffff"))
+                tv_text.setShadowLayer(15.0f,0.0f,0.0f,Color.parseColor("#ffffff"))
                 effect2=1
 
             }else {
@@ -152,7 +160,7 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
                 tv_making_cheerup_effect2.isSelected = false
                 //그림자 효과
                 effect3=1
-                tv_text.setShadowLayer(2.0f,6.0f,3.0f,Color.parseColor("#2AEFF5"))
+                tv_text.setShadowLayer(4.0f,8.0f,3.0f,Color.parseColor("#2AEFF5"))
             }else {
                 tv_making_cheerup_effect3.isSelected=false
                 //그림자 효과 끄기
@@ -490,15 +498,23 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
 
 
     }
-    public fun setAnim(){
+    public fun setAnim(width: Int = tv_text.width, text: CharSequence = tv_text.text ){
 
         //애니메이션 두개 넣기 set
         var set = AnimationSet(false)
-        var animation = TranslateAnimation((screenWidth).toFloat(), (-(tv_text.width).toFloat()), 0.0f, -0.0f)
+        Log.e("size2","width "+ tv_text.width)
+        Log.e("size2","screen width+width "+ fromX+tv_text.width)
+        var animation = TranslateAnimation((screenWidth).toFloat(), (-(width).toFloat()), 0.0f, -0.0f)
         if (direction==2){
-            animation = TranslateAnimation((screenWidth).toFloat(), (-(tv_text.width).toFloat()), 0.0f, -0.0f)
+            if (-screenWidth.toFloat() < -(width).toFloat()){
+                animation = TranslateAnimation((screenWidth).toFloat(), (-screenWidth.toFloat()), 0.0f, -0.0f)
+            }else
+            animation = TranslateAnimation((screenWidth).toFloat(), (-(width).toFloat()), 0.0f, -0.0f)
         }else if (direction==0){
-            animation = TranslateAnimation((-(tv_text.width).toFloat()), (screenWidth).toFloat(), 0.0f, -0.0f)
+            if (-screenWidth.toFloat() < -(width).toFloat()){
+                animation = TranslateAnimation(-screenWidth.toFloat(), (screenWidth).toFloat(), 0.0f, -0.0f)
+            } else
+            animation = TranslateAnimation((-(width).toFloat()), (screenWidth).toFloat(), 0.0f, -0.0f)
         }else if (direction==1){
             animation = TranslateAnimation(0.0f, 0.0f, 0.0f, -0.0f)
         }
@@ -507,20 +523,21 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
 
 
         if(speed==0){
-            animation.duration = (tv_text.text.length*800).toLong()
+            animation.duration = (((screenWidth).toLong() + (width).toLong())*0.8).toLong()
+            Log.e("size2","animation.duration = "+ animation.duration + " (screenWidth).toLong() = " + ((screenWidth).toLong().toString()) + "(width).toLong() = " +((width).toLong().toString()))
         }else if (speed ==1) {
-            animation.duration = (tv_text.text.length*1000).toLong()
+            animation.duration = ((screenWidth).toLong() + (width).toLong())
         }else if (speed ==2){
-            animation.duration = (tv_text.text.length*2000).toLong()
+            animation.duration = (((screenWidth).toLong() + (width).toLong())*1.2).toLong()
         }
 
         animation.repeatCount= -1
 
         if (effect0 == 1){
-        val alphaAnim = AlphaAnimation(0F, 1.0F)
-        alphaAnim.duration = 200
-        alphaAnim.repeatCount = -1
-        set.addAnimation(alphaAnim)
+            val alphaAnim = AlphaAnimation(0F, 1.0F)
+            alphaAnim.duration = 400
+            alphaAnim.repeatCount = -1
+            set.addAnimation(alphaAnim)
         }
 
         set.addAnimation(animation)

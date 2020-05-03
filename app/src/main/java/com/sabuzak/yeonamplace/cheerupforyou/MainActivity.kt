@@ -1,22 +1,20 @@
-package com.sabuzak.yeonamplace.cheerypforyou
+package com.sabuzak.yeonamplace.cheerupforyou
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
-import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
-import com.sabuzak.yeonamplace.cheerypforyou.DataBase.AppDatabase
+import com.sabuzak.yeonamplace.cheerupforyou.DataBase.AppDatabase
+import com.sabuzak.yeonamplace.cheerupforyou.popup.RequestTempletePopUpActivity
+import com.sabuzak.yeonamplace.cheerupforyou.popup.SaveFullPopUpActivity
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_main.view.*
-import kotlinx.android.synthetic.main.activity_main.view.banner_recyclerview
 import kotlinx.android.synthetic.main.banner_recyclerview_item.view.*
 import org.jetbrains.anko.startActivity
 
@@ -27,6 +25,18 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        tv_main_test_full_popup.setOnClickListener {
+            startActivity<SaveFullPopUpActivity>()
+            this.overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
+        }
+
+
+        ll_main_request_templete.setOnClickListener{
+            startActivity<RequestTempletePopUpActivity>()
+            this.overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
+        }
+
+
         btn_main_make_new_cheerup_text.setOnClickListener {
             startActivity<MakingCheerUpTextActivity>()
         }
@@ -35,6 +45,7 @@ class MainActivity : AppCompatActivity() {
 
         banner_recyclerview.adapter = BannerRecyclerViewAdapter()
         banner_recyclerview.layoutManager = LinearLayoutManager(this)
+
 
         MobileAds.initialize(this) {}
         mAdView = adView
@@ -46,7 +57,6 @@ class MainActivity : AppCompatActivity() {
             applicationContext,
             AppDatabase::class.java, "banner-db"
         ).build()
-
 
     }
 
@@ -77,6 +87,7 @@ class MainActivity : AppCompatActivity() {
              */
 
             holder.itemView.banner_text.setText(bannerArray[position])
+
         }
 
 

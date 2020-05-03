@@ -1,4 +1,4 @@
-package com.sabuzak.yeonamplace.cheerypforyou
+package com.sabuzak.yeonamplace.cheerupforyou
 
 import org.junit.Test
 

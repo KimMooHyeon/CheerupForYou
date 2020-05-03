@@ -40,20 +40,19 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-        <com.sabuzak.yeonamplace.cheerypforyou.OutlineTextView
-
-            android:paddingLeft="8dp"
-            android:layout_gravity="center_vertical"
-            android:gravity="center_vertical"
-            android:textColor="#ffffff"
-            android:id="@+id/tv_text"
-            android:textSize="90sp"
-            android:includeFontPadding="false"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:textStroke="false"
-            app:textStrokeWidth="6.0"
-            app:textStrokeColor="#2AEFF5" />
+            <com.sabuzak.yeonamplace.cheerupforyou.OutlineTextView
+                android:paddingLeft="8dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="#ffffff"
+                android:id="@+id/tv_text"
+                android:textSize="90sp"
+                android:includeFontPadding="false"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                app:textStroke="false"
+                app:textStrokeWidth="10.0"
+                app:textStrokeColor="#2AEFF5" />
 
         </HorizontalScrollView>
 
@@ -69,18 +68,18 @@
         android:layout_above="@id/tv_making_save_confirm"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    <EditText
-        android:fontFamily="@font/nanum"
-        android:includeFontPadding="false"
-        android:id="@+id/edt_making_text"
-        android:textSize="18dp"
-        android:paddingLeft="16dp"
-        android:hint="@string/maketext_hint_message"
-        android:layout_marginTop="24dp"
-        android:layout_marginHorizontal="18dp"
-        android:background="@drawable/making_main_round_shape"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"/>
+        <EditText
+            android:fontFamily="@font/nanum"
+            android:includeFontPadding="false"
+            android:id="@+id/edt_making_text"
+            android:textSize="18dp"
+            android:paddingLeft="16dp"
+            android:hint="@string/maketext_hint_message"
+            android:layout_marginTop="24dp"
+            android:layout_marginHorizontal="18dp"
+            android:background="@drawable/making_main_round_shape"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"/>
         <LinearLayout
             android:layout_marginTop="24dp"
             android:layout_marginBottom="20dp"
@@ -137,19 +136,19 @@
                             android:orientation="horizontal"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
-                       <TextView
-                           android:id="@+id/tv_making_text_font_nanum"
-                           android:fontFamily="@font/nanum"
-                           android:includeFontPadding="false"
-                           android:paddingVertical="6dp"
-                           android:gravity="center"
-                           android:textSize="14sp"
-                           android:textColor="@drawable/text_selector_inmaking"
-                           android:background="@drawable/maing_text_selector"
-                           android:text="@string/making_text_font0"
-                           android:layout_width="58dp"
-                           android:layout_height="wrap_content">
-                       </TextView>
+                            <TextView
+                                android:id="@+id/tv_making_text_font_nanum"
+                                android:fontFamily="@font/nanum"
+                                android:includeFontPadding="false"
+                                android:paddingVertical="6dp"
+                                android:gravity="center"
+                                android:textSize="14sp"
+                                android:textColor="@drawable/text_selector_inmaking"
+                                android:background="@drawable/maing_text_selector"
+                                android:text="@string/making_text_font0"
+                                android:layout_width="58dp"
+                                android:layout_height="wrap_content">
+                            </TextView>
                             <TextView
                                 android:id="@+id/tv_making_text_font_hasuwon"
                                 android:includeFontPadding="false"
@@ -236,123 +235,123 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>
             <LinearLayout
-    android:layout_weight="1"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_weight="1"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:fontFamily="@font/nanum"
-                    android:includeFontPadding="false"
+                android:layout_height="match_parent">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:gravity="center_vertical"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:text="@string/maketext_size"
-                    android:textColor="#ffffff"
-                    android:textSize="14sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHeight_default="percent"
-                    app:layout_constraintHeight_percent="0.6"
-                    app:layout_constraintHorizontal_bias="0.0444"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.5"
-                    app:layout_constraintWidth_default="percent"
-                    app:layout_constraintWidth_percent="0.0694" />
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:fontFamily="@font/nanum"
+                        android:includeFontPadding="false"
+                        android:gravity="center_vertical"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:text="@string/maketext_size"
+                        android:textColor="#ffffff"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHeight_default="percent"
+                        app:layout_constraintHeight_percent="0.6"
+                        app:layout_constraintHorizontal_bias="0.0444"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.5"
+                        app:layout_constraintWidth_default="percent"
+                        app:layout_constraintWidth_percent="0.0694" />
 
 
-                <TextView
-                    android:fontFamily="@font/nanum"
-                    android:includeFontPadding="false"
-                    android:id="@+id/tv_making_text_size_very_small"
-                    android:background="@drawable/maing_text_selector"
-                    android:gravity="center"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:text="@string/making_text_size0"
-                    android:textColor="@drawable/text_selector_inmaking"
-                    android:textSize="6sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHeight_default="percent"
-                    app:layout_constraintHeight_percent="0.5"
-                    app:layout_constraintHorizontal_bias="0.16"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.5"
-                    app:layout_constraintWidth_default="percent"
-                    app:layout_constraintWidth_percent="0.12" />
-                <TextView
-                    android:fontFamily="@font/nanum"
-                    android:includeFontPadding="false"
-                    android:id="@+id/tv_making_text_size_small"
-                    android:background="@drawable/maing_text_selector"
-                    android:gravity="center"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:text="@string/making_text_size1"
-                    android:textColor="@drawable/text_selector_inmaking"
-                    android:textSize="10sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHeight_default="percent"
-                    app:layout_constraintHeight_percent="0.5"
-                    app:layout_constraintHorizontal_bias="0.32"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.5"
-                    app:layout_constraintWidth_default="percent"
-                    app:layout_constraintWidth_percent="0.12" />
-                <TextView
-                    android:fontFamily="@font/nanum"
-                    android:includeFontPadding="false"
-                    android:id="@+id/tv_making_text_size_normal"
-                    android:background="@drawable/maing_text_selector"
-                    android:gravity="center"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:text="@string/making_text_size2"
-                    android:textColor="@drawable/text_selector_inmaking"
-                    android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHeight_default="percent"
-                    app:layout_constraintHeight_percent="0.5"
-                    app:layout_constraintHorizontal_bias="0.48"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.5"
-                    app:layout_constraintWidth_default="percent"
-                    app:layout_constraintWidth_percent="0.12" />
-                <TextView
-                    android:fontFamily="@font/nanum"
-                    android:includeFontPadding="false"
-                    android:id="@+id/tv_making_text_size_big"
-                    android:background="@drawable/maing_text_selector"
-                    android:gravity="center"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:text="@string/making_text_size3"
-                    android:textColor="@drawable/text_selector_inmaking"
-                    android:textSize="16sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHeight_default="percent"
-                    app:layout_constraintHeight_percent="0.5"
-                    app:layout_constraintHorizontal_bias="0.64"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.5"
-                    app:layout_constraintWidth_default="percent"
-                    app:layout_constraintWidth_percent="0.12" />
+                    <TextView
+                        android:fontFamily="@font/nanum"
+                        android:includeFontPadding="false"
+                        android:id="@+id/tv_making_text_size_very_small"
+                        android:background="@drawable/maing_text_selector"
+                        android:gravity="center"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:text="@string/making_text_size0"
+                        android:textColor="@drawable/text_selector_inmaking"
+                        android:textSize="6sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHeight_default="percent"
+                        app:layout_constraintHeight_percent="0.5"
+                        app:layout_constraintHorizontal_bias="0.16"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.5"
+                        app:layout_constraintWidth_default="percent"
+                        app:layout_constraintWidth_percent="0.12" />
+                    <TextView
+                        android:fontFamily="@font/nanum"
+                        android:includeFontPadding="false"
+                        android:id="@+id/tv_making_text_size_small"
+                        android:background="@drawable/maing_text_selector"
+                        android:gravity="center"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:text="@string/making_text_size1"
+                        android:textColor="@drawable/text_selector_inmaking"
+                        android:textSize="10sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHeight_default="percent"
+                        app:layout_constraintHeight_percent="0.5"
+                        app:layout_constraintHorizontal_bias="0.32"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.5"
+                        app:layout_constraintWidth_default="percent"
+                        app:layout_constraintWidth_percent="0.12" />
+                    <TextView
+                        android:fontFamily="@font/nanum"
+                        android:includeFontPadding="false"
+                        android:id="@+id/tv_making_text_size_normal"
+                        android:background="@drawable/maing_text_selector"
+                        android:gravity="center"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:text="@string/making_text_size2"
+                        android:textColor="@drawable/text_selector_inmaking"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHeight_default="percent"
+                        app:layout_constraintHeight_percent="0.5"
+                        app:layout_constraintHorizontal_bias="0.48"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.5"
+                        app:layout_constraintWidth_default="percent"
+                        app:layout_constraintWidth_percent="0.12" />
+                    <TextView
+                        android:fontFamily="@font/nanum"
+                        android:includeFontPadding="false"
+                        android:id="@+id/tv_making_text_size_big"
+                        android:background="@drawable/maing_text_selector"
+                        android:gravity="center"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:text="@string/making_text_size3"
+                        android:textColor="@drawable/text_selector_inmaking"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHeight_default="percent"
+                        app:layout_constraintHeight_percent="0.5"
+                        app:layout_constraintHorizontal_bias="0.64"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.5"
+                        app:layout_constraintWidth_default="percent"
+                        app:layout_constraintWidth_percent="0.12" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
-</LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
             <LinearLayout
                 android:layout_weight="1"
                 android:layout_width="match_parent"
@@ -648,8 +647,8 @@
 
                     <ImageView
                         android:padding="6dp"
-                        android:src="@drawable/selector_direction_right"
-                        android:id="@+id/iv_making_direction_right"
+                        android:src="@drawable/selector_direction_left"
+                        android:id="@+id/iv_making_direction_left"
                         android:background="@drawable/maing_text_selector"
                         android:gravity="center"
                         android:layout_width="0dp"
@@ -687,8 +686,8 @@
                         app:layout_constraintWidth_percent="0.12" />
                     <ImageView
                         android:padding="6dp"
-                        android:src="@drawable/selector_direction_left"
-                        android:id="@+id/iv_making_direction_left"
+                        android:src="@drawable/selector_direction_right"
+                        android:id="@+id/iv_making_direction_right"
                         android:background="@drawable/maing_text_selector"
                         android:gravity="center"
                         android:layout_width="0dp"
@@ -931,17 +930,17 @@
 
 
 
-<TextView
-    android:fontFamily="@font/nanum"
-    android:includeFontPadding="false"
-    android:id="@+id/tv_making_save_confirm"
-    android:textColor="#ffffff"
-    android:background="@drawable/save_button_color"
-    android:textSize="18dp"
-    android:gravity="center"
-    android:textStyle="bold"
-    android:text="@string/making_text_save"
-    android:layout_alignParentBottom="true"
-    android:layout_width="match_parent"
-    android:layout_height="55dp"/>
+    <TextView
+        android:fontFamily="@font/nanum"
+        android:includeFontPadding="false"
+        android:id="@+id/tv_making_save_confirm"
+        android:textColor="#ffffff"
+        android:background="@drawable/save_button_color"
+        android:textSize="18dp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:text="@string/making_text_save"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"/>
 </RelativeLayout>

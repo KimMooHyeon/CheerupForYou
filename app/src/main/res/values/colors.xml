@@ -9,5 +9,7 @@
 
     <!-->2020.04.25 최선필, activity_main.xml 리사이클러뷰 배경 색상 추가<-->
     <color name="colorRecyclerViewBackground">#2a2d3a</color>
-
+    <!-->2020.05.02 김무현, popup 배경 색상 추가<-->
+    <color name="transparent">#1A000000</color>
+    <color name="transcolor">#4C707070</color>
 </resources>
