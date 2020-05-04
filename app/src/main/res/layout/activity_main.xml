@@ -117,6 +117,7 @@
                      android:textSize="14sp"
                      ></TextView>
                  <TextView
+
                      android:id="@+id/remove_button"
                      android:fontFamily="@font/nanum"
                      android:includeFontPadding="false"
