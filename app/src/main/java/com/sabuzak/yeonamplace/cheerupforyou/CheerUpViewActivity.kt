@@ -1,4 +1,4 @@
-package com.sabuzak.yeonamplace.cheerypforyou
+package com.sabuzak.yeonamplace.cheerupforyou
 
 import android.graphics.Canvas
 import android.graphics.Color
@@ -60,10 +60,10 @@ class CheerUpViewActivity : AppCompatActivity() {
         }
 
         if(intent.getIntExtra("effect2",0)==1) {
-            tv_cheer_up_view_Text.setShadowLayer(10.0f,0.0f,0.0f,Color.parseColor("#ffffff"))
+            tv_cheer_up_view_Text.setShadowLayer(15.0f,0.0f,0.0f,Color.parseColor("#ffffff"))
         }
         if(intent.getIntExtra("effect3",0)==1) {
-            tv_cheer_up_view_Text.setShadowLayer(2.0f,6.0f,3.0f,Color.parseColor("#2AEFF5"))
+            tv_cheer_up_view_Text.setShadowLayer(4.0f,8.0f,3.0f,Color.parseColor("#2AEFF5"))
         }
 
 
@@ -162,11 +162,11 @@ class CheerUpViewActivity : AppCompatActivity() {
         animation.setInterpolator( AnimationUtils.loadInterpolator( this, android.R.anim.linear_interpolator) )
         if(intent.getIntExtra("speed",0)==0){
 
-            animation.duration = (intent.getStringExtra("edt_making_text")!!.length*800).toLong()
+            animation.duration = ((((screenWidth).toLong() + (tv_cheer_up_view_Text.width).toLong()))*0.7).toLong()
         }else if (intent.getIntExtra("speed",0) ==1) {
-            animation.duration = (intent.getStringExtra("edt_making_text")!!.length*1000).toLong()
+            animation.duration = ((screenWidth).toLong() + (tv_cheer_up_view_Text.width).toLong())
         }else if (intent.getIntExtra("speed",0) ==2){
-            animation.duration = (intent.getStringExtra("edt_making_text")!!.length*2000).toLong()
+            animation.duration = ((((screenWidth).toLong() + (tv_cheer_up_view_Text.width).toLong()))*1.3).toLong()
         }
 
 
@@ -180,7 +180,7 @@ class CheerUpViewActivity : AppCompatActivity() {
 
         if (intent.getIntExtra("effect0",0) == 1){
             val alphaAnim = AlphaAnimation(0F, 1.0F)
-            alphaAnim.duration = 200
+            alphaAnim.duration = 400
             alphaAnim.repeatCount = -1
             set.addAnimation(alphaAnim)
         }

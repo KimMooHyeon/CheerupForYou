@@ -1,4 +1,4 @@
-package com.sabuzak.yeonamplace.cheerypforyou.DataBase.Entity
+package com.sabuzak.yeonamplace.cheerupforyou.DataBase.Entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

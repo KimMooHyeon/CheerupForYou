@@ -18,10 +18,15 @@ import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
-import com.sabuzak.yeonamplace.cheerypforyou.DataBase.AppDatabase
+import com.sabuzak.yeonamplace.cheerupforyou.DataBase.AppDatabase
+import com.sabuzak.yeonamplace.cheerupforyou.MakingCheerUpTextActivity
+import com.sabuzak.yeonamplace.cheerupforyou.R
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.view.*
+import kotlinx.android.synthetic.main.activity_main.view.adView
 import kotlinx.android.synthetic.main.activity_main.view.banner_recyclerview
+import kotlinx.android.synthetic.main.activity_main.view.btn_main_make_new_cheerup_text
+import kotlinx.android.synthetic.main.activity_main.view.remove_button
 import kotlinx.android.synthetic.main.banner_recyclerview_item.view.*
 import kotlinx.coroutines.delay
 import org.jetbrains.anko.image
@@ -32,7 +37,6 @@ import java.util.*
 import kotlin.concurrent.timer
 
 class MainActivity : AppCompatActivity() {
-
     private var db:AppDatabase? =  null
     private var isRemoveActive = false
     lateinit var mAdView : AdView
@@ -141,6 +145,9 @@ class MainActivity : AppCompatActivity() {
                         /**
                          * TODO  2020.04팝업창 띄우기 해야됨
                          */
+
+
+
                 }
 
             }
