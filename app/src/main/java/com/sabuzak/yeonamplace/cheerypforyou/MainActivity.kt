@@ -32,6 +32,7 @@ import java.util.*
 import kotlin.concurrent.timer
 
 class MainActivity : AppCompatActivity() {
+
     private var db:AppDatabase? =  null
     private var isRemoveActive = false
     lateinit var mAdView : AdView
@@ -121,24 +122,25 @@ class MainActivity : AppCompatActivity() {
 
                 holder.itemView.banner_text.setText(bannerArray[position])
                 holder.itemView.delete_image.onClick {
-
-
-
-                    //delay(1000)
-
                     /**
-                     * TODO 2020.05.02 이미지 리소스 비교하여 빨강이랑 하얀색 구분
+                     * TODO 2020.05.02 이미지 리소스 비교하여 빨강이랑 하얀색 구
                      */
+                    if(!(holder as BannerViewHolder).removeFlag)
+                    {
+                        holder.itemView.delete_image.setImageResource(R.drawable.ic_delete_red)
+                        (holder as BannerViewHolder).removeFlag = true
+                    }
+                    else{
+                        holder.itemView.delete_image.setImageResource(R.drawable.ic_delete)
+                        (holder as BannerViewHolder).removeFlag = false
+                    }
 
-                    holder.itemView.delete_image.setImageResource(R.drawable.ic_delete_red)
+
                     //holder.itemView.delete_image.visibility = View.GONE
 
                         /**
                          * TODO  2020.04팝업창 띄우기 해야됨
                          */
-
-
-
                 }
 
             }
@@ -151,7 +153,7 @@ class MainActivity : AppCompatActivity() {
 
 
         inner class BannerViewHolder(view: View):RecyclerView.ViewHolder(view){
-
+            var removeFlag = false
         }
 
 
