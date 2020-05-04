@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import com.sabuzak.yeonamplace.cheerupforyou.DataBase.SharedPreferenceController
+import com.sabuzak.yeonamplace.cheerupforyou.MainActivity
 import org.jetbrains.anko.startActivity
 
 class SplashActivity : AppCompatActivity() {
