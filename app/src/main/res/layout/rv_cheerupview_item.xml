@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rl_rv_cheerup_view_all"
+    android:background="#15161d"
+    android:layout_marginTop="12dp"
+    android:layout_width="match_parent"
+    android:layout_height="90dp">
+
+    <HorizontalScrollView
+        android:background="#111111"
+        android:scrollbars="none"
+        android:id="@+id/hs_rv_item"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_gravity="center"
+            android:id="@+id/ll_rv_item"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <com.sabuzak.yeonamplace.cheerupforyou.OutlineTextView
+                android:fontFamily="@font/nanum"
+                android:text="하이"
+                android:gravity="center"
+                android:textColor="#ffffff"
+                android:id="@+id/tv_rv_item"
+                android:textSize="25sp"
+                android:includeFontPadding="false"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                app:textStroke="false"
+                app:textStrokeWidth="10.0"
+                app:textStrokeColor="#2AEFF5" />
+        </LinearLayout>
+    </HorizontalScrollView>
+</RelativeLayout>

@@ -20,6 +20,7 @@ import android.widget.FrameLayout
 import android.widget.LinearLayout
 import androidx.annotation.Dimension
 import androidx.appcompat.app.AppCompatActivity
+import com.sabuzak.yeonamplace.cheerupforyou.popup.LodingSavePopUpActivity
 import kotlinx.android.synthetic.main.activity_making_cheer_up_text.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
@@ -77,7 +78,6 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
         var previousString = " "
         tv_making_save_confirm.setOnClickListener {
             tv_making_save_confirm.isClickable=false
-            toast(background_color.toString())
             val handler = Handler()
             handler.postDelayed(Runnable { // 저장하기 클릭후 2초 동안 클릭안되게하기
                 tv_making_save_confirm.isClickable=true

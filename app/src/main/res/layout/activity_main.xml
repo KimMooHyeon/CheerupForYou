@@ -9,10 +9,11 @@
     android:id ="@+id/banner_item_view"
     android:background="@color/colorBackground">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="76dp">
     <ImageView
+        android:layout_centerVertical="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/image_logo"
@@ -21,15 +22,19 @@
         ></ImageView>
 
         <ImageView
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
             android:id ="@+id/req_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:layout_marginLeft="210dp"
-            android:layout_marginRight="24dp"
+           android:layout_toLeftOf="@+id/user_plus_image"
             android:src="@drawable/ic_request">
         </ImageView>
         <ImageView
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:layout_alignParentRight="true"
             android:id = "@+id/user_plus_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -39,7 +44,7 @@
 
         </ImageView>
 
-    </LinearLayout>
+    </RelativeLayout>
 
 
 
@@ -55,6 +60,7 @@
             android:layout_height="196dp"
             android:orientation="vertical">
          <LinearLayout
+             android:id="@+id/ll_main_loadtokingdom"
              android:layout_marginTop="20dp"
              android:layout_marginLeft="8dp"
              android:layout_marginRight="8dp"
@@ -98,12 +104,12 @@
              android:textColor="#ffffff">
 
             </Button>
-             <LinearLayout
+             <RelativeLayout
                  android:layout_width="match_parent"
-                 android:layout_height="match_parent"
-                 android:orientation="horizontal">
+                 android:layout_height="match_parent">
 
                  <TextView
+                     android:layout_centerVertical="true"
                      android:fontFamily="@font/nanum"
                      android:includeFontPadding="false"
                      android:layout_marginTop="16dp"
@@ -117,11 +123,11 @@
                      android:textSize="14sp"
                      ></TextView>
                  <TextView
-
+                     android:layout_centerVertical="true"
+                     android:layout_marginRight="16dp"
                      android:id="@+id/remove_button"
                      android:fontFamily="@font/nanum"
                      android:includeFontPadding="false"
-                     android:layout_marginLeft="252dp"
                      android:layout_width="wrap_content"
                      android:layout_height="wrap_content"
                      android:layout_marginTop="16dp"
@@ -130,10 +136,11 @@
                      android:text="삭제"
                      android:textColor="#fd5858"
                      android:textSize="14sp"
+                     android:layout_alignParentRight="true"
                      >
 
                  </TextView>
-             </LinearLayout>
+             </RelativeLayout>
          </LinearLayout>
 
         </LinearLayout>
@@ -162,7 +169,7 @@
                 app:adUnitId="ca-app-pub-3940256099942544/6300978111"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"></com.google.android.gms.ads.AdView>
+                app:layout_constraintStart_toStartOf="parent" />
 
             <!--ca-app-pub-5263527473804623/2281052671-->
 

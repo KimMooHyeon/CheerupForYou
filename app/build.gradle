@@ -49,5 +49,7 @@ dependencies {
     implementation 'com.android.support:multidex:1.0.3'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
 
+    //저장하기 로딩 UI 라이브러리
+    implementation 'com.wang.avi:library:2.1.3'
 
 }
