@@ -37,10 +37,11 @@ class CheerUpViewActivity : AppCompatActivity() {
         iv_cheerup_lock.isSelected=true
         hs_cheerup_view.isClickable=false
         iv_cheerup_lock.setOnClickListener {
-            Toast.makeText(this,"잠금 화면이 설정되었습니다.",Toast.LENGTH_SHORT).show()
+
             cl_cheerup_all.setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION)
             doFullScreen()
             if (iv_cheerup_lock.isSelected==true){
+                Toast.makeText(this,"잠금 화면이 설정되었습니다.",Toast.LENGTH_SHORT).show()
                 iv_cheerup_lock.isSelected=false
                 iv_cheerup_delete.visibility=View.INVISIBLE
                 iv_cheerup_delete.isClickable=false

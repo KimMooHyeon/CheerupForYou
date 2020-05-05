@@ -74,7 +74,7 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
         screenHeight = point.y.toFloat()
         fromY = screenHeight
 
-
+        var previousString = " "
         tv_making_save_confirm.setOnClickListener {
             tv_making_save_confirm.isClickable=false
             toast(background_color.toString())
@@ -87,6 +87,13 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
 
         edt_making_text.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
+                  if (edt_making_text.getLineCount() >= 3)
+        {
+            edt_making_text.setText(previousString)
+            edt_making_text.setSelection(edt_making_text.length())
+        }
+
+
                 tv_text.text = p0.toString()
                 if(tv_text.width < screenWidth){
 
@@ -111,7 +118,7 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
 
             }
             override fun beforeTextChanged(p0: CharSequence?, start: Int, count: Int, after: Int) {
-
+                previousString = p0.toString()
             }
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
 

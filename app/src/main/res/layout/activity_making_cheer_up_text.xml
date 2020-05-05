@@ -72,6 +72,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <EditText
+            android:inputType="none"
+            android:maxLines="2"
             android:fontFamily="@font/nanum"
             android:includeFontPadding="false"
             android:id="@+id/edt_making_text"
