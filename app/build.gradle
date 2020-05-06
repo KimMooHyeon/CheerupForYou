@@ -49,5 +49,11 @@ dependencies {
     implementation 'com.android.support:multidex:1.0.3'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
 
+    //viewModel
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0-beta01'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.2.0-alpha01'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0-alpha01'
+
+
 
 }

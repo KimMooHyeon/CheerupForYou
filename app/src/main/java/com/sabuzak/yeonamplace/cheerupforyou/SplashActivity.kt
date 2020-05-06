@@ -22,6 +22,7 @@ class SplashActivity : AppCompatActivity() {
             SharedPreferenceController.setCheckFirestLogin(this,false)
         }else{
             handler.postDelayed(Runnable { // 5초 뒤에 작동!! -> 5s = 5000ms
+
                 startActivity<MainActivity>()
                 finish()
             }, 500)

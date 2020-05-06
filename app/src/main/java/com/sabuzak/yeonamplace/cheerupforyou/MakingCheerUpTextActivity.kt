@@ -15,12 +15,17 @@ import android.view.animation.AnimationUtils
 import android.view.animation.TranslateAnimation
 import androidx.annotation.Dimension
 import androidx.appcompat.app.AppCompatActivity
+import com.sabuzak.yeonamplace.cheerupforyou.DataBase.Entity.Banner
+import com.sabuzak.yeonamplace.cheerupforyou.DataBase.Repository.BannerRepository
+import com.sabuzak.yeonamplace.cheerupforyou.DataBase.ViewModel.BannerViewModel
 import kotlinx.android.synthetic.main.activity_making_cheer_up_text.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
 
 class MakingCheerUpTextActivity : AppCompatActivity() {
+
+    private lateinit var bannerViewModel: BannerViewModel
     // 각 값 초기값 설정
     var text_size = 2
     var background_color = 0
@@ -78,6 +83,17 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
             handler.postDelayed(Runnable { // 저장하기 클릭후 2초 동안 클릭안되게하기
                 tv_making_save_confirm.isClickable=true
             }, 2000)
+
+            /**
+             * 배너 객체 생성
+             */
+            val banner = Banner()
+            ba
+
+
+
+
+
         }
 
 
