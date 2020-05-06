@@ -86,7 +86,6 @@ class MainActivity : AppCompatActivity() {
         banner_recyclerview.adapter = BannerRecyclerViewAdapter(context = this.applicationContext)
         banner_recyclerview.layoutManager = LinearLayoutManager(this)
         bannerViewModel = ViewModelProvider(this).get(BannerViewModel::class.java)
-
         bannerViewModel.allBanner.observe(this, Observer {
             banners-> banners?.let{
             (banner_recyclerview.adapter as BannerRecyclerViewAdapter).setBanners(it)

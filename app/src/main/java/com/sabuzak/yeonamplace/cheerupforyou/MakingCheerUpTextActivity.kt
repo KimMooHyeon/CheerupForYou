@@ -20,17 +20,20 @@ import android.widget.FrameLayout
 import android.widget.LinearLayout
 import androidx.annotation.Dimension
 import androidx.appcompat.app.AppCompatActivity
+import com.sabuzak.yeonamplace.cheerupforyou.DataBase.AppDatabase
 import com.sabuzak.yeonamplace.cheerupforyou.DataBase.Entity.Banner
+import com.sabuzak.yeonamplace.cheerupforyou.DataBase.Repository.BannerRepository
 import com.sabuzak.yeonamplace.cheerupforyou.DataBase.ViewModel.BannerViewModel
 import com.sabuzak.yeonamplace.cheerupforyou.popup.LodingSavePopUpActivity
 import kotlinx.android.synthetic.main.activity_making_cheer_up_text.*
+import kotlinx.coroutines.runBlocking
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
 
 class MakingCheerUpTextActivity : AppCompatActivity() {
 
-    private lateinit var bannerViewModel: BannerViewModel
+    private lateinit var bannerRepository:BannerRepository
     // 각 값 초기값 설정
     var text_size = 2
     var background_color = 0
@@ -89,12 +92,17 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
             }, 2000)
 
             /**
-             * 배너 객체 생성
+             * 2020.05.06 [작성자 : 최선필] 배너 객체 생성해서 디비 저장 완료
              */
-            //val banner = Banner()
-
-
-
+            val bannerDao = AppDatabase.getDatabase(application).bannerDao()
+            bannerRepository = BannerRepository(bannerDao)
+            runBlocking {
+                val banner = Banner(0,edt_making_text.text.toString(),font, text_size,background_color,text_color,direction,speed,tv_making_cheerup_effect0.isSelected,tv_making_cheerup_effect1.isSelected,tv_making_cheerup_effect2.isSelected,tv_making_cheerup_effect3.isSelected)
+                bannerRepository.insert(banner)
+            }
+            /**
+             * 2020.05.07 TODO. 새로운 응원이 저장함에 저장되고 있습니다. 팝업 띄워야 함
+             */
 
 
         }

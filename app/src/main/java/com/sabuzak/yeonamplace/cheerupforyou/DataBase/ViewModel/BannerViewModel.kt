@@ -22,4 +22,7 @@ class BannerViewModel(application: Application): AndroidViewModel(application) {
     fun insert(banner:Banner) = viewModelScope.launch{
         repository.insert(banner)
     }
+    fun delete(banner: Banner) = viewModelScope.launch {
+        repository.delete(banner)
+    }
 }

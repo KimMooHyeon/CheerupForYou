@@ -18,6 +18,10 @@ class BannerRepository(private val bannerDao:BannerDao){
     suspend fun delete(banner: Banner){
         bannerDao.delete(banner)
     }
+
+    suspend fun deleteByIdx(idx:Int){
+        bannerDao.deleteBannerByIdx(idx)
+    }
     suspend fun update(banner: Banner){
         bannerDao.update(banner)
     }

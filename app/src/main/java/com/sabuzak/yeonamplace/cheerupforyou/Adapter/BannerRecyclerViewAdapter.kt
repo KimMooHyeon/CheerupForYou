@@ -2,6 +2,7 @@ package com.sabuzak.yeonamplace.cheerupforyou.Adapter
 
 import android.content.Context
 import android.content.Intent
+import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import android.os.Build
 import android.util.Log
 import android.view.LayoutInflater
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sabuzak.yeonamplace.cheerupforyou.DataBase.Entity.Banner
 import com.sabuzak.yeonamplace.cheerupforyou.R
 import com.sabuzak.yeonamplace.cheerupforyou.popup.DeleteBannerPopUpActivity
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.banner_recyclerview_item.view.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
 
@@ -57,6 +59,7 @@ class BannerRecyclerViewAdapter internal constructor(context: Context) : Recycle
             if (payloads[0] == "active") {
                 holder.itemView.delete_image.visibility = View.VISIBLE
             } else if (payloads[0] == "disable") {
+                holder.itemView.delete_image.setImageResource(R.drawable.ic_delete)
                 holder.itemView.delete_image.visibility = View.GONE
             }
         }
@@ -70,7 +73,15 @@ class BannerRecyclerViewAdapter internal constructor(context: Context) : Recycle
                 holder.itemView.delete_image.setImageResource(R.drawable.ic_delete_red)
                 var intent = Intent(c, DeleteBannerPopUpActivity::class.java)
                 intent.putExtra("bannerIdx",bannerArray[position].idx)
-                c.startActivity(intent)
+                c.startActivity(intent.addFlags(FLAG_ACTIVITY_NEW_TASK))
+
+                for (i in 0..itemCount) {
+                    notifyItemChanged(
+                        i,
+                        "disable"
+                    )
+                }
+
 
             }
 
