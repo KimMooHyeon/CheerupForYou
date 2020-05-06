@@ -21,6 +21,7 @@ import android.widget.LinearLayout
 import androidx.annotation.Dimension
 import androidx.appcompat.app.AppCompatActivity
 import com.sabuzak.yeonamplace.cheerupforyou.DataBase.Entity.Banner
+import com.sabuzak.yeonamplace.cheerupforyou.DataBase.ViewModel.BannerViewModel
 import com.sabuzak.yeonamplace.cheerupforyou.popup.LodingSavePopUpActivity
 import kotlinx.android.synthetic.main.activity_making_cheer_up_text.*
 import org.jetbrains.anko.startActivity
@@ -90,7 +91,7 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
             /**
              * 배너 객체 생성
              */
-            val banner = Banner()
+            //val banner = Banner()
 
 
 

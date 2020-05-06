@@ -109,6 +109,7 @@
                  android:layout_height="match_parent">
 
                  <TextView
+                     android:id="@+id/save_count"
                      android:layout_centerVertical="true"
                      android:fontFamily="@font/nanum"
                      android:includeFontPadding="false"
