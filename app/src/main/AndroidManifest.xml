@@ -13,12 +13,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.sabuzak.yeonamplace.cheerupforyou.popup.RequestTempletePopUpActivity"
-            android:theme="@style/categoryEditTheme"/>
-        <activity android:name="com.sabuzak.yeonamplace.cheerupforyou.popup.DeleteBannerPopUpActivity"
-            android:theme="@style/categoryEditTheme"/>
+        <activity android:name=".RoadToKingdomCheetUpActivity"></activity>
         <activity
-            android:name="com.sabuzak.yeonamplace.cheerupforyou.popup.SaveFullPopUpActivity"
+            android:name=".popup.LodingSavePopUpActivity"
+            android:theme="@style/categoryEditTheme" />
+        <activity
+            android:name=".popup.RequestTempletePopUpActivity"
+            android:theme="@style/categoryEditTheme" />
+        <activity
+            android:name=".popup.DeleteBannerPopUpActivity"
+            android:theme="@style/categoryEditTheme" />
+        <activity
+            android:name=".popup.SaveFullPopUpActivity"
             android:theme="@style/categoryEditTheme" />
 
         <meta-data
@@ -26,15 +32,15 @@
             android:value="ca-app-pub-5263527473804623~2650031418" />
 
         <activity
-            android:name="com.sabuzak.yeonamplace.cheerupforyou.MakingCheerUpTextActivity"
+            android:name=".MakingCheerUpTextActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.sabuzak.yeonamplace.cheerupforyou.CheerUpViewActivity"
+            android:name=".CheerUpViewActivity"
             android:screenOrientation="landscape"
             android:theme="@style/FullTheme" />
-        <activity android:name="com.sabuzak.yeonamplace.cheerupforyou.MainActivity" />
+        <activity android:name=".MainActivity" />
         <activity
-            android:name="com.sabuzak.yeonamplace.cheerupforyou.SplashActivity"
+            android:name=".SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/SplashTheme">
             <intent-filter>

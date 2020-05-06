@@ -4,20 +4,24 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Point
 import android.graphics.Typeface
+import android.hardware.input.InputManager
 import android.os.Bundle
 import android.os.Handler
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.view.Gravity
 import android.view.animation.AlphaAnimation
 import android.view.animation.AnimationSet
 import android.view.animation.AnimationUtils
 import android.view.animation.TranslateAnimation
+import android.view.inputmethod.InputMethodManager
+import android.widget.FrameLayout
+import android.widget.LinearLayout
 import androidx.annotation.Dimension
 import androidx.appcompat.app.AppCompatActivity
 import com.sabuzak.yeonamplace.cheerupforyou.DataBase.Entity.Banner
-import com.sabuzak.yeonamplace.cheerupforyou.DataBase.Repository.BannerRepository
-import com.sabuzak.yeonamplace.cheerupforyou.DataBase.ViewModel.BannerViewModel
+import com.sabuzak.yeonamplace.cheerupforyou.popup.LodingSavePopUpActivity
 import kotlinx.android.synthetic.main.activity_making_cheer_up_text.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
@@ -30,7 +34,7 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
     var text_size = 2
     var background_color = 0
     var text_color = 0
-    var direction = 1
+    var direction = 2
     var speed = 1
     var font = 0
     //효과가 없으면 0 있으면 1
@@ -50,7 +54,7 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
         tv_making_text_size_normal.isSelected=true
         tv_making_text_speed_normal.isSelected=true
         tv_making_textcolor_white.isSelected=true
-        tv_making_direction_stop.isSelected=true
+        iv_making_direction_left.isSelected=true
         tv_making_color_black.isSelected=true
         tv_making_text_font_nanum.isSelected=true
 
@@ -75,10 +79,9 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
         screenHeight = point.y.toFloat()
         fromY = screenHeight
 
-
+        var previousString = " "
         tv_making_save_confirm.setOnClickListener {
             tv_making_save_confirm.isClickable=false
-            toast(background_color.toString())
             val handler = Handler()
             handler.postDelayed(Runnable { // 저장하기 클릭후 2초 동안 클릭안되게하기
                 tv_making_save_confirm.isClickable=true
@@ -88,7 +91,6 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
              * 배너 객체 생성
              */
             val banner = Banner()
-            ba
 
 
 
@@ -99,10 +101,26 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
 
         edt_making_text.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
-                Log.e("size3"," before tv_text.text = "+tv_text.width + " " + tv_text.text )
+                  if (edt_making_text.getLineCount() >= 3)
+        {
+            edt_making_text.setText(previousString)
+            edt_making_text.setSelection(edt_making_text.length())
+        }
+
+
                 tv_text.text = p0.toString()
-                Log.e("size3","after tv_text.text = "+tv_text.width + " " + tv_text.text)
-                Log.e("size3","tv_text_width "+tv_text.width + " " + tv_text.text)
+                if(tv_text.width < screenWidth){
+
+                    val params = ll_making_text.layoutParams as FrameLayout.LayoutParams
+                    params.gravity = Gravity.CENTER
+                    ll_making_text.layoutParams = params
+
+                }else{
+                    val params = ll_making_text.layoutParams as FrameLayout.LayoutParams
+                    params.gravity = Gravity.CENTER_VERTICAL
+                    ll_making_text.layoutParams = params
+                }
+
                 if (tv_text.animation != null) {
                     tv_text.clearAnimation()
                 }
@@ -270,7 +288,7 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
             tv_text.setTypeface(Typeface.createFromAsset(getAssets(), "font/tvn.ttf"))
             edt_making_text.setTypeface(Typeface.createFromAsset(getAssets(), "font/tvn.ttf"))
         }
-
+        val handler = Handler()
         //글자 크기 클릭 이벤트
         tv_making_text_size_very_small.setOnClickListener {
             tv_making_text_size_very_small.isSelected=true
@@ -279,6 +297,25 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
             tv_making_text_size_big.isSelected=false
             tv_text.setTextSize(Dimension.SP, 30.0f);
             text_size=0
+
+            handler.postDelayed(Runnable {
+                if(tv_text.width < screenWidth){
+
+                    val params = ll_making_text.layoutParams as FrameLayout.LayoutParams
+                    params.gravity = Gravity.CENTER
+                    ll_making_text.layoutParams = params
+
+                }else{
+                    val params = ll_making_text.layoutParams as FrameLayout.LayoutParams
+                    params.gravity = Gravity.CENTER_VERTICAL
+                    ll_making_text.layoutParams = params
+                }
+            }, 1)
+            if (tv_text.animation != null) {
+                tv_text.clearAnimation()
+            }
+            setAnim()
+
         }
         tv_making_text_size_small.setOnClickListener {
             tv_making_text_size_very_small.isSelected=false
@@ -287,6 +324,23 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
             tv_making_text_size_big.isSelected=false
             tv_text.setTextSize(Dimension.SP, 60.0f);
             text_size=1
+            handler.postDelayed(Runnable {
+                if(tv_text.width < screenWidth){
+
+                    val params = ll_making_text.layoutParams as FrameLayout.LayoutParams
+                    params.gravity = Gravity.CENTER
+                    ll_making_text.layoutParams = params
+
+                }else{
+                    val params = ll_making_text.layoutParams as FrameLayout.LayoutParams
+                    params.gravity = Gravity.CENTER_VERTICAL
+                    ll_making_text.layoutParams = params
+                }
+            }, 1)
+            if (tv_text.animation != null) {
+                tv_text.clearAnimation()
+            }
+            setAnim()
         }
         tv_making_text_size_normal.setOnClickListener {
             tv_making_text_size_very_small.isSelected=false
@@ -295,6 +349,23 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
             tv_making_text_size_big.isSelected=false
             tv_text.setTextSize(Dimension.SP, 90.0f);
             text_size=2
+            handler.postDelayed(Runnable {
+                if(tv_text.width < screenWidth){
+
+                    val params = ll_making_text.layoutParams as FrameLayout.LayoutParams
+                    params.gravity = Gravity.CENTER
+                    ll_making_text.layoutParams = params
+
+                }else{
+                    val params = ll_making_text.layoutParams as FrameLayout.LayoutParams
+                    params.gravity = Gravity.CENTER_VERTICAL
+                    ll_making_text.layoutParams = params
+                }
+            }, 1)
+            if (tv_text.animation != null) {
+                tv_text.clearAnimation()
+            }
+            setAnim()
         }
         tv_making_text_size_big.setOnClickListener {
             tv_making_text_size_very_small.isSelected=false
@@ -303,6 +374,23 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
             tv_making_text_size_big.isSelected=true
             tv_text.setTextSize(Dimension.SP, 120.0f);
             text_size=3
+            handler.postDelayed(Runnable {
+            if(tv_text.width < screenWidth){
+
+                    val params = ll_making_text.layoutParams as FrameLayout.LayoutParams
+                    params.gravity = Gravity.CENTER
+                    ll_making_text.layoutParams = params
+
+                }else{
+                    val params = ll_making_text.layoutParams as FrameLayout.LayoutParams
+                    params.gravity = Gravity.CENTER_VERTICAL
+                    ll_making_text.layoutParams = params
+                }
+            }, 1)
+            if (tv_text.animation != null) {
+                tv_text.clearAnimation()
+            }
+            setAnim()
         }
 
         //배경 색깔 선택

@@ -62,6 +62,8 @@
         app:layout_constraintWidth_percent="0.11"/>
 
     <HorizontalScrollView
+
+        android:visibility="visible"
         android:clickable="false"
         android:id="@+id/hs_cheerup_view"
         android:layout_width="match_parent"
@@ -69,16 +71,26 @@
         android:scrollbars="none"
         tools:layout_editor_absoluteX="127dp"
         tools:layout_editor_absoluteY="0dp">
-
+        <LinearLayout
+            android:clickable="false"
+            android:visibility="visible"
+            android:id="@+id/ll_cheer_up_view"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
         <com.sabuzak.yeonamplace.cheerupforyou.OutlineTextView
+            android:clickable="false"
+            android:visibility="visible"
             app:textStroke="false"
             app:textStrokeWidth="10.0"
             app:textStrokeColor="#2AEFF5"
             android:includeFontPadding="false"
             android:id="@+id/tv_cheer_up_view_Text"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:gravity="center_vertical" />
+            android:gravity="center" />
+
+        </LinearLayout>
     </HorizontalScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
