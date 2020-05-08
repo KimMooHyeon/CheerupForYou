@@ -83,7 +83,7 @@ class MainActivity : AppCompatActivity() {
         btn_main_make_new_cheerup_text.setOnClickListener {
             startActivity<MakingCheerUpTextActivity>()
         }
-        banner_recyclerview.adapter = BannerRecyclerViewAdapter(context = this.applicationContext)
+        banner_recyclerview.adapter = BannerRecyclerViewAdapter(this)
         banner_recyclerview.layoutManager = LinearLayoutManager(this)
         bannerViewModel = ViewModelProvider(this).get(BannerViewModel::class.java)
         bannerViewModel.allBanner.observe(this, Observer {
@@ -91,7 +91,7 @@ class MainActivity : AppCompatActivity() {
             (banner_recyclerview.adapter as BannerRecyclerViewAdapter).setBanners(it)
         }
         })
-        save_count.text = "저장함 "+ (banner_recyclerview.adapter as BannerRecyclerViewAdapter).itemCount+"/5"
+        save_count.text = "저장함 "+ (banner_recyclerview.adapter as BannerRecyclerViewAdapter).itemCount.toString()+"/5"
         /**
          * 2020.05.04 최선필
          * 삭제 버튼 클릭 리스너 구현

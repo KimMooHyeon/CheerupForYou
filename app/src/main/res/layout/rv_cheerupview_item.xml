@@ -5,18 +5,7 @@
     android:layout_marginTop="12dp"
     android:layout_width="match_parent"
     android:layout_height="90dp">
-    <ImageView
-        android:elevation="1dp"
-        android:id ="@+id/delete_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        android:visibility="visible"
-        android:src ="@drawable/ic_delete"
-        >
-    </ImageView>
+
     <HorizontalScrollView
         android:background="#111111"
         android:scrollbars="none"
