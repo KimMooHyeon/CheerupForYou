@@ -87,6 +87,9 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
 
         // 수정하기 부분
         if (intent.getIntExtra("idx",-99) != -99){
+
+            // 배너의 idx 값 intent.getIntExtra("idx")
+
             tv_making_save_confirm.text="수정하기"
             tv_text.text = intent.getStringExtra("edt_making_text")
              text_size =  intent.getIntExtra("text_size",-99)
@@ -95,18 +98,46 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
              direction = intent.getIntExtra("direction",-99)
              speed = intent.getIntExtra("speed",-99)
              font = intent.getIntExtra("font",-99)
+            if (direction == 0 ) {
+                iv_making_direction_right.isSelected=true
+                iv_making_direction_left.isSelected=false
+            }else if (direction == 1){
+                tv_making_direction_stop.isSelected=true
+                iv_making_direction_left.isSelected=false
+            }else if (direction == 2 ){
+                iv_making_direction_left.isSelected=true
+            }
+
+            if (speed == 0 ){
+                tv_making_text_speed_fast.isSelected=true
+                tv_making_text_speed_normal.isSelected=false
+                tv_making_text_speed_slow.isSelected = false
+            }else if (speed ==1){
+                tv_making_text_speed_fast.isSelected=false
+                tv_making_text_speed_normal.isSelected=true
+                tv_making_text_speed_slow.isSelected = false
+            }else if (speed ==2 ){
+                tv_making_text_speed_fast.isSelected=false
+                tv_making_text_speed_normal.isSelected=false
+                tv_making_text_speed_slow.isSelected = true
+            }
+
             //효과가 없으면 0 있으면 1
             if (intent.getBooleanExtra("effect0",false)){
                 effect0 = 1
+                tv_making_cheerup_effect0.isSelected = true
             }
             if (intent.getBooleanExtra("effect1",false)){
                 effect1 = 1
+                tv_making_cheerup_effect1.isSelected = true
             }
             if (intent.getBooleanExtra("effect2",false)){
                 effect2 = 1
+                tv_making_cheerup_effect2.isSelected = true
             }
             if (intent.getBooleanExtra("effect3",false)){
                 effect3 = 1
+                tv_making_cheerup_effect3.isSelected = true
             }
 
             //효과 받기
@@ -207,20 +238,29 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
             }else if (background_color ==4){
                 hs_makingtext.setBackgroundColor(Color.parseColor("#ff7b17"))
                 tv_making_color_black.isSelected=false
+                tv_making_color_orange.isSelected=true
             }else if (background_color ==5){
                 hs_makingtext.setBackgroundColor(Color.parseColor("#f637f3"))
                 tv_making_color_black.isSelected=false
+                tv_making_color_pink.isSelected=true
             }
 
             //글자 크기 변경
             if (text_size ==0){
                 tv_text.setTextSize(Dimension.SP, 30.0f)
+                tv_making_text_size_very_small.isSelected=true
+                tv_making_text_size_normal.isSelected=false
             } else if (text_size == 1){
                 tv_text.setTextSize(Dimension.SP, 60.0f)
+                tv_making_text_size_small.isSelected=true
+                tv_making_text_size_normal.isSelected=false
             } else if (text_size ==2){
                 tv_text.setTextSize(Dimension.SP, 90.0f)
+                tv_making_text_size_normal.isSelected=true
             } else if (text_size ==3){
                 tv_text.setTextSize(Dimension.SP, 120.0f)
+                tv_making_text_size_normal.isSelected=false
+                tv_making_text_size_big.isSelected=true
             }
 
             if (tv_text.animation != null) {
