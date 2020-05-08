@@ -100,7 +100,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        banner_recyclerview.adapter = BannerRecyclerViewAdapter(context = this.applicationContext)
+        banner_recyclerview.adapter = BannerRecyclerViewAdapter(ctx = this.applicationContext)
         banner_recyclerview.layoutManager = LinearLayoutManager(this)
         bannerViewModel = ViewModelProvider(this).get(BannerViewModel::class.java)
 
