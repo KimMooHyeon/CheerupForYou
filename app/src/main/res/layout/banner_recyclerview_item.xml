@@ -1,39 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-
-    android:layout_height="83dp"
-    android:background="@color/colorRecyclerViewBackground">
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="75dp"
-        android:background="@color/colorBackground">
-
-        <TextView
-        android:gravity="center_vertical"
-        android:layout_gravity="center"
-         android:fontFamily="@font/nanum"
-         android:includeFontPadding="false"
-        android:id ="@+id/banner_text"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rl_rv_cheerup_view_all"
+    android:layout_marginTop="12dp"
+    android:layout_width="match_parent"
+    android:layout_height="90dp">
+    <ImageView
+        android:elevation="1dp"
+        android:id ="@+id/delete_image"
         android:layout_width="wrap_content"
-        android:layout_height="75dp"
-        android:textColor="#FFFFFF"
-        android:text="미스터트롯 응원해"
-        android:textSize="50sp">
-    </TextView>
-        <ImageView
-            android:id ="@+id/delete_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right|top"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="8dp"
-            android:visibility="gone"
-            android:src ="@drawable/ic_delete"
-            >
-        </ImageView>
-
-
-    </FrameLayout>
-</LinearLayout>
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:visibility="gone"
+        android:src ="@drawable/ic_delete"
+        >
+    </ImageView>
+    <HorizontalScrollView
+        android:background="#111111"
+        android:scrollbars="none"
+        android:id="@+id/hs_rv_main_item"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_gravity="center"
+            android:id="@+id/ll_rv_item"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <com.sabuzak.yeonamplace.cheerupforyou.OutlineTextView
+                android:fontFamily="@font/nanum"
+                android:text="하이"
+                android:gravity="center"
+                android:textColor="#ffffff"
+                android:id="@+id/banner_text"
+                android:textSize="25sp"
+                android:includeFontPadding="false"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                app:textStroke="false"
+                app:textStrokeWidth="10.0"
+                app:textStrokeColor="#2AEFF5" />
+        </LinearLayout>
+    </HorizontalScrollView>
+</RelativeLayout>

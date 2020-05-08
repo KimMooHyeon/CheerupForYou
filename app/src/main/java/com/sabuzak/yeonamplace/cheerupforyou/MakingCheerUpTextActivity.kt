@@ -70,6 +70,8 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
         tv_making_text_font_tvn.setTypeface(Typeface.createFromAsset(getAssets(), "font/tvn.ttf"))
 
 
+
+
     }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
@@ -83,6 +85,202 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
         fromY = screenHeight
 
         var previousString = " "
+
+        // 수정하기 부분
+        if (intent.getIntExtra("idx",-99) != -99){
+
+            // 배너의 idx 값 intent.getIntExtra("idx")
+
+            tv_making_save_confirm.text="수정하기"
+            tv_text.text = intent.getStringExtra("edt_making_text")
+             text_size =  intent.getIntExtra("text_size",-99)
+             background_color = intent.getIntExtra("background_color",-99)
+             text_color = intent.getIntExtra("text_color",-99)
+             direction = intent.getIntExtra("direction",-99)
+             speed = intent.getIntExtra("speed",-99)
+             font = intent.getIntExtra("font",-99)
+            if (direction == 0 ) {
+                iv_making_direction_right.isSelected=true
+                iv_making_direction_left.isSelected=false
+            }else if (direction == 1){
+                tv_making_direction_stop.isSelected=true
+                iv_making_direction_left.isSelected=false
+            }else if (direction == 2 ){
+                iv_making_direction_left.isSelected=true
+            }
+
+            if (speed == 0 ){
+                tv_making_text_speed_fast.isSelected=true
+                tv_making_text_speed_normal.isSelected=false
+                tv_making_text_speed_slow.isSelected = false
+            }else if (speed ==1){
+                tv_making_text_speed_fast.isSelected=false
+                tv_making_text_speed_normal.isSelected=true
+                tv_making_text_speed_slow.isSelected = false
+            }else if (speed ==2 ){
+                tv_making_text_speed_fast.isSelected=false
+                tv_making_text_speed_normal.isSelected=false
+                tv_making_text_speed_slow.isSelected = true
+            }
+
+            //효과가 없으면 0 있으면 1
+            if (intent.getBooleanExtra("effect0",false)){
+                effect0 = 1
+                tv_making_cheerup_effect0.isSelected = true
+            }
+            if (intent.getBooleanExtra("effect1",false)){
+                effect1 = 1
+                tv_making_cheerup_effect1.isSelected = true
+            }
+            if (intent.getBooleanExtra("effect2",false)){
+                effect2 = 1
+                tv_making_cheerup_effect2.isSelected = true
+            }
+            if (intent.getBooleanExtra("effect3",false)){
+                effect3 = 1
+                tv_making_cheerup_effect3.isSelected = true
+            }
+
+            //효과 받기
+
+            if(effect1==1) {
+                //있는거
+                tv_text.setStroke(true)
+                tv_text.draw(Canvas())
+            }
+
+            if(effect2==1) {
+                tv_text.setShadowLayer(15.0f,0.0f,0.0f,Color.parseColor("#ffffff"))
+            }
+            if(effect3==1) {
+                tv_text.setShadowLayer(4.0f,8.0f,3.0f,Color.parseColor("#2AEFF5"))
+            }
+
+
+            // 폰트 받기
+            if(font==0){
+                tv_text.setTypeface(Typeface.createFromAsset(getAssets(), "font/nanum.ttf"))
+                tv_making_text_font_nanum.isSelected=true
+            }else if (font==1){
+                tv_text.setTypeface(Typeface.createFromAsset(getAssets(), "font/hansuwon.ttf"))
+                tv_making_text_font_nanum.isSelected=false
+                tv_making_text_font_hasuwon.isSelected=true
+            }else if (font==2){
+                tv_text.setTypeface(Typeface.createFromAsset(getAssets(), "font/uljiro.ttf"))
+                tv_making_text_font_nanum.isSelected=false
+                tv_making_text_font_uljiro.isSelected=true
+            }else if (font==3){
+                tv_text.setTypeface(Typeface.createFromAsset(getAssets(), "font/hanna.ttf"))
+                tv_making_text_font_nanum.isSelected=false
+                tv_making_text_font_hanna.isSelected=true
+            }else if (font==4){
+                tv_text.setTypeface(Typeface.createFromAsset(getAssets(), "font/yanolza.ttf"))
+                tv_making_text_font_nanum.isSelected=false
+                tv_making_text_font_yanolza.isSelected=true
+            }else if (font==5){
+                tv_text.setTypeface(Typeface.createFromAsset(getAssets(), "font/jua.ttf"))
+                tv_making_text_font_nanum.isSelected=false
+                tv_making_text_font_jua.isSelected=true
+            }else if (font==6){
+                tv_text.setTypeface(Typeface.createFromAsset(getAssets(), "font/tvn.ttf"))
+                tv_making_text_font_nanum.isSelected=false
+                tv_making_text_font_tvn.isSelected=true
+            }
+
+
+            // 글자 색 받기
+            if(text_color ==0 ) {
+                tv_text.setTextColor(Color.parseColor("#ffffff"))
+                tv_making_textcolor_white.isSelected = true
+            }else if(text_color ==1 ) {
+                tv_text.setTextColor(Color.parseColor("#3c3eda"))
+                tv_making_textcolor_white.isSelected = false
+                tv_making_textcolor_blue.isSelected = true
+            }else if(text_color ==2 ) {
+                tv_text.setTextColor(Color.parseColor("#0191b6"))
+                tv_making_textcolor_white.isSelected = false
+                tv_making_textcolor_dark_green.isSelected =true
+            }else if(text_color ==3 ) {
+                tv_text.setTextColor(Color.parseColor("#f9d80d"))
+                tv_making_textcolor_white.isSelected = false
+                tv_making_textcolor_yellow.isSelected= true
+            }else if(text_color ==4 ) {
+                tv_text.setTextColor(Color.parseColor( "#ff7b17"))
+                tv_making_textcolor_white.isSelected = false
+                tv_making_textcolor_orange.isSelected= true
+            }else if(text_color ==5 ) {
+                tv_text.setTextColor(Color.parseColor("#f637f3"))
+                tv_making_textcolor_white.isSelected = false
+                tv_making_textcolor_pink.isSelected =true
+            }
+
+            // 백그라운드 색 변경
+
+            if (background_color ==0){
+                hs_makingtext.setBackgroundColor(Color.parseColor("#000000"))
+                tv_making_color_black.isSelected=true
+                tv_making_color_blue.isSelected=false
+                tv_making_color_dark_green.isSelected=false
+                tv_making_color_yellow.isSelected=false
+                tv_making_color_orange.isSelected=false
+                tv_making_color_pink.isSelected=false
+            }else if (background_color ==1){
+                hs_makingtext.setBackgroundColor(Color.parseColor("#3c3eda"))
+                tv_making_color_black.isSelected=false
+                tv_making_color_blue.isSelected=true
+            }else if (background_color ==2){
+                hs_makingtext.setBackgroundColor(Color.parseColor("#0191b6"))
+                tv_making_color_black.isSelected=false
+                tv_making_color_dark_green.isSelected=true
+            }else if (background_color ==3){
+                hs_makingtext.setBackgroundColor(Color.parseColor("#f9d80d"))
+                tv_making_color_black.isSelected=false
+                tv_making_color_yellow.isSelected=true
+            }else if (background_color ==4){
+                hs_makingtext.setBackgroundColor(Color.parseColor("#ff7b17"))
+                tv_making_color_black.isSelected=false
+                tv_making_color_orange.isSelected=true
+            }else if (background_color ==5){
+                hs_makingtext.setBackgroundColor(Color.parseColor("#f637f3"))
+                tv_making_color_black.isSelected=false
+                tv_making_color_pink.isSelected=true
+            }
+
+            //글자 크기 변경
+            if (text_size ==0){
+                tv_text.setTextSize(Dimension.SP, 30.0f)
+                tv_making_text_size_very_small.isSelected=true
+                tv_making_text_size_normal.isSelected=false
+            } else if (text_size == 1){
+                tv_text.setTextSize(Dimension.SP, 60.0f)
+                tv_making_text_size_small.isSelected=true
+                tv_making_text_size_normal.isSelected=false
+            } else if (text_size ==2){
+                tv_text.setTextSize(Dimension.SP, 90.0f)
+                tv_making_text_size_normal.isSelected=true
+            } else if (text_size ==3){
+                tv_text.setTextSize(Dimension.SP, 120.0f)
+                tv_making_text_size_normal.isSelected=false
+                tv_making_text_size_big.isSelected=true
+            }
+
+            if (tv_text.animation != null) {
+                tv_text.clearAnimation()
+            }
+            setAnim()
+
+        }
+
+
+
+
+
+
+
+
+
+
+
         tv_making_save_confirm.setOnClickListener {
             tv_making_save_confirm.isClickable=false
             val handler = Handler()
@@ -311,7 +509,7 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
             tv_making_text_size_small.isSelected=false
             tv_making_text_size_normal.isSelected=false
             tv_making_text_size_big.isSelected=false
-            tv_text.setTextSize(Dimension.SP, 30.0f);
+            tv_text.setTextSize(Dimension.SP, 30.0f)
             text_size=0
 
             handler.postDelayed(Runnable {
@@ -338,7 +536,7 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
             tv_making_text_size_small.isSelected=true
             tv_making_text_size_normal.isSelected=false
             tv_making_text_size_big.isSelected=false
-            tv_text.setTextSize(Dimension.SP, 60.0f);
+            tv_text.setTextSize(Dimension.SP, 60.0f)
             text_size=1
             handler.postDelayed(Runnable {
                 if(tv_text.width < screenWidth){
@@ -363,7 +561,7 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
             tv_making_text_size_small.isSelected=false
             tv_making_text_size_normal.isSelected=true
             tv_making_text_size_big.isSelected=false
-            tv_text.setTextSize(Dimension.SP, 90.0f);
+            tv_text.setTextSize(Dimension.SP, 90.0f)
             text_size=2
             handler.postDelayed(Runnable {
                 if(tv_text.width < screenWidth){
