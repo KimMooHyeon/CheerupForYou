@@ -12,6 +12,10 @@ class BannerRepository(private val bannerDao:BannerDao){
         return bannerDao.getBannerByIdx(idx)
     }
 
+    fun getCount():Int{
+        return bannerDao.getCount()
+    }
+
     suspend fun insert(banner:Banner){
         bannerDao.insert(banner)
     }

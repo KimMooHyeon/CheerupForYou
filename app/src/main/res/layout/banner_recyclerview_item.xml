@@ -27,9 +27,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right|top"
-            android:layout_marginRight="8dp"
+            android:layout_marginRight="10dp"
             android:layout_marginTop="8dp"
-            android:visibility="visible"
+            android:visibility="gone"
             android:src ="@drawable/ic_delete"
             >
         </ImageView>

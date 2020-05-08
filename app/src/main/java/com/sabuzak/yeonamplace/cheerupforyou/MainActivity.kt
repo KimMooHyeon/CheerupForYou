@@ -49,10 +49,28 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         ll_main_loadtokingdom.setOnClickListener {
+
+            isRemoveActive = false
+            for (i in 0..(banner_recyclerview.adapter as BannerRecyclerViewAdapter).itemCount) {
+                (banner_recyclerview.adapter as BannerRecyclerViewAdapter).notifyItemChanged(
+                    i,
+                    "disable"
+                )
+            }
+
             startActivity<RoadToKingdomCheetUpActivity>()
         }
 
         req_image.setOnClickListener {
+
+            isRemoveActive = false
+            for (i in 0..(banner_recyclerview.adapter as BannerRecyclerViewAdapter).itemCount) {
+                (banner_recyclerview.adapter as BannerRecyclerViewAdapter).notifyItemChanged(
+                    i,
+                    "disable"
+                )
+            }
+
             startActivity<RequestTempletePopUpActivity>()
             this.overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
         }
@@ -80,18 +98,43 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        btn_main_make_new_cheerup_text.setOnClickListener {
-            startActivity<MakingCheerUpTextActivity>()
-        }
+
+
         banner_recyclerview.adapter = BannerRecyclerViewAdapter(context = this.applicationContext)
         banner_recyclerview.layoutManager = LinearLayoutManager(this)
         bannerViewModel = ViewModelProvider(this).get(BannerViewModel::class.java)
+
         bannerViewModel.allBanner.observe(this, Observer {
             banners-> banners?.let{
             (banner_recyclerview.adapter as BannerRecyclerViewAdapter).setBanners(it)
+            save_count.text = "저장함 "+ (banner_recyclerview.adapter as BannerRecyclerViewAdapter).itemCount+"/5"
         }
         })
-        save_count.text = "저장함 "+ (banner_recyclerview.adapter as BannerRecyclerViewAdapter).itemCount+"/5"
+
+
+        btn_main_make_new_cheerup_text.setOnClickListener {
+
+            isRemoveActive = false
+            for (i in 0..(banner_recyclerview.adapter as BannerRecyclerViewAdapter).itemCount) {
+                (banner_recyclerview.adapter as BannerRecyclerViewAdapter).notifyItemChanged(
+                    i,
+                    "disable"
+                )
+            }
+
+            var intent = Intent(this, MakingCheerUpTextActivity::class.java)
+            intent.putExtra("bannerCount",
+                (banner_recyclerview.adapter as BannerRecyclerViewAdapter).bannerArray.size)
+
+
+
+            startActivity(intent)
+
+
+
+        }
+
+
         /**
          * 2020.05.04 최선필
          * 삭제 버튼 클릭 리스너 구현

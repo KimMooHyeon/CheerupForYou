@@ -33,6 +33,7 @@ import org.jetbrains.anko.toast
 
 class MakingCheerUpTextActivity : AppCompatActivity() {
     private lateinit var bannerRepository: BannerRepository
+    private  var bannerCount:Int = 0
     // 각 값 초기값 설정
     var text_size = 2
     var background_color = 0
@@ -52,7 +53,7 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_making_cheer_up_text)
-
+        bannerCount = intent.getIntExtra("bannerCount",0)
         // DEFAULT 값 설정
         tv_making_text_size_normal.isSelected=true
         tv_making_text_speed_normal.isSelected=true
@@ -95,20 +96,21 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
          */
         val bannerDao = AppDatabase.getDatabase(application).bannerDao()
         bannerRepository = BannerRepository(bannerDao)
-        runBlocking {
-            val banner = Banner(0,edt_making_text.text.toString(),font, text_size,background_color,text_color,direction,speed,tv_making_cheerup_effect0.isSelected,tv_making_cheerup_effect1.isSelected,tv_making_cheerup_effect2.isSelected,tv_making_cheerup_effect3.isSelected)
-            bannerRepository.insert(banner)
-        }
         /**
          * 2020.05.07 TODO. 새로운 응원이 저장함에 저장되고 있습니다. 팝업 띄워야 함
-         */
+         * 2020.05.08 나중에 이거 사용~! 저장함 갯수 판별
+         * */
 
-            // 2020.05.08 나중에 이거 사용~! 저장함 갯수 판별
-         /*   if (저장함이 Full){
+            if (bannerCount >= 5){
                 startActivity<SaveFullPopUpActivity>()
             }else {
+
+                runBlocking {
+                    val banner = Banner(0,edt_making_text.text.toString(),font, text_size,background_color,text_color,direction,speed,tv_making_cheerup_effect0.isSelected,tv_making_cheerup_effect1.isSelected,tv_making_cheerup_effect2.isSelected,tv_making_cheerup_effect3.isSelected)
+                    bannerRepository.insert(banner)
+                }
                 startActivity<LodingSavePopUpActivity>()
-            }*/
+            }
 
 
 

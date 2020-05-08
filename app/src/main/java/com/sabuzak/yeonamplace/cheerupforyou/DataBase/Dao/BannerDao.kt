@@ -11,6 +11,9 @@ interface BannerDao {
     @Query("SELECT * FROM BANNER_TB")
     fun getAll(): LiveData<List<Banner>>
 
+    @Query("SELECT COUNT(*) FROM BANNER_TB")
+    fun getCount(): Int
+
     @Query("SELECT * FROM BANNER_TB WHERE idx = :idx")
     fun getBannerByIdx(idx:Int):Banner
 
