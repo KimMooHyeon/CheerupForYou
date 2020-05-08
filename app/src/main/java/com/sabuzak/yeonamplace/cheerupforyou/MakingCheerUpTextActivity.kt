@@ -23,8 +23,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.sabuzak.yeonamplace.cheerupforyou.DataBase.AppDatabase
 import com.sabuzak.yeonamplace.cheerupforyou.DataBase.Entity.Banner
 import com.sabuzak.yeonamplace.cheerupforyou.DataBase.Repository.BannerRepository
-import com.sabuzak.yeonamplace.cheerupforyou.DataBase.ViewModel.BannerViewModel
 import com.sabuzak.yeonamplace.cheerupforyou.popup.LodingSavePopUpActivity
+import com.sabuzak.yeonamplace.cheerupforyou.popup.SaveFullPopUpActivity
 import kotlinx.android.synthetic.main.activity_making_cheer_up_text.*
 import kotlinx.coroutines.runBlocking
 import org.jetbrains.anko.startActivity
@@ -32,8 +32,7 @@ import org.jetbrains.anko.toast
 
 
 class MakingCheerUpTextActivity : AppCompatActivity() {
-
-    private lateinit var bannerRepository:BannerRepository
+    private lateinit var bannerRepository: BannerRepository
     // 각 값 초기값 설정
     var text_size = 2
     var background_color = 0
@@ -70,7 +69,6 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
         tv_making_text_font_tvn.setTypeface(Typeface.createFromAsset(getAssets(), "font/tvn.ttf"))
 
 
-
     }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
@@ -91,30 +89,37 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
                 tv_making_save_confirm.isClickable=true
             }, 2000)
 
-            /**
-             * 2020.05.06 [작성자 : 최선필] 배너 객체 생성해서 디비 저장 완료
-             */
-            val bannerDao = AppDatabase.getDatabase(application).bannerDao()
-            bannerRepository = BannerRepository(bannerDao)
-            runBlocking {
-                val banner = Banner(0,edt_making_text.text.toString(),font, text_size,background_color,text_color,direction,speed,tv_making_cheerup_effect0.isSelected,tv_making_cheerup_effect1.isSelected,tv_making_cheerup_effect2.isSelected,tv_making_cheerup_effect3.isSelected)
-                bannerRepository.insert(banner)
-            }
-            /**
-             * 2020.05.07 TODO. 새로운 응원이 저장함에 저장되고 있습니다. 팝업 띄워야 함
-             */
 
-
+        /**
+         * 2020.05.06 [작성자 : 최선필] 배너 객체 생성해서 디비 저장 완료
+         */
+        val bannerDao = AppDatabase.getDatabase(application).bannerDao()
+        bannerRepository = BannerRepository(bannerDao)
+        runBlocking {
+            val banner = Banner(0,edt_making_text.text.toString(),font, text_size,background_color,text_color,direction,speed,tv_making_cheerup_effect0.isSelected,tv_making_cheerup_effect1.isSelected,tv_making_cheerup_effect2.isSelected,tv_making_cheerup_effect3.isSelected)
+            bannerRepository.insert(banner)
         }
+        /**
+         * 2020.05.07 TODO. 새로운 응원이 저장함에 저장되고 있습니다. 팝업 띄워야 함
+         */
+
+            // 2020.05.08 나중에 이거 사용~! 저장함 갯수 판별
+         /*   if (저장함이 Full){
+                startActivity<SaveFullPopUpActivity>()
+            }else {
+                startActivity<LodingSavePopUpActivity>()
+            }*/
 
 
+
+    }
         edt_making_text.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
-                  if (edt_making_text.getLineCount() >= 3)
-        {
-            edt_making_text.setText(previousString)
-            edt_making_text.setSelection(edt_making_text.length())
-        }
+                if (edt_making_text.getLineCount() >= 3)
+                {
+                    edt_making_text.setText(previousString)
+                    edt_making_text.setSelection(edt_making_text.length())
+                }
 
 
                 tv_text.text = p0.toString()
@@ -141,7 +146,7 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
 
             }
             override fun beforeTextChanged(p0: CharSequence?, start: Int, count: Int, after: Int) {
-
+                previousString = p0.toString()
             }
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
 
@@ -384,7 +389,7 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
             tv_text.setTextSize(Dimension.SP, 120.0f);
             text_size=3
             handler.postDelayed(Runnable {
-            if(tv_text.width < screenWidth){
+                if(tv_text.width < screenWidth){
 
                     val params = ll_making_text.layoutParams as FrameLayout.LayoutParams
                     params.gravity = Gravity.CENTER
@@ -602,6 +607,10 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
         // 확대 하기
         iv_making_expand_button.setOnClickListener {
             if (edt_making_text.text.toString().isNotEmpty()){
+                //포커스 문제 ....
+                var inputManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+                inputManager.showSoftInput(edt_making_text, 0)
+
                 startActivity<CheerUpViewActivity>("edt_making_text" to edt_making_text.text.toString(),"text_size" to text_size , "background_color" to background_color , "text_color" to text_color , "speed" to speed , "direction" to direction,"font" to font , "effect0" to effect0,"effect1" to effect1,"effect2" to effect2,"effect3" to effect3)
             }else {
                 toast("메세지를 입력해주세요")
@@ -611,23 +620,22 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
 
 
     }
-    public fun setAnim(width: Int = tv_text.width, text: CharSequence = tv_text.text ){
+    fun setAnim(width: Int = tv_text.width, text: CharSequence = tv_text.text ){
 
         //애니메이션 두개 넣기 set
         var set = AnimationSet(false)
-        Log.e("size2","width "+ tv_text.width)
-        Log.e("size2","screen width+width "+ fromX+tv_text.width)
+
         var animation = TranslateAnimation((screenWidth).toFloat(), (-(width).toFloat()), 0.0f, -0.0f)
         if (direction==2){
             if (-screenWidth.toFloat() < -(width).toFloat()){
                 animation = TranslateAnimation((screenWidth).toFloat(), (-screenWidth.toFloat()), 0.0f, -0.0f)
             }else
-            animation = TranslateAnimation((screenWidth).toFloat(), (-(width).toFloat()), 0.0f, -0.0f)
+                animation = TranslateAnimation((screenWidth).toFloat(), (-(width).toFloat()), 0.0f, -0.0f)
         }else if (direction==0){
             if (-screenWidth.toFloat() < -(width).toFloat()){
                 animation = TranslateAnimation(-screenWidth.toFloat(), (screenWidth).toFloat(), 0.0f, -0.0f)
             } else
-            animation = TranslateAnimation((-(width).toFloat()), (screenWidth).toFloat(), 0.0f, -0.0f)
+                animation = TranslateAnimation((-(width).toFloat()), (screenWidth).toFloat(), 0.0f, -0.0f)
         }else if (direction==1){
             animation = TranslateAnimation(0.0f, 0.0f, 0.0f, -0.0f)
         }
@@ -637,7 +645,6 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
 
         if(speed==0){
             animation.duration = (((screenWidth).toLong() + (width).toLong())*0.8).toLong()
-            Log.e("size2","animation.duration = "+ animation.duration + " (screenWidth).toLong() = " + ((screenWidth).toLong().toString()) + "(width).toLong() = " +((width).toLong().toString()))
         }else if (speed ==1) {
             animation.duration = ((screenWidth).toLong() + (width).toLong())
         }else if (speed ==2){
@@ -654,8 +661,8 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
         }
 
         set.addAnimation(animation)
-        tv_text.animation=set
-        tv_text.animation.start()
+        ll_making_text.animation=set
+        ll_making_text.animation.start()
     }
 
 

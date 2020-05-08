@@ -60,6 +60,7 @@
             android:layout_height="196dp"
             android:orientation="vertical">
          <LinearLayout
+             android:orientation="vertical"
              android:id="@+id/ll_main_loadtokingdom"
              android:layout_marginTop="20dp"
              android:layout_marginLeft="8dp"
@@ -67,17 +68,8 @@
              android:layout_width="match_parent"
              android:layout_height="75dp"
              android:gravity="center"
-             android:background="@color/colorBackground">
-             <TextView
-                 android:fontFamily="@font/nanum"
-                 android:includeFontPadding="false"
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:textColor="#FFFFFF"
-                 android:text="배너 이미지는 따로"
-                 android:textSize="25sp"
-                 >
-             </TextView>
+             android:background="@drawable/banner_kingdom">
+
          </LinearLayout>
 
 
@@ -94,7 +86,7 @@
              android:includeFontPadding="false"
              android:layout_gravity="center_horizontal"
              android:layout_width="wrap_content"
-             android:layout_height="35dp"
+             android:layout_height="40dp"
              android:background="@drawable/bt_newcreate_box"
              android:drawableLeft="@drawable/ic_plus"
              android:paddingLeft="20dp"
