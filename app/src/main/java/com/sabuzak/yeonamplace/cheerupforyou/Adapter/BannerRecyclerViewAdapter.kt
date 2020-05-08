@@ -148,19 +148,26 @@ class BannerRecyclerViewAdapter(var ctx: Context) : RecyclerView.Adapter<Recycle
                 holder.itemView.banner_text.setTextSize(Dimension.SP, 90.0f)
             }
             holder.itemView.banner_text.setOnClickListener {
-                ctx.startActivity<MakingCheerUpTextActivity>(
-                    "edt_making_text" to bannerArray[position].text,
-                    "text_size" to bannerArray[position].size ,
-                    "background_color" to bannerArray[position].background,
-                    "text_color" to bannerArray[position].color ,
-                    "speed" to bannerArray[position].speed ,
-                    "direction" to bannerArray[position].direction,
-                    "font" to bannerArray[position].font ,
-                    "effect0" to bannerArray[position].blink,
-                    "effect1" to bannerArray[position].outline,
-                    "effect2" to bannerArray[position].shining,
-                    "effect3" to bannerArray[position].shadow,
-                    "idx" to bannerArray[position].idx)
+
+
+                var intent = Intent(c, MakingCheerUpTextActivity::class.java)
+                intent.putExtra("edt_making_text",bannerArray[position].text)
+                intent.putExtra("text_size",bannerArray[position].size)
+                intent.putExtra("background_color",bannerArray[position].background)
+                intent.putExtra("text_color", bannerArray[position].color)
+                intent.putExtra("speed",bannerArray[position].speed)
+                intent.putExtra("direction",bannerArray[position].direction)
+                intent.putExtra("font",bannerArray[position].font)
+                intent.putExtra("effect0",bannerArray[position].blink)
+                intent.putExtra("effect1",bannerArray[position].outline)
+                intent.putExtra("effect2",bannerArray[position].shining)
+                intent.putExtra("effect3",bannerArray[position].shadow)
+                intent.putExtra("idx",bannerArray[position].idx)
+                c.startActivity(intent.addFlags(FLAG_ACTIVITY_NEW_TASK))
+
+
+
+
             }
 
 

@@ -299,15 +299,55 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
          * 2020.05.08 나중에 이거 사용~! 저장함 갯수 판별
          * */
 
-            if (bannerCount >= 5){
-                startActivity<SaveFullPopUpActivity>()
-            }else {
-
+            if(tv_making_save_confirm.text == "수정하기")
+            {
                 runBlocking {
-                    val banner = Banner(0,edt_making_text.text.toString(),font, text_size,background_color,text_color,direction,speed,tv_making_cheerup_effect0.isSelected,tv_making_cheerup_effect1.isSelected,tv_making_cheerup_effect2.isSelected,tv_making_cheerup_effect3.isSelected)
-                    bannerRepository.insert(banner)
+                    val banner = Banner(
+                        intent.getIntExtra("idx",-99),
+                        edt_making_text.text.toString(),
+                        font,
+                        text_size,
+                        background_color,
+                        text_color,
+                        direction,
+                        speed,
+                        tv_making_cheerup_effect0.isSelected,
+                        tv_making_cheerup_effect1.isSelected,
+                        tv_making_cheerup_effect2.isSelected,
+                        tv_making_cheerup_effect3.isSelected
+                    )
+
+                    bannerRepository.update(banner)
                 }
                 startActivity<LodingSavePopUpActivity>()
+
+            }
+            else {
+
+                if (bannerCount >= 5) {
+                    startActivity<SaveFullPopUpActivity>()
+                } else {
+
+                    runBlocking {
+                        val banner = Banner(
+                            0,
+                            edt_making_text.text.toString(),
+                            font,
+                            text_size,
+                            background_color,
+                            text_color,
+                            direction,
+                            speed,
+                            tv_making_cheerup_effect0.isSelected,
+                            tv_making_cheerup_effect1.isSelected,
+                            tv_making_cheerup_effect2.isSelected,
+                            tv_making_cheerup_effect3.isSelected
+                        )
+
+                        bannerRepository.insert(banner)
+                    }
+                    startActivity<LodingSavePopUpActivity>()
+                }
             }
 
 
