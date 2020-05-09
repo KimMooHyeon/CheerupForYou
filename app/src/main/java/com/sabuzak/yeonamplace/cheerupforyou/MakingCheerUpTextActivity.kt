@@ -304,7 +304,7 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
                 runBlocking {
                     val banner = Banner(
                         intent.getIntExtra("idx",-99),
-                        edt_making_text.text.toString(),
+                        tv_text.text.toString(),
                         font,
                         text_size,
                         background_color,
@@ -331,7 +331,7 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
                     runBlocking {
                         val banner = Banner(
                             0,
-                            edt_making_text.text.toString(),
+                            tv_text.text.toString(),
                             font,
                             text_size,
                             background_color,
