@@ -90,7 +90,7 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
         if (intent.getIntExtra("idx",-99) != -99){
 
             // 배너의 idx 값 intent.getIntExtra("idx")
-
+            edt_making_text.hint =intent.getStringExtra("edt_making_text")
             tv_making_save_confirm.text="수정하기"
             tv_text.text = intent.getStringExtra("edt_making_text")
              text_size =  intent.getIntExtra("text_size",-99)
@@ -267,8 +267,9 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
             if (tv_text.animation != null) {
                 tv_text.clearAnimation()
             }
-            setAnim()
-
+            setAnim(tv_text.width)
+            toast(tv_text.width.toString())
+            toast(tv_text.text.toString())
         }
 
 
@@ -846,12 +847,12 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
         }
         // 확대 하기
         iv_making_expand_button.setOnClickListener {
-            if (edt_making_text.text.toString().isNotEmpty()){
+            if (edt_making_text.text.toString().isNotEmpty() || tv_text.text != ""){
                 //포커스 문제 ....
                 var inputManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
                 inputManager.showSoftInput(edt_making_text, 0)
 
-                startActivity<CheerUpViewActivity>("edt_making_text" to edt_making_text.text.toString(),"text_size" to text_size , "background_color" to background_color , "text_color" to text_color , "speed" to speed , "direction" to direction,"font" to font , "effect0" to effect0,"effect1" to effect1,"effect2" to effect2,"effect3" to effect3)
+                startActivity<CheerUpViewActivity>("edt_making_text" to tv_text.text.toString(),"text_size" to text_size , "background_color" to background_color , "text_color" to text_color , "speed" to speed , "direction" to direction,"font" to font , "effect0" to effect0,"effect1" to effect1,"effect2" to effect2,"effect3" to effect3)
             }else {
                 toast("메세지를 입력해주세요")
             }
@@ -885,6 +886,7 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
 
         if(speed==0){
             animation.duration = (((screenWidth).toLong() + (width).toLong())*0.8).toLong()
+            toast(width.toString())
         }else if (speed ==1) {
             animation.duration = ((screenWidth).toLong() + (width).toLong())
         }else if (speed ==2){
@@ -895,7 +897,7 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
 
         if (effect0 == 1){
             val alphaAnim = AlphaAnimation(0F, 1.0F)
-            alphaAnim.duration = 400
+            alphaAnim.duration = 600
             alphaAnim.repeatCount = -1
             set.addAnimation(alphaAnim)
         }

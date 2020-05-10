@@ -197,7 +197,7 @@ class CheerUpViewActivity : AppCompatActivity() {
 
         if (intent.getIntExtra("effect0",0) == 1){
             val alphaAnim = AlphaAnimation(0F, 1.0F)
-            alphaAnim.duration = 400
+            alphaAnim.duration = 600
             alphaAnim.repeatCount = -1
             set.addAnimation(alphaAnim)
         }
