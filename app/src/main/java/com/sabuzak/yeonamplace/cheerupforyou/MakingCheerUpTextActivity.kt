@@ -886,7 +886,7 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
 
         if(speed==0){
             animation.duration = (((screenWidth).toLong() + (width).toLong())*0.8).toLong()
-            toast(width.toString())
+
         }else if (speed ==1) {
             animation.duration = ((screenWidth).toLong() + (width).toLong())
         }else if (speed ==2){
