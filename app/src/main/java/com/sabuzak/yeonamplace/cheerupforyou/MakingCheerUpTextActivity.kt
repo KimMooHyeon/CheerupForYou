@@ -268,8 +268,7 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
                 tv_text.clearAnimation()
             }
             setAnim(tv_text.width)
-            toast(tv_text.width.toString())
-            toast(tv_text.text.toString())
+
         }
 
 
