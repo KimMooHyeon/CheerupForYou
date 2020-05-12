@@ -11,6 +11,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.Gravity
+import android.view.View
 import android.view.animation.AlphaAnimation
 import android.view.animation.AnimationSet
 import android.view.animation.AnimationUtils
@@ -267,7 +268,12 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
             if (tv_text.animation != null) {
                 tv_text.clearAnimation()
             }
-            setAnim(tv_text.width)
+
+            /**
+             * 2020.05.12 width 0 되는 문제 해결
+             */
+            tv_text.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
+            setAnim(tv_text.measuredWidth)
 
         }
 
