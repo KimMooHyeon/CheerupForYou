@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.annotation.Dimension
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.sabuzak.yeonamplace.cheerupforyou.CheerUpViewActivity
 import com.sabuzak.yeonamplace.cheerupforyou.Data.CheerUpViewData
@@ -84,32 +85,37 @@ class CheerUpViewRecyclerViewAdapter(var ctx: Context, var dataList: ArrayList<C
             holder.tv_rv_item.setTextColor(Color.parseColor("#f637f3"))
         }
 
-        // 백그라운드 색 변경
-
-        if (dataList[position].background_color ==0){
-            holder.hs_rv_item.setBackgroundColor(Color.parseColor("#000000"))
-        }else if (dataList[position].background_color ==1){
-            holder.hs_rv_item.setBackgroundColor(Color.parseColor("#3c3eda"))
-        }else if (dataList[position].background_color ==2){
-            holder.hs_rv_item.setBackgroundColor(Color.parseColor("#0191b6"))
-        }else if (dataList[position].background_color ==3){
-            holder.hs_rv_item.setBackgroundColor(Color.parseColor("#f9d80d"))
-        }else if (dataList[position].background_color ==4){
-            holder.hs_rv_item.setBackgroundColor(Color.parseColor("#ff7b17"))
-        }else if (dataList[position].background_color ==5){
-            holder.hs_rv_item.setBackgroundColor(Color.parseColor("#f637f3"))
-        }
-
         //글자 크기 변경
+        //글자 고장 50 으로
         if (dataList[position].text_size ==0){
             holder.tv_rv_item.setTextSize(Dimension.SP, 30.0f)
-        } else if (dataList[position].text_size == 1){
+        } else if (dataList[position].text_size == 3){
             holder.tv_rv_item.setTextSize(Dimension.SP, 50.0f)
         } else if (dataList[position].text_size ==2){
             holder.tv_rv_item.setTextSize(Dimension.SP, 70.0f)
-        } else if (dataList[position].text_size ==3){
+        } else if (dataList[position].text_size ==0){
             holder.tv_rv_item.setTextSize(Dimension.SP, 90.0f)
         }
+        // 백그라운드 색 변경
+
+        if (dataList[position].background_color ==6){
+            holder.tv_rv_item.setTextSize(Dimension.SP, 48.0f)
+            holder.hs_rv_item.setBackgroundDrawable(ContextCompat.getDrawable(ctx, R.drawable.back_goldenchild_01))
+        }else if (dataList[position].background_color ==7){
+            holder.hs_rv_item.setBackgroundColor(Color.parseColor("#c80714"))
+        }else if (dataList[position].background_color ==8){
+            holder.hs_rv_item.setBackgroundDrawable(ContextCompat.getDrawable(ctx, R.drawable.back_very_01))
+        }else if (dataList[position].background_color ==9){
+            holder.hs_rv_item.setBackgroundDrawable(ContextCompat.getDrawable(ctx, R.drawable.back_onoff_01))
+        }else if (dataList[position].background_color ==10){
+            holder.hs_rv_item.setBackgroundDrawable(ContextCompat.getDrawable(ctx, R.drawable.back_ownus_01))
+        }else if (dataList[position].background_color ==11){
+            holder.hs_rv_item.setBackgroundDrawable(ContextCompat.getDrawable(ctx, R.drawable.back_pentagon_02))
+        }else if (dataList[position].background_color ==12){
+            holder.hs_rv_item.setBackgroundDrawable(ContextCompat.getDrawable(ctx, R.drawable.back_too_01))
+        }
+
+
         //중앙 정렬
 /*        val display = ctx.windowManager.defaultDisplay
         val point = Point()

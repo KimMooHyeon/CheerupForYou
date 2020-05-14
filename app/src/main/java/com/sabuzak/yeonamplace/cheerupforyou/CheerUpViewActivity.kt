@@ -18,6 +18,7 @@ import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.annotation.Dimension
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.activity_cheer_up_view.*
 import org.jetbrains.anko.toast
 
@@ -121,6 +122,20 @@ class CheerUpViewActivity : AppCompatActivity() {
             hs_cheerup_view.setBackgroundColor(Color.parseColor("#ff7b17"))
         }else if (intent.getIntExtra("background_color",0) ==5){
             hs_cheerup_view.setBackgroundColor(Color.parseColor("#f637f3"))
+        }else if (intent.getIntExtra("background_color",0) ==6){
+            hs_cheerup_view.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.back_goldenchild_01))
+        }else if (intent.getIntExtra("background_color",0) ==7){
+            hs_cheerup_view.setBackgroundColor(Color.parseColor("#c80714"))
+        }else if (intent.getIntExtra("background_color",0) ==8){
+            hs_cheerup_view.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.back_very_01))
+        }else if (intent.getIntExtra("background_color",0) ==9){
+            hs_cheerup_view.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.back_onoff_01))
+        }else if (intent.getIntExtra("background_color",0) ==10){
+            hs_cheerup_view.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.back_ownus_01))
+        }else if (intent.getIntExtra("background_color",0) ==11){
+            hs_cheerup_view.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.back_pentagon_02))
+        }else if (intent.getIntExtra("background_color",0) ==12){
+            hs_cheerup_view.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.back_too_01))
         }
 
         //글자 크기 변경

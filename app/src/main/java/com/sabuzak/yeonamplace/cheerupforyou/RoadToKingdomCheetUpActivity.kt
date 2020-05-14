@@ -22,13 +22,13 @@ class RoadToKingdomCheetUpActivity : AppCompatActivity() {
             finish()
         }
 
-        arrayList.add(CheerUpViewData("골든차일드 응원해", 3,0,1,1,2,1,1,1,0,1))
-        arrayList.add(CheerUpViewData("더보이즈 응원해", 2,3,0,0,1,5,0,0,0,0))
-        arrayList.add(CheerUpViewData("베리베리 응원해", 0,2,5,2,2,2,0,0,1,0))
-        arrayList.add(CheerUpViewData("온앤오프 응원해", 1,1,3,1,1,3,1,0,0,1))
-        arrayList.add(CheerUpViewData("원어스 응원해", 2,3,1,0,0,4,0,1,1,0))
-        arrayList.add(CheerUpViewData("펜타곤 응원해", 0,2,5,2,2,2,0,0,1,0))
-        arrayList.add(CheerUpViewData("TOO 응원해", 1,1,3,1,1,3,1,0,0,1))
+        arrayList.add(CheerUpViewData("골든차일드 응원해", 3,6,0,2,1,5,1,0,1,0))
+        arrayList.add(CheerUpViewData("더보이즈 응원해", 3,7,0,2,1,5,1,0,1,0))
+        arrayList.add(CheerUpViewData("베리베리 응원해", 3,8,0,2,1,5,1,0,1,0))
+        arrayList.add(CheerUpViewData("온앤오프 응원해", 3,9,0,2,1,5,1,0,1,0))
+        arrayList.add(CheerUpViewData("원어스 응원해", 3,10,0,2,1,5,1,0,1,0))
+        arrayList.add(CheerUpViewData("펜타곤 응원해", 3,11,0,2,1,5,1,0,1,0))
+        arrayList.add(CheerUpViewData("TOO 응원해", 3,12,0,2,1,5,1,0,1,0))
 
         cheerUpViewRecyclerViewAdapter = CheerUpViewRecyclerViewAdapter(this, arrayList)
         rl_road_to_kingdom.adapter = cheerUpViewRecyclerViewAdapter
