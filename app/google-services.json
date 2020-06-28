@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "183823892087",
+    "firebase_url": "https://yeonnamplay-a8935.firebaseio.com",
+    "project_id": "yeonnamplay-a8935",
+    "storage_bucket": "yeonnamplay-a8935.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:183823892087:android:33af937c60e7525d5cd072",
+        "android_client_info": {
+          "package_name": "com.sabuzak.yeonamplace.cheerupforyou"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "183823892087-nn55mr6ktm1k91un24ooddgr8afctre2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXlS08iOwd4Uhy8a3ouuJJCe8_dZ8SK-g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "183823892087-nn55mr6ktm1k91un24ooddgr8afctre2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:183823892087:android:8bf82243352b21c35cd072",
+        "android_client_info": {
+          "package_name": "com.sabuzak.yeonamplace.cheerypforyou"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "183823892087-nn55mr6ktm1k91un24ooddgr8afctre2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXlS08iOwd4Uhy8a3ouuJJCe8_dZ8SK-g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "183823892087-nn55mr6ktm1k91un24ooddgr8afctre2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

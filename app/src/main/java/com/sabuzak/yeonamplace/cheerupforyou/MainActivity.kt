@@ -93,7 +93,6 @@ class MainActivity : AppCompatActivity() {
             var chooser = Intent.createChooser(intent, "친구에게 공유하기")
             startActivity(chooser)
 
-
         }
 
 
