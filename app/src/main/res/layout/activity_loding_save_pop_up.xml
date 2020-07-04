@@ -45,10 +45,7 @@
             android:textColor="#ffffff"
             android:lineSpacingExtra="3sp"
             android:gravity="center_horizontal"
-            android:text="새로운 응원이 저장함에\n
-저장되고 있습니다.\n
-\n
-잠시만 기다려 주세요."
+            android:text="@string/save_message"
             />
 
     </RelativeLayout>

@@ -40,7 +40,7 @@
             android:textColor="#ffffff"
             android:lineSpacingExtra="3sp"
             android:gravity="center_horizontal"
-            android:text="선택한 저장함을\n삭제하시겠습니까?."
+            android:text="@string/delete_message"
             />
         <TextView
             android:id="@+id/tv_delete_confirm"
@@ -50,7 +50,7 @@
             android:textSize="18sp"
             android:textColor="#ffffff"
             android:lineSpacingExtra="3sp"
-            android:text="삭제"
+            android:text="@string/delete"
             android:layout_marginBottom="30dp"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"

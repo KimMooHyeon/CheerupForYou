@@ -20,7 +20,7 @@
             android:layout_height="match_parent">
             <com.sabuzak.yeonamplace.cheerupforyou.OutlineTextView
                 android:fontFamily="@font/nanum"
-                android:text="하이"
+                android:text=""
                 android:gravity="center"
                 android:textColor="#ffffff"
                 android:id="@+id/tv_rv_item"

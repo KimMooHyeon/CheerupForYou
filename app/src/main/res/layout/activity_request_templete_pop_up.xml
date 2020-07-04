@@ -49,14 +49,7 @@
             android:textColor="#ffffff"
             android:lineSpacingExtra="3sp"
             android:gravity="center_horizontal"
-            android:text="앱스토어 리뷰에\n
-응원의 메시지와 아이돌 이름을\n
-적어주세요!\n
-\n
-(추첨을 통해 템플릿을\n
-만들어 드립니다.\n
-\n
-응원 수와 별점이 높을 수록 확률 UP!)"
+            android:text="@string/want_review_message"
             />
         <TextView
             android:id="@+id/tv_request_confirm"
@@ -66,8 +59,8 @@
             android:textSize="18sp"
             android:textColor="#ffffff"
             android:lineSpacingExtra="3sp"
-            android:text="리뷰 남기러 가기"
-            android:layout_marginBottom="30dp"
+            android:text="@string/go_to_review"
+            android:layout_marginBottom="40dp"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:background="@drawable/bt_save"

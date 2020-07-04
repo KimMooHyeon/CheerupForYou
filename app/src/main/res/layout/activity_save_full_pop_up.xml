@@ -40,7 +40,7 @@
         android:textColor="#ffffff"
         android:lineSpacingExtra="3sp"
         android:gravity="center_horizontal"
-        android:text="저장함(5/5) 이\n꽉 찼습니다."
+        android:text="@string/save_full"
         />
     <TextView
         android:id="@+id/tv_save_confirm"
@@ -50,7 +50,7 @@
         android:textSize="18sp"
         android:textColor="#ffffff"
         android:lineSpacingExtra="3sp"
-        android:text="확인"
+        android:text="@string/confirm"
         android:layout_marginBottom="30dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"

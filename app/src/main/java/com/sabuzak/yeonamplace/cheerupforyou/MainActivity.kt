@@ -106,7 +106,7 @@ class MainActivity : AppCompatActivity() {
         bannerViewModel.allBanner.observe(this, Observer {
             banners-> banners?.let{
             (banner_recyclerview.adapter as BannerRecyclerViewAdapter).setBanners(it)
-            save_count.text = "저장함 "+ (banner_recyclerview.adapter as BannerRecyclerViewAdapter).itemCount+"/5"
+            save_count.text = " "+ (banner_recyclerview.adapter as BannerRecyclerViewAdapter).itemCount+"/5"
         }
         })
 

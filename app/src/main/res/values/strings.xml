@@ -29,4 +29,21 @@
     <string name="making_text_effectrion3">그림자</string>
     <string name="making_text_save">저장하기</string>
     <string name="main_new_maketext">새로운 응원 만들기</string>
+    <string name="delete">삭제</string>
+    <string name="delete_message">선택한 저장함을\n삭제하시겠습니까?.</string>
+    <string name="save_message"> 새로운 응원이 저장함에\n
+    저장되고 있습니다.\n
+    \n
+    잠시만 기다려 주세요.</string>
+    <string name="save_box">저장함</string>
+    <string name="want_review_message"> 플레이 스토어에 리뷰를 남겨주세요 ^-^ \n
+    여러분들의 의견이 큰 힘이 됩니다. \n
+    \n
+    만족하셨다면 좋은 별점과 평가 부탁드립니다.\n
+    \n
+    ๑❤‿❤๑</string>
+    <string name="go_to_review">리뷰 남기러 가기</string>
+    <string name="save_full">저장함(5/5) 이\n꽉 찼습니다.</string>
+    <string name="confirm">확인</string>
+
 </resources>
