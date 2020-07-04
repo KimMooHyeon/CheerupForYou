@@ -110,17 +110,17 @@
                         android:gravity="center_vertical"
                         android:text="@string/maketext_font"
                         android:textColor="#ffffff"
-                        android:textSize="14sp"
+                        android:textSize="11sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHeight_default="percent"
                         app:layout_constraintHeight_percent="0.6"
-                        app:layout_constraintHorizontal_bias="0.0444"
+                        app:layout_constraintHorizontal_bias="0.0344"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.5"
                         app:layout_constraintWidth_default="percent"
-                        app:layout_constraintWidth_percent="0.0694" />
+                        app:layout_constraintWidth_percent="0.0894" />
 
                     <HorizontalScrollView
                         android:scrollbars="none"
@@ -251,24 +251,24 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:fontFamily="@font/nanum"
-                        android:includeFontPadding="false"
-                        android:gravity="center_vertical"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
+                        android:fontFamily="@font/nanum"
+                        android:gravity="center_vertical"
+                        android:includeFontPadding="false"
                         android:text="@string/maketext_size"
                         android:textColor="#ffffff"
-                        android:textSize="14sp"
+                        android:textSize="11sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHeight_default="percent"
                         app:layout_constraintHeight_percent="0.6"
-                        app:layout_constraintHorizontal_bias="0.0444"
+                        app:layout_constraintHorizontal_bias="0.0344"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.5"
                         app:layout_constraintWidth_default="percent"
-                        app:layout_constraintWidth_percent="0.0694" />
+                        app:layout_constraintWidth_percent="0.0894" />
 
 
                     <TextView
@@ -376,17 +376,17 @@
                         android:layout_height="0dp"
                         android:text="@string/maketext_background_color"
                         android:textColor="#ffffff"
-                        android:textSize="14sp"
+                        android:textSize="11sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHeight_default="percent"
                         app:layout_constraintHeight_percent="0.6"
-                        app:layout_constraintHorizontal_bias="0.0444"
+                        app:layout_constraintHorizontal_bias="0.0344"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.5"
                         app:layout_constraintWidth_default="percent"
-                        app:layout_constraintWidth_percent="0.0694" />
+                        app:layout_constraintWidth_percent="0.0894" />
 
 
                     <TextView
@@ -507,17 +507,17 @@
                         android:layout_height="0dp"
                         android:text="@string/maketext_text_color"
                         android:textColor="#ffffff"
-                        android:textSize="14sp"
+                        android:textSize="11sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHeight_default="percent"
                         app:layout_constraintHeight_percent="0.6"
-                        app:layout_constraintHorizontal_bias="0.0444"
+                        app:layout_constraintHorizontal_bias="0.0344"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.5"
                         app:layout_constraintWidth_default="percent"
-                        app:layout_constraintWidth_percent="0.0694" />
+                        app:layout_constraintWidth_percent="0.0894" />
 
 
                     <TextView
@@ -638,17 +638,17 @@
                         android:layout_height="0dp"
                         android:text="@string/maketext_direction"
                         android:textColor="#ffffff"
-                        android:textSize="14sp"
+                        android:textSize="11sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHeight_default="percent"
                         app:layout_constraintHeight_percent="0.6"
-                        app:layout_constraintHorizontal_bias="0.0444"
+                        app:layout_constraintHorizontal_bias="0.0344"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.5"
                         app:layout_constraintWidth_default="percent"
-                        app:layout_constraintWidth_percent="0.0694" />
+                        app:layout_constraintWidth_percent="0.0894" />
 
 
                     <ImageView
@@ -730,17 +730,17 @@
                         android:layout_height="0dp"
                         android:text="@string/maketext_speed"
                         android:textColor="#ffffff"
-                        android:textSize="14sp"
+                        android:textSize="11sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHeight_default="percent"
                         app:layout_constraintHeight_percent="0.6"
-                        app:layout_constraintHorizontal_bias="0.0444"
+                        app:layout_constraintHorizontal_bias="0.0344"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.5"
                         app:layout_constraintWidth_default="percent"
-                        app:layout_constraintWidth_percent="0.0694" />
+                        app:layout_constraintWidth_percent="0.0894" />
 
 
                     <TextView
@@ -827,18 +827,18 @@
                         android:layout_height="0dp"
                         android:text="@string/maketext_effection"
                         android:textColor="#ffffff"
-                        android:textSize="14sp"
+                        android:textSize="11sp"
                         android:layout_width="0dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHeight_default="percent"
                         app:layout_constraintHeight_percent="0.6"
-                        app:layout_constraintHorizontal_bias="0.0444"
+                        app:layout_constraintHorizontal_bias="0.0344"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.5"
                         app:layout_constraintWidth_default="percent"
-                        app:layout_constraintWidth_percent="0.0694" />
+                        app:layout_constraintWidth_percent="0.0894" />
 
 
                     <TextView

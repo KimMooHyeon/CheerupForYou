@@ -9,7 +9,7 @@
     <string name="maketext_speed">Speed</string>
     <string name="maketext_effection">Effect</string>
     <string name="making_text_font0">Nanum</string>
-    <string name="making_text_font1">Hansuwon</string>
+    <string name="making_text_font1">Hansu</string>
     <string name="making_text_font2">Euljiro</string>
     <string name="making_text_font3">Hanna</string>
     <string name="making_text_font4">Yanolja</string>
@@ -31,15 +31,12 @@
     <string name="main_new_maketext">Create a new cheer</string>
     <string name="delete">delete</string>
     <string name="delete_message">Are you sure \n you want to delete\nthe selected storage box?</string>
-    <string name="save_message"> New Cheering Stored\n
-                        It's being saved.\n
-\n
-Just a moment, please.</string>
+    <string name="save_message"> New Cheering Stored \n It is being saved. \n Just a moment, please.</string>
     <string name="save_box">Storage box</string>
     <string name="want_review_message"> Please leave a review on the Play Store. ^-^ \n
 Your opinions give me a lot of strength. \n
 \n
-If you're satisfied, please give us a good score and evaluation.\n
+If you are satisfied, please give us a good score and evaluation.\n
 \n
 ๑❤‿❤๑</string>
     <string name="go_to_review">Go to leave a review</string>

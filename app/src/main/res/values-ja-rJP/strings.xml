@@ -1,0 +1,49 @@
+<resources>
+    <string name="app_name">応援しる。</string>
+    <string name="maketext_hint_message">応援する文句を作成してください。</string>
+    <string name="maketext_font">フォント</string>
+    <string name="maketext_size">大きさ</string>
+    <string name="maketext_background_color">背景</string>
+    <string name="maketext_text_color">色</string>
+    <string name="maketext_direction">方向</string>
+    <string name="maketext_speed">速さ</string>
+    <string name="maketext_effection">効果</string>
+    <string name="making_text_font0">ナノム</string>
+    <string name="making_text_font1">ハンズ</string>
+    <string name="making_text_font2">乙支路</string>
+    <string name="making_text_font3">ハンナ</string>
+    <string name="making_text_font4">ヤノールジャ</string>
+    <string name="making_text_font5">ズーア</string>
+    <string name="making_text_font6">tvn</string>
+    <string name="making_text_size0">とても小さく</string>
+    <string name="making_text_size1">小さい</string>
+    <string name="making_text_size2">並々</string>
+    <string name="making_text_size3">大きい</string>
+    <string name="making_text_direction_stop">止り</string>
+    <string name="making_text_direction_speed0">速さ</string>
+    <string name="making_text_direction_speed1">中程</string>
+    <string name="making_text_direction_speed2">遅々</string>
+    <string name="making_text_effectrion0">瞬き</string>
+    <string name="making_text_effectrion1">外枠線</string>
+    <string name="making_text_effectrion2">輝かせるように</string>
+    <string name="making_text_effectrion3">影</string>
+    <string name="making_text_save">貯蔵</string>
+    <string name="main_new_maketext">新しい応援づくり</string>
+    <string name="delete">削除</string>
+    <string name="delete_message">選択した保存ボックスを\n削除しますか？</string>
+    <string name="save_message">新しい応援が保存されます。\n
+保存されています。\n
+\n
+少々お待ちください</string>
+    <string name="save_box">貯蔵箱</string>
+    <string name="want_review_message">プレイストアにレビューを残してください。 ^-^\n
+皆さんの意見が大きな力になります。 \n
+\n
+満足できたならいい星占めと評価をお願いします。\n
+\n
+๑❤‿❤๑</string>
+    <string name="go_to_review">レビュー残しに行く</string>
+    <string name="save_full">保存ボックス(5/5)が\nいっぱいです。</string>
+    <string name="confirm">確認</string>
+
+</resources>
