@@ -1,49 +1,49 @@
 <resources>
-    <string name="app_name">응원해</string>
-    <string name="maketext_hint_message">응원할 문구를 작성해주세요.</string>
-    <string name="maketext_font">글꼴</string>
-    <string name="maketext_size">크기</string>
-    <string name="maketext_background_color">배경</string>
-    <string name="maketext_text_color">색깔</string>
-    <string name="maketext_direction">방향</string>
-    <string name="maketext_speed">속도</string>
-    <string name="maketext_effection">효과</string>
-    <string name="making_text_font0">나눔체</string>
-    <string name="making_text_font1">한수원체</string>
-    <string name="making_text_font2">을지로체</string>
-    <string name="making_text_font3">한나체</string>
-    <string name="making_text_font4">야놀자체</string>
-    <string name="making_text_font5">주아체</string>
-    <string name="making_text_font6">tvn체</string>
-    <string name="making_text_size0">아주 작게</string>
-    <string name="making_text_size1">작게</string>
-    <string name="making_text_size2">보통</string>
-    <string name="making_text_size3">크게</string>
-    <string name="making_text_direction_stop">멈춤</string>
-    <string name="making_text_direction_speed0">빠름</string>
-    <string name="making_text_direction_speed1">중간</string>
-    <string name="making_text_direction_speed2">느림</string>
-    <string name="making_text_effectrion0">깜빡임</string>
-    <string name="making_text_effectrion1">외곽선</string>
-    <string name="making_text_effectrion2">빛나게</string>
-    <string name="making_text_effectrion3">그림자</string>
-    <string name="making_text_save">저장하기</string>
-    <string name="main_new_maketext">새로운 응원 만들기</string>
-    <string name="delete">삭제</string>
-    <string name="delete_message">선택한 저장함을\n삭제하시겠습니까?.</string>
-    <string name="save_message"> 새로운 응원이 저장함에\n
-    저장되고 있습니다.\n
-    \n
-    잠시만 기다려 주세요.</string>
-    <string name="save_box">저장함</string>
-    <string name="want_review_message"> 플레이 스토어에 리뷰를 남겨주세요 ^-^ \n
-    여러분들의 의견이 큰 힘이 됩니다. \n
-    \n
-    만족하셨다면 좋은 별점과 평가 부탁드립니다.\n
-    \n
-    ๑❤‿❤๑</string>
-    <string name="go_to_review">리뷰 남기러 가기</string>
-    <string name="save_full">저장함(5/5) 이\n꽉 찼습니다.</string>
-    <string name="confirm">확인</string>
+    <string name="app_name">Cheer</string>
+    <string name="maketext_hint_message">Please write a message to cheer for.</string>
+    <string name="maketext_font">Font</string>
+    <string name="maketext_size">Size</string>
+    <string name="maketext_background_color">Background</string>
+    <string name="maketext_text_color">Color</string>
+    <string name="maketext_direction">Direction</string>
+    <string name="maketext_speed">Speed</string>
+    <string name="maketext_effection">Effect</string>
+    <string name="making_text_font0">Nanum</string>
+    <string name="making_text_font1">Hansuwon</string>
+    <string name="making_text_font2">Euljiro</string>
+    <string name="making_text_font3">Hanna</string>
+    <string name="making_text_font4">Yanolja</string>
+    <string name="making_text_font5">Jua</string>
+    <string name="making_text_font6">Tvn</string>
+    <string name="making_text_size0">Very Small</string>
+    <string name="making_text_size1">Small</string>
+    <string name="making_text_size2">normal</string>
+    <string name="making_text_size3">Big</string>
+    <string name="making_text_direction_stop">Stop</string>
+    <string name="making_text_direction_speed0">Fast</string>
+    <string name="making_text_direction_speed1">Middle</string>
+    <string name="making_text_direction_speed2">Slow</string>
+    <string name="making_text_effectrion0">Blinking</string>
+    <string name="making_text_effectrion1">Outline</string>
+    <string name="making_text_effectrion2">Shine</string>
+    <string name="making_text_effectrion3">Shadow</string>
+    <string name="making_text_save">Save</string>
+    <string name="main_new_maketext">Create a new cheer</string>
+    <string name="delete">delete</string>
+    <string name="delete_message">Are you sure \n you want to delete\nthe selected storage box?</string>
+    <string name="save_message"> New Cheering Stored\n
+                        It's being saved.\n
+\n
+Just a moment, please.</string>
+    <string name="save_box">Storage box</string>
+    <string name="want_review_message"> Please leave a review on the Play Store. ^-^ \n
+Your opinions give me a lot of strength. \n
+\n
+If you're satisfied, please give us a good score and evaluation.\n
+\n
+๑❤‿❤๑</string>
+    <string name="go_to_review">Go to leave a review</string>
+    <string name="save_full">The storage box (5/5) is full</string>
+    <string name="confirm">Confirm</string>
 
 </resources>

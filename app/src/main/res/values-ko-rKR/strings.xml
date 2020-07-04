@@ -1,0 +1,49 @@
+<resources>
+    <string name="app_name">응원해</string>
+    <string name="maketext_hint_message">응원할 문구를 작성해주세요.</string>
+    <string name="maketext_font">글꼴</string>
+    <string name="maketext_size">크기</string>
+    <string name="maketext_background_color">배경</string>
+    <string name="maketext_text_color">색깔</string>
+    <string name="maketext_direction">방향</string>
+    <string name="maketext_speed">속도</string>
+    <string name="maketext_effection">효과</string>
+    <string name="making_text_font0">나눔체</string>
+    <string name="making_text_font1">한수원체</string>
+    <string name="making_text_font2">을지로체</string>
+    <string name="making_text_font3">한나체</string>
+    <string name="making_text_font4">야놀자체</string>
+    <string name="making_text_font5">주아체</string>
+    <string name="making_text_font6">tvn체</string>
+    <string name="making_text_size0">아주 작게</string>
+    <string name="making_text_size1">작게</string>
+    <string name="making_text_size2">보통</string>
+    <string name="making_text_size3">크게</string>
+    <string name="making_text_direction_stop">멈춤</string>
+    <string name="making_text_direction_speed0">빠름</string>
+    <string name="making_text_direction_speed1">중간</string>
+    <string name="making_text_direction_speed2">느림</string>
+    <string name="making_text_effectrion0">깜빡임</string>
+    <string name="making_text_effectrion1">외곽선</string>
+    <string name="making_text_effectrion2">빛나게</string>
+    <string name="making_text_effectrion3">그림자</string>
+    <string name="making_text_save">저장하기</string>
+    <string name="main_new_maketext">새로운 응원 만들기</string>
+    <string name="delete">삭제</string>
+    <string name="delete_message">선택한 저장함을\n삭제하시겠습니까?</string>
+    <string name="save_message"> 새로운 응원이 저장함에\n
+    저장되고 있습니다.\n
+    \n
+    잠시만 기다려 주세요.</string>
+    <string name="save_box">저장함</string>
+    <string name="want_review_message"> 플레이 스토어에 리뷰를 남겨주세요 ^-^ \n
+    여러분들의 의견이 큰 힘이 됩니다. \n
+    \n
+    만족하셨다면 좋은 별점과 평가 부탁드립니다.\n
+    \n
+    ๑❤‿❤๑</string>
+    <string name="go_to_review">리뷰 남기러 가기</string>
+    <string name="save_full">저장함(5/5) 이\n꽉 찼습니다.</string>
+    <string name="confirm">확인</string>
+
+</resources>
