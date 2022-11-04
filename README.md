@@ -11,7 +11,7 @@
    - 8 Apr 2020 ~ 28 May 2020 (Release) 
    - 14 August 2020 (Last update) 
       - 각 나라별 언어 추가 (Korean, English, Japanese)  
-   - 5 November 2022 (Start Refactoring)
+   - **5 November 2022 (Start Refactoring ~ )**
 ## Languages
 
 - App : Kotlin
