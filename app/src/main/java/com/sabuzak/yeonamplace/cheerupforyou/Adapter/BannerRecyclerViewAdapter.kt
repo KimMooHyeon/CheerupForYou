@@ -11,19 +11,18 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.HorizontalScrollView
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.annotation.Dimension
 import androidx.annotation.RequiresApi
-import androidx.core.content.ContextCompat.startActivity
-import androidx.core.content.contentValuesOf
 import androidx.recyclerview.widget.RecyclerView
 import com.sabuzak.yeonamplace.cheerupforyou.DataBase.Entity.Banner
 import com.sabuzak.yeonamplace.cheerupforyou.MakingCheerUpTextActivity
+import com.sabuzak.yeonamplace.cheerupforyou.OutlineTextView
 import com.sabuzak.yeonamplace.cheerupforyou.R
 import com.sabuzak.yeonamplace.cheerupforyou.popup.DeleteBannerPopUpActivity
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.banner_recyclerview_item.view.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
-import org.jetbrains.anko.startActivity
 
 class BannerRecyclerViewAdapter(var ctx: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -60,94 +59,99 @@ class BannerRecyclerViewAdapter(var ctx: Context) : RecyclerView.Adapter<Recycle
          * Banner 객체 정의 후에 제대로 세팅 할것
          * 지금은 임시로 String 대체
          */
+        var delete_image =holder.itemView.findViewById<ImageView>(R.id.delete_image)
+        var banner_text =holder.itemView.findViewById<OutlineTextView>(R.id.banner_text)
+        var hs_rv_main_item =holder.itemView.findViewById<HorizontalScrollView>(R.id.hs_rv_main_item)
+
         Log.d("payload",payloads.toString())
         if(payloads.size > 0) {
             if (payloads[0] == "active") {
-                holder.itemView.delete_image.visibility = View.VISIBLE
+
+                delete_image.visibility = View.VISIBLE
             } else if (payloads[0] == "disable") {
-                holder.itemView.delete_image.setImageResource(R.drawable.ic_delete)
-                holder.itemView.delete_image.visibility = View.GONE
+                delete_image.setImageResource(R.drawable.ic_delete)
+                delete_image.visibility = View.GONE
             }
         }
         else{
 
-            holder.itemView.banner_text.setText(bannerArray[position].text)
+            banner_text.setText(bannerArray[position].text)
             //효과 받기
 
             if(bannerArray[position].outline!! ) {
                 //있는거
-                holder.itemView.banner_text.setStroke(true)
-                holder.itemView.banner_text.draw(Canvas())
+                banner_text.setStroke(true)
+                banner_text.draw(Canvas())
             }
 
             if(bannerArray[position].shining!!) {
-                holder.itemView.banner_text.setShadowLayer(15.0f,0.0f,0.0f, Color.parseColor("#ffffff"))
+                banner_text.setShadowLayer(15.0f,0.0f,0.0f, Color.parseColor("#ffffff"))
             }
             if(bannerArray[position].shadow!!) {
-                holder.itemView.banner_text.setShadowLayer(4.0f,8.0f,3.0f, Color.parseColor("#2AEFF5"))
+                banner_text.setShadowLayer(4.0f,8.0f,3.0f, Color.parseColor("#2AEFF5"))
             }
 
 
             // 폰트 받기
             if(bannerArray[position].font==0){
-                holder.itemView.banner_text.setTypeface(Typeface.createFromAsset(ctx.getAssets(), "font/nanum.ttf"))
+                banner_text.setTypeface(Typeface.createFromAsset(ctx.getAssets(), "font/nanum.ttf"))
             }else if (bannerArray[position].font==1){
-                holder.itemView.banner_text.setTypeface(Typeface.createFromAsset(ctx.getAssets(), "font/hansuwon.ttf"))
+                banner_text.setTypeface(Typeface.createFromAsset(ctx.getAssets(), "font/hansuwon.ttf"))
             }else if (bannerArray[position].font==2){
-                holder.itemView.banner_text.setTypeface(Typeface.createFromAsset(ctx.getAssets(), "font/uljiro.ttf"))
+                banner_text.setTypeface(Typeface.createFromAsset(ctx.getAssets(), "font/uljiro.ttf"))
             }else if (bannerArray[position].font==3){
-                holder.itemView.banner_text.setTypeface(Typeface.createFromAsset(ctx.getAssets(), "font/hanna.ttf"))
+                banner_text.setTypeface(Typeface.createFromAsset(ctx.getAssets(), "font/hanna.ttf"))
             }else if (bannerArray[position].font==4){
-                holder.itemView.banner_text.setTypeface(Typeface.createFromAsset(ctx.getAssets(), "font/yanolza.ttf"))
+                banner_text.setTypeface(Typeface.createFromAsset(ctx.getAssets(), "font/yanolza.ttf"))
             }else if (bannerArray[position].font==5){
-                holder.itemView.banner_text.setTypeface(Typeface.createFromAsset(ctx.getAssets(), "font/jua.ttf"))
+                banner_text.setTypeface(Typeface.createFromAsset(ctx.getAssets(), "font/jua.ttf"))
             }else if (bannerArray[position].font==6){
-                holder.itemView.banner_text.setTypeface(Typeface.createFromAsset(ctx.getAssets(), "font/tvn.ttf"))
+                banner_text.setTypeface(Typeface.createFromAsset(ctx.getAssets(), "font/tvn.ttf"))
             }
 
 
             // 글자 색 받기
             if(bannerArray[position].color ==0 ) {
-                holder.itemView.banner_text.setTextColor(Color.parseColor("#ffffff"))
+                banner_text.setTextColor(Color.parseColor("#ffffff"))
             }else if(bannerArray[position].color ==1 ) {
-                holder.itemView.banner_text.setTextColor(Color.parseColor("#3c3eda"))
+                banner_text.setTextColor(Color.parseColor("#3c3eda"))
             }else if(bannerArray[position].color ==2 ) {
-                holder.itemView.banner_text.setTextColor(Color.parseColor("#0191b6"))
+                banner_text.setTextColor(Color.parseColor("#0191b6"))
             }else if(bannerArray[position].color ==3 ) {
-                holder.itemView.banner_text.setTextColor(Color.parseColor("#f9d80d"))
+                banner_text.setTextColor(Color.parseColor("#f9d80d"))
             }else if(bannerArray[position].color ==4 ) {
-                holder.itemView.banner_text.setTextColor(Color.parseColor( "#ff7b17"))
+                banner_text.setTextColor(Color.parseColor( "#ff7b17"))
             }else if(bannerArray[position].color ==5 ) {
-                holder.itemView.banner_text.setTextColor(Color.parseColor("#f637f3"))
+                banner_text.setTextColor(Color.parseColor("#f637f3"))
             }
 
             // 백그라운드 색 변경
 
             if (bannerArray[position].background ==0){
-                holder.itemView.hs_rv_main_item.setBackgroundColor(Color.parseColor("#000000"))
+                hs_rv_main_item.setBackgroundColor(Color.parseColor("#000000"))
             }else if (bannerArray[position].background ==1){
-                holder.itemView.hs_rv_main_item.setBackgroundColor(Color.parseColor("#3c3eda"))
+                hs_rv_main_item.setBackgroundColor(Color.parseColor("#3c3eda"))
             }else if (bannerArray[position].background ==2){
-                holder.itemView.hs_rv_main_item.setBackgroundColor(Color.parseColor("#0191b6"))
+                hs_rv_main_item.setBackgroundColor(Color.parseColor("#0191b6"))
             }else if (bannerArray[position].background ==3){
-                holder.itemView.hs_rv_main_item.setBackgroundColor(Color.parseColor("#f9d80d"))
+                hs_rv_main_item.setBackgroundColor(Color.parseColor("#f9d80d"))
             }else if (bannerArray[position].background ==4){
-                holder.itemView.hs_rv_main_item.setBackgroundColor(Color.parseColor("#ff7b17"))
+                hs_rv_main_item.setBackgroundColor(Color.parseColor("#ff7b17"))
             }else if (bannerArray[position].background ==5){
-                holder.itemView.hs_rv_main_item.setBackgroundColor(Color.parseColor("#f637f3"))
+                hs_rv_main_item.setBackgroundColor(Color.parseColor("#f637f3"))
             }
 
             //글자 크기 변경
             if (bannerArray[position].size ==0){
-                holder.itemView.banner_text.setTextSize(Dimension.SP, 30.0f)
+                banner_text.setTextSize(Dimension.SP, 30.0f)
             } else if (bannerArray[position].size == 1){
-                holder.itemView.banner_text.setTextSize(Dimension.SP, 50.0f)
+                banner_text.setTextSize(Dimension.SP, 50.0f)
             } else if (bannerArray[position].size ==2){
-                holder.itemView.banner_text.setTextSize(Dimension.SP, 70.0f)
+                banner_text.setTextSize(Dimension.SP, 70.0f)
             } else if (bannerArray[position].size ==3){
-                holder.itemView.banner_text.setTextSize(Dimension.SP, 90.0f)
+                banner_text.setTextSize(Dimension.SP, 90.0f)
             }
-            holder.itemView.banner_text.setOnClickListener {
+            banner_text.setOnClickListener {
 
 
                 var intent = Intent(c, MakingCheerUpTextActivity::class.java)
@@ -165,19 +169,13 @@ class BannerRecyclerViewAdapter(var ctx: Context) : RecyclerView.Adapter<Recycle
                 intent.putExtra("idx",bannerArray[position].idx)
                 c.startActivity(intent.addFlags(FLAG_ACTIVITY_NEW_TASK))
 
-
-
-
             }
 
-
-
-
-            holder.itemView.delete_image.onClick {
+            delete_image.onClick {
                 /**
                  * TODO 2020.05.02 팝업 띄우기
                  */
-                holder.itemView.delete_image.setImageResource(R.drawable.ic_delete_red)
+                delete_image.setImageResource(R.drawable.ic_delete_red)
                 var intent = Intent(c, DeleteBannerPopUpActivity::class.java)
                 intent.putExtra("bannerIdx",bannerArray[position].idx)
                 c.startActivity(intent.addFlags(FLAG_ACTIVITY_NEW_TASK))

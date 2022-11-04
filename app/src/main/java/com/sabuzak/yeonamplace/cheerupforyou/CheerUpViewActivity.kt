@@ -14,22 +14,33 @@ import android.view.Window
 import android.view.WindowManager
 import android.view.animation.*
 import android.widget.FrameLayout
+import android.widget.HorizontalScrollView
+import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.Dimension
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
-import kotlinx.android.synthetic.main.activity_cheer_up_view.*
 import org.jetbrains.anko.toast
 
 class CheerUpViewActivity : AppCompatActivity() {
     private var screenWidth = 0f
     private var fromX = 0f
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         requestWindowFeature(Window.FEATURE_NO_TITLE)
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         setContentView(R.layout.activity_cheer_up_view)
+        var iv_cheerup_delete = findViewById<ImageView>(R.id.iv_cheerup_delete)
+        var iv_cheerup_lock = findViewById<ImageView>(R.id.iv_cheerup_lock)
+        var hs_cheerup_view = findViewById<HorizontalScrollView>(R.id.hs_cheerup_view)
+        var cl_cheerup_all = findViewById<ConstraintLayout>(R.id.cl_cheerup_all)
+        var tv_cheer_up_view_Text =  findViewById<OutlineTextView>(R.id.tv_cheer_up_view_Text)
+        var ll_cheer_up_view =  findViewById<LinearLayout>(R.id.ll_cheer_up_view)
+
 
 
         iv_cheerup_delete.setOnClickListener {
@@ -167,6 +178,8 @@ class CheerUpViewActivity : AppCompatActivity() {
         fromX = screenWidth
 
 
+        var tv_cheer_up_view_Text =  findViewById<OutlineTextView>(R.id.tv_cheer_up_view_Text)
+        var ll_cheer_up_view =  findViewById<LinearLayout>(R.id.ll_cheer_up_view)
         //애니메이션 두개 넣기 set
         var set = AnimationSet(false)
         val resources: Resources = this.resources

@@ -2,17 +2,20 @@ package com.sabuzak.yeonamplace.cheerupforyou.popup
 
 import android.os.Bundle
 import android.os.Handler
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.sabuzak.yeonamplace.cheerupforyou.R
-import kotlinx.android.synthetic.main.activity_loding_save_pop_up.*
+import com.wang.avi.AVLoadingIndicatorView
+
 
 class LodingSavePopUpActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_loding_save_pop_up)
-        startAnim()
+        var avi = findViewById<AVLoadingIndicatorView>(R.id.avi)
+        avi.smoothToShow()
         val handler = Handler()
         handler.postDelayed(Runnable {
             finish()
@@ -22,12 +25,12 @@ class LodingSavePopUpActivity : AppCompatActivity() {
 
 
     }
-    fun startAnim() {
+ /*   fun startAnim() {
     avi.smoothToShow()
-    }
+    }*/
 
-    fun stopAnim() {
+   /* fun stopAnim() {
          avi.smoothToHide()
-    }
+    }*/
 
 }

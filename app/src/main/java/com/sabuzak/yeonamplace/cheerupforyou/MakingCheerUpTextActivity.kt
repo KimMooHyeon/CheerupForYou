@@ -17,8 +17,12 @@ import android.view.animation.AnimationSet
 import android.view.animation.AnimationUtils
 import android.view.animation.TranslateAnimation
 import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
 import android.widget.FrameLayout
+import android.widget.HorizontalScrollView
+import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.annotation.Dimension
 import androidx.appcompat.app.AppCompatActivity
 import com.sabuzak.yeonamplace.cheerupforyou.DataBase.AppDatabase
@@ -26,7 +30,6 @@ import com.sabuzak.yeonamplace.cheerupforyou.DataBase.Entity.Banner
 import com.sabuzak.yeonamplace.cheerupforyou.DataBase.Repository.BannerRepository
 import com.sabuzak.yeonamplace.cheerupforyou.popup.LodingSavePopUpActivity
 import com.sabuzak.yeonamplace.cheerupforyou.popup.SaveFullPopUpActivity
-import kotlinx.android.synthetic.main.activity_making_cheer_up_text.*
 import kotlinx.coroutines.runBlocking
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
@@ -51,11 +54,30 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
     private var screenHeight = 0f
     private var fromX = 0f
     private var fromY = 0f
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_making_cheer_up_text)
         bannerCount = intent.getIntExtra("bannerCount",0)
         // DEFAULT 값 설정
+
+        var tv_making_text_size_normal = findViewById<TextView>(R.id.tv_making_text_size_normal)
+        var tv_making_text_speed_normal = findViewById<TextView>(R.id.tv_making_text_speed_normal)
+        var tv_making_textcolor_white = findViewById<TextView>(R.id.tv_making_textcolor_white)
+
+        var iv_making_direction_left = findViewById<ImageView>(R.id.iv_making_direction_left)
+
+        var tv_making_color_black = findViewById<TextView>(R.id.tv_making_color_black)
+        var tv_making_text_font_nanum = findViewById<TextView>(R.id.tv_making_text_font_nanum)
+
+        var tv_making_text_font_hasuwon = findViewById<TextView>(R.id.tv_making_text_font_hasuwon)
+        var tv_making_text_font_uljiro = findViewById<TextView>(R.id.tv_making_text_font_uljiro)
+        var tv_making_text_font_hanna = findViewById<TextView>(R.id.tv_making_text_font_hanna)
+        var tv_making_text_font_yanolza = findViewById<TextView>(R.id.tv_making_text_font_yanolza)
+        var tv_making_text_font_jua = findViewById<TextView>(R.id.tv_making_text_font_jua)
+        var tv_making_text_font_tvn = findViewById<TextView>(R.id.tv_making_text_font_tvn)
+
+
         tv_making_text_size_normal.isSelected=true
         tv_making_text_speed_normal.isSelected=true
         tv_making_textcolor_white.isSelected=true
@@ -87,6 +109,22 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
 
         var previousString = " "
 
+        var edt_making_text = findViewById<EditText>(R.id.edt_making_text)
+        var tv_making_save_confirm = findViewById<TextView>(R.id.tv_making_save_confirm)
+
+        var tv_making_direction_stop =findViewById<TextView>(R.id.tv_making_direction_stop)
+        var iv_making_direction_right = findViewById<ImageView>(R.id.iv_making_direction_right)
+        var iv_making_direction_left = findViewById<ImageView>(R.id.iv_making_direction_left)
+        var tv_making_text_speed_fast = findViewById<TextView>(R.id.tv_making_text_speed_fast)
+        var tv_making_text_speed_normal = findViewById<TextView>(R.id.tv_making_text_speed_normal)
+        var tv_making_text_speed_slow = findViewById<TextView>(R.id.tv_making_text_speed_slow)
+        var tv_making_cheerup_effect0 = findViewById<TextView>(R.id.tv_making_cheerup_effect0)
+        var tv_making_cheerup_effect1 = findViewById<TextView>(R.id.tv_making_cheerup_effect1)
+        var tv_making_cheerup_effect2 = findViewById<TextView>(R.id.tv_making_cheerup_effect2)
+        var tv_making_cheerup_effect3 = findViewById<TextView>(R.id.tv_making_cheerup_effect3)
+
+        var tv_making_textcolor_blue = findViewById<TextView>(R.id.tv_making_textcolor_blue)
+        var tv_text = findViewById<OutlineTextView>(R.id.tv_text)
         // 수정하기 부분
         if (intent.getIntExtra("idx",-99) != -99){
 
@@ -157,7 +195,24 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
                 tv_text.setShadowLayer(4.0f,8.0f,3.0f,Color.parseColor("#2AEFF5"))
             }
 
+            var tv_making_text_size_normal = findViewById<TextView>(R.id.tv_making_text_size_normal)
+            var tv_making_text_speed_normal = findViewById<TextView>(R.id.tv_making_text_speed_normal)
+            var tv_making_textcolor_white = findViewById<TextView>(R.id.tv_making_textcolor_white)
 
+            var iv_making_direction_left = findViewById<ImageView>(R.id.iv_making_direction_left)
+
+            var tv_making_color_black = findViewById<TextView>(R.id.tv_making_color_black)
+            var tv_making_text_font_nanum = findViewById<TextView>(R.id.tv_making_text_font_nanum)
+
+            var tv_making_text_font_hasuwon = findViewById<TextView>(R.id.tv_making_text_font_hasuwon)
+            var tv_making_text_font_uljiro = findViewById<TextView>(R.id.tv_making_text_font_uljiro)
+            var tv_making_text_font_hanna = findViewById<TextView>(R.id.tv_making_text_font_hanna)
+            var tv_making_text_font_yanolza = findViewById<TextView>(R.id.tv_making_text_font_yanolza)
+            var tv_making_text_font_jua = findViewById<TextView>(R.id.tv_making_text_font_jua)
+            var tv_making_text_font_tvn = findViewById<TextView>(R.id.tv_making_text_font_tvn)
+
+            var tv_making_textcolor_blue = findViewById<TextView>(R.id.tv_making_textcolor_blue)
+            var tv_text = findViewById<OutlineTextView>(R.id.tv_text)
             // 폰트 받기
             if(font==0){
                 tv_text.setTypeface(Typeface.createFromAsset(getAssets(), "font/nanum.ttf"))
@@ -188,6 +243,11 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
                 tv_making_text_font_tvn.isSelected=true
             }
 
+            var tv_making_textcolor_dark_green = findViewById<TextView>(R.id.tv_making_textcolor_dark_green)
+            var tv_making_textcolor_yellow = findViewById<TextView>(R.id.tv_making_textcolor_yellow)
+
+            var tv_making_textcolor_orange = findViewById<TextView>(R.id.tv_making_textcolor_orange)
+            var tv_making_textcolor_pink = findViewById<TextView>(R.id.tv_making_textcolor_pink)
 
             // 글자 색 받기
             if(text_color ==0 ) {
@@ -214,9 +274,13 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
                 tv_making_textcolor_white.isSelected = false
                 tv_making_textcolor_pink.isSelected =true
             }
-
+            var tv_making_color_blue = findViewById<TextView>(R.id.tv_making_color_blue)
+            var tv_making_color_dark_green = findViewById<TextView>(R.id.tv_making_color_dark_green)
+            var tv_making_color_yellow = findViewById<TextView>(R.id.tv_making_color_yellow)
+            var tv_making_color_orange = findViewById<TextView>(R.id.tv_making_color_orange)
+            var tv_making_color_pink = findViewById<TextView>(R.id.tv_making_color_pink)
             // 백그라운드 색 변경
-
+            var hs_makingtext = findViewById<HorizontalScrollView>(R.id.hs_makingtext)
             if (background_color ==0){
                 hs_makingtext.setBackgroundColor(Color.parseColor("#000000"))
                 tv_making_color_black.isSelected=true
@@ -246,7 +310,9 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
                 tv_making_color_black.isSelected=false
                 tv_making_color_pink.isSelected=true
             }
-
+            var tv_making_text_size_very_small = findViewById<TextView>(R.id.tv_making_text_size_very_small)
+            var tv_making_text_size_small = findViewById<TextView>(R.id.tv_making_text_size_small)
+            var tv_making_text_size_big = findViewById<TextView>(R.id.tv_making_text_size_big)
             //글자 크기 변경
             if (text_size ==0){
                 tv_text.setTextSize(Dimension.SP, 30.0f)
@@ -355,10 +421,8 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
                     startActivity<LodingSavePopUpActivity>()
                 }
             }
-
-
-
     }
+        var ll_making_text = findViewById<LinearLayout>(R.id.ll_making_text)
         edt_making_text.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
                 if (edt_making_text.getLineCount() >= 3)
@@ -462,6 +526,17 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
                 tv_text.setShadowLayer(0.0f,0.0f,0.0f,Color.parseColor("#ffffff"))
             }
         }
+        var tv_making_text_size_normal = findViewById<TextView>(R.id.tv_making_text_size_normal)
+        var tv_making_textcolor_white = findViewById<TextView>(R.id.tv_making_textcolor_white)
+        var tv_making_color_black = findViewById<TextView>(R.id.tv_making_color_black)
+        var tv_making_text_font_nanum = findViewById<TextView>(R.id.tv_making_text_font_nanum)
+        var tv_making_text_font_hasuwon = findViewById<TextView>(R.id.tv_making_text_font_hasuwon)
+        var tv_making_text_font_uljiro = findViewById<TextView>(R.id.tv_making_text_font_uljiro)
+        var tv_making_text_font_hanna = findViewById<TextView>(R.id.tv_making_text_font_hanna)
+        var tv_making_text_font_yanolza = findViewById<TextView>(R.id.tv_making_text_font_yanolza)
+        var tv_making_text_font_jua = findViewById<TextView>(R.id.tv_making_text_font_jua)
+        var tv_making_text_font_tvn = findViewById<TextView>(R.id.tv_making_text_font_tvn)
+
 
         // 폰트 선택
         tv_making_text_font_nanum.setOnClickListener {
@@ -549,6 +624,9 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
             edt_making_text.setTypeface(Typeface.createFromAsset(getAssets(), "font/tvn.ttf"))
         }
         val handler = Handler()
+        var tv_making_text_size_very_small = findViewById<TextView>(R.id.tv_making_text_size_very_small)
+        var tv_making_text_size_small = findViewById<TextView>(R.id.tv_making_text_size_small)
+        var tv_making_text_size_big = findViewById<TextView>(R.id.tv_making_text_size_big)
         //글자 크기 클릭 이벤트
         tv_making_text_size_very_small.setOnClickListener {
             tv_making_text_size_very_small.isSelected=true
@@ -652,7 +730,12 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
             }
             setAnim()
         }
-
+        var tv_making_color_blue = findViewById<TextView>(R.id.tv_making_color_blue)
+        var tv_making_color_dark_green = findViewById<TextView>(R.id.tv_making_color_dark_green)
+        var tv_making_color_yellow = findViewById<TextView>(R.id.tv_making_color_yellow)
+        var tv_making_color_orange = findViewById<TextView>(R.id.tv_making_color_orange)
+        var tv_making_color_pink = findViewById<TextView>(R.id.tv_making_color_pink)
+        var hs_makingtext = findViewById<HorizontalScrollView>(R.id.hs_makingtext)
         //배경 색깔 선택
         tv_making_color_black.setOnClickListener {
             tv_making_color_black.isSelected=true
@@ -714,6 +797,12 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
             hs_makingtext.setBackgroundColor(Color.parseColor("#f637f3"))
             background_color=5
         }
+
+        var tv_making_textcolor_dark_green = findViewById<TextView>(R.id.tv_making_textcolor_dark_green)
+        var tv_making_textcolor_yellow = findViewById<TextView>(R.id.tv_making_textcolor_yellow)
+
+        var tv_making_textcolor_orange = findViewById<TextView>(R.id.tv_making_textcolor_orange)
+        var tv_making_textcolor_pink = findViewById<TextView>(R.id.tv_making_textcolor_pink)
 
         // 글자 색깔
         tv_making_textcolor_white.setOnClickListener {
@@ -845,6 +934,8 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
 
 
 
+        var iv_making_back_button = findViewById<ImageView>(R.id.iv_making_back_button)
+        var iv_making_expand_button = findViewById<ImageView>(R.id.iv_making_expand_button)
 
         //뒤로가기 버튼
         iv_making_back_button.setOnClickListener {
@@ -864,10 +955,12 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
         }
         super.onWindowFocusChanged(hasFocus)
 
-
     }
-    fun setAnim(width: Int = tv_text.width, text: CharSequence = tv_text.text ){
 
+    fun setAnim(width: Int = 1, text: CharSequence = "" ){
+        var tv_text = findViewById<OutlineTextView>(R.id.tv_text)
+        var width=tv_text.width
+        var text=tv_text.text
         //애니메이션 두개 넣기 set
         var set = AnimationSet(false)
 
@@ -906,12 +999,9 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
             alphaAnim.repeatCount = -1
             set.addAnimation(alphaAnim)
         }
-
+        var ll_making_text = findViewById<LinearLayout>(R.id.ll_making_text)
         set.addAnimation(animation)
         ll_making_text.animation=set
         ll_making_text.animation.start()
     }
-
-
-
 }

@@ -2,13 +2,17 @@ package com.sabuzak.yeonamplace.cheerupforyou
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.AdRequest
 import com.sabuzak.yeonamplace.cheerupforyou.Adapter.CheerUpViewRecyclerViewAdapter
 import com.sabuzak.yeonamplace.cheerupforyou.Data.CheerUpViewData
-import kotlinx.android.synthetic.main.activity_road_to_kingdom_cheet_up.*
+
 
 class RoadToKingdomCheetUpActivity : AppCompatActivity() {
     lateinit var cheerUpViewRecyclerViewAdapter: CheerUpViewRecyclerViewAdapter
@@ -17,6 +21,9 @@ class RoadToKingdomCheetUpActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_road_to_kingdom_cheet_up)
+        var iv_road_back = findViewById<ImageView>(R.id.iv_road_back)
+        var rl_road_to_kingdom=  findViewById<RecyclerView>(R.id.rl_road_to_kingdom)
+        var ad_roadtokingdom = findViewById<AdView>(R.id.ad_roadtokingdom)
 
         iv_road_back.setOnClickListener {
             finish()

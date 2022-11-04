@@ -5,7 +5,6 @@ import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.service.voice.AlwaysOnHotwordDetector
 import android.util.Log
 import android.view.Gravity
 import android.view.Gravity.RIGHT
@@ -13,6 +12,10 @@ import android.view.Gravity.TOP
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -28,8 +31,6 @@ import com.sabuzak.yeonamplace.cheerupforyou.popup.DeleteBannerPopUpActivity
 import com.sabuzak.yeonamplace.cheerupforyou.MakingCheerUpTextActivity
 import com.sabuzak.yeonamplace.cheerupforyou.R
 import com.sabuzak.yeonamplace.cheerupforyou.popup.RequestTempletePopUpActivity
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.banner_recyclerview_item.view.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
 import org.jetbrains.anko.startActivity
 
@@ -47,6 +48,14 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        var ll_main_loadtokingdom = findViewById<LinearLayout>(R.id.ll_main_loadtokingdom)
+        var banner_recyclerview = findViewById<RecyclerView>(R.id.banner_recyclerview)
+        var req_image = findViewById<ImageView>(R.id.req_image)
+        var user_plus_image =  findViewById<ImageView>(R.id.user_plus_image)
+        var save_count = findViewById<TextView>(R.id.save_count)
+        var btn_main_make_new_cheerup_text = findViewById<Button>(R.id.btn_main_make_new_cheerup_text)
+        var remove_button = findViewById<TextView>(R.id.remove_button)
+        var adView = findViewById<AdView>(R.id.adView)
 
         ll_main_loadtokingdom.setOnClickListener {
 

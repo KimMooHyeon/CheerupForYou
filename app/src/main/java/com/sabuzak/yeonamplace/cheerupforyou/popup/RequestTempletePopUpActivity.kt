@@ -4,8 +4,11 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageView
+import android.widget.TextView
 import com.sabuzak.yeonamplace.cheerupforyou.R
-import kotlinx.android.synthetic.main.activity_request_templete_pop_up.*
+import com.wang.avi.AVLoadingIndicatorView
+
 
 class RequestTempletePopUpActivity : AppCompatActivity() {
     override fun onBackPressed() {
@@ -16,6 +19,8 @@ class RequestTempletePopUpActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_request_templete_pop_up)
+        var iv_request_cancle = findViewById<ImageView>(R.id.iv_request_cancle)
+        var tv_request_confirm = findViewById<TextView>(R.id.tv_request_confirm)
         iv_request_cancle.setOnClickListener {
             finish()
             this.overridePendingTransition(R.anim.fade_in, R.anim.fade_out)

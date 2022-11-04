@@ -2,8 +2,9 @@ package com.sabuzak.yeonamplace.cheerupforyou.popup
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.TextView
 import com.sabuzak.yeonamplace.cheerupforyou.R
-import kotlinx.android.synthetic.main.activity_save_full_pop_up.*
+
 
 class SaveFullPopUpActivity : AppCompatActivity() {
     override fun onBackPressed() {
@@ -14,7 +15,7 @@ class SaveFullPopUpActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_save_full_pop_up)
-
+        var tv_save_confirm = findViewById<TextView>(R.id.tv_save_confirm)
         tv_save_confirm.setOnClickListener {
             finish()
             this.overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
