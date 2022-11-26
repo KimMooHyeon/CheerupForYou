@@ -1,4 +1,4 @@
-package com.sabuzak.yeonamplace.cheerupforyou.dataBase
+package com.sabuzak.yeonamplace.cheerupforyou.data.dataBase
 
 import android.content.Context
 

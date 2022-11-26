@@ -1,9 +1,12 @@
-package com.sabuzak.yeonamplace.cheerupforyou
+package com.sabuzak.yeonamplace.cheerupforyou.presentation.splash
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import com.sabuzak.yeonamplace.cheerupforyou.dataBase.SharedPreferenceController
+import com.sabuzak.yeonamplace.cheerupforyou.R
+import com.sabuzak.yeonamplace.cheerupforyou.data.dataBase.SharedPreferenceController
+import com.sabuzak.yeonamplace.cheerupforyou.presentation.main.MainActivity
+import com.sabuzak.yeonamplace.cheerupforyou.presentation.makingcheerup.MakingCheerUpTextActivity
 import org.jetbrains.anko.startActivity
 
 class SplashActivity : AppCompatActivity() {

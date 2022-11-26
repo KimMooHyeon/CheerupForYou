@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:background="#80000000"
         android:id="@+id/cl_templete_allview"
-        tools:context=".popup.SaveFullPopUpActivity">
+        tools:context=".presentation.popup.SaveFullPopUpActivity">
 
         <RelativeLayout
             android:background="#2a2d3a"

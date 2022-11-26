@@ -10,7 +10,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MakingCheerUpTextActivity">
+        tools:context=".presentation.makingcheerup.MakingCheerUpTextActivity">
 
         <RelativeLayout
             android:background="#252629"
@@ -54,7 +54,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <com.sabuzak.yeonamplace.cheerupforyou.OutlineTextView
+                    <com.sabuzak.yeonamplace.cheerupforyou.presentation.util.OutlineTextView
                         android:gravity="center"
                         android:textColor="#ffffff"
                         android:id="@+id/tv_text"

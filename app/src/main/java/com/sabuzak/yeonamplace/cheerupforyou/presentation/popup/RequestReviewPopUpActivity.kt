@@ -1,4 +1,4 @@
-package com.sabuzak.yeonamplace.cheerupforyou.popup
+package com.sabuzak.yeonamplace.cheerupforyou.presentation.popup
 
 import android.content.Intent
 import android.net.Uri

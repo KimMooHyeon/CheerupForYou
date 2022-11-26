@@ -1,4 +1,4 @@
-package com.sabuzak.yeonamplace.cheerupforyou.data
+package com.sabuzak.yeonamplace.cheerupforyou.data.model
 
 data class CheerUpViewData (
     var text : String,

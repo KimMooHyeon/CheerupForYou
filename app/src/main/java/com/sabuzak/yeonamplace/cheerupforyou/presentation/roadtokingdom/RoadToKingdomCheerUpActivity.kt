@@ -1,11 +1,12 @@
-package com.sabuzak.yeonamplace.cheerupforyou
+package com.sabuzak.yeonamplace.cheerupforyou.presentation.roadtokingdom
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.AdRequest
-import com.sabuzak.yeonamplace.cheerupforyou.Adapter.CheerUpViewRecyclerViewAdapter
-import com.sabuzak.yeonamplace.cheerupforyou.data.CheerUpViewData
+import com.sabuzak.yeonamplace.cheerupforyou.BaseActivity
+import com.sabuzak.yeonamplace.cheerupforyou.data.model.CheerUpViewData
+import com.sabuzak.yeonamplace.cheerupforyou.R
 import com.sabuzak.yeonamplace.cheerupforyou.databinding.ActivityRoadToKingdomCheerUpBinding
 
 class RoadToKingdomCheerUpActivity :

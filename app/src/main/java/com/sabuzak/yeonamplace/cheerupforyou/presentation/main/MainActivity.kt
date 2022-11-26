@@ -1,4 +1,4 @@
-package com.sabuzak.yeonamplace.cheerupforyou
+package com.sabuzak.yeonamplace.cheerupforyou.presentation.main
 
 import android.content.Intent
 import android.os.Handler
@@ -8,18 +8,20 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
-import com.sabuzak.yeonamplace.cheerupforyou.Adapter.BannerRecyclerViewAdapter
-import com.sabuzak.yeonamplace.cheerupforyou.dataBase.AppDatabase
-import com.sabuzak.yeonamplace.cheerupforyou.dataBase.ViewModel.BannerViewModel
+import com.sabuzak.yeonamplace.cheerupforyou.BaseActivity
+import com.sabuzak.yeonamplace.cheerupforyou.R
+import com.sabuzak.yeonamplace.cheerupforyou.data.dataBase.AppDatabase
 import com.sabuzak.yeonamplace.cheerupforyou.databinding.ActivityMainBinding
-import com.sabuzak.yeonamplace.cheerupforyou.popup.RequestTempletePopUpActivity
+import com.sabuzak.yeonamplace.cheerupforyou.presentation.makingcheerup.MakingCheerUpTextActivity
+import com.sabuzak.yeonamplace.cheerupforyou.presentation.roadtokingdom.RoadToKingdomCheerUpActivity
+import com.sabuzak.yeonamplace.cheerupforyou.presentation.popup.RequestReviewPopUpActivity
 import org.jetbrains.anko.startActivity
 
 
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     private var db: AppDatabase? = null
     private var isRemoveActive = false
-    private lateinit var bannerViewModel: BannerViewModel
+    private lateinit var mainViewModel: MainViewModel
     private val REQUEST_SAVE = 1
     lateinit var mAdView: AdView
 
@@ -44,7 +46,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
                     "disable"
                 )
             }
-            startActivity<RequestTempletePopUpActivity>()
+            startActivity<RequestReviewPopUpActivity>()
             this.overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
         }
 
@@ -71,9 +73,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         binding.bannerRecyclerview.adapter =
             BannerRecyclerViewAdapter(ctx = this.applicationContext)
         binding.bannerRecyclerview.layoutManager = LinearLayoutManager(this)
-        bannerViewModel = ViewModelProvider(this).get(BannerViewModel::class.java)
+        mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
-        bannerViewModel.allBanner.observe(this, Observer { banners ->
+        mainViewModel.allBanner.observe(this, Observer { banners ->
             banners?.let {
                 (binding.bannerRecyclerview.adapter as BannerRecyclerViewAdapter).setBanners(it)
                 binding.saveCount.text =

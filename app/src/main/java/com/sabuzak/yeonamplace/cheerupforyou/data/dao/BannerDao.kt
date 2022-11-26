@@ -1,13 +1,14 @@
-package com.sabuzak.yeonamplace.cheerupforyou.dataBase.Dao
+package com.sabuzak.yeonamplace.cheerupforyou.data.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.sabuzak.yeonamplace.cheerupforyou.dataBase.Entity.Banner
+import com.sabuzak.yeonamplace.cheerupforyou.data.model.Banner
 
 @Dao
 interface BannerDao {
     @Insert
-    suspend fun insert(banner: Banner):Long
+    suspend fun insert(banner: Banner): Long
+
     @Query("SELECT * FROM BANNER_TB")
     fun getAll(): LiveData<List<Banner>>
 
@@ -15,10 +16,10 @@ interface BannerDao {
     fun getCount(): Int
 
     @Query("SELECT * FROM BANNER_TB WHERE idx = :idx")
-    fun getBannerByIdx(idx:Int):Banner
+    fun getBannerByIdx(idx: Int): Banner
 
     @Query("DELETE FROM BANNER_TB WHERE idx = :idx")
-    suspend fun deleteBannerByIdx(idx:Int)
+    suspend fun deleteBannerByIdx(idx: Int)
 
     @Delete
     suspend fun delete(banner: Banner)

@@ -1,10 +1,9 @@
-package com.sabuzak.yeonamplace.cheerupforyou
+package com.sabuzak.yeonamplace.cheerupforyou.presentation.makingcheerup
 
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Point
 import android.graphics.Typeface
-import android.os.Bundle
 import android.os.Handler
 import android.text.Editable
 import android.text.TextWatcher
@@ -17,12 +16,15 @@ import android.view.animation.TranslateAnimation
 import android.view.inputmethod.InputMethodManager
 import android.widget.FrameLayout
 import androidx.annotation.Dimension
-import com.sabuzak.yeonamplace.cheerupforyou.dataBase.AppDatabase
-import com.sabuzak.yeonamplace.cheerupforyou.dataBase.Entity.Banner
-import com.sabuzak.yeonamplace.cheerupforyou.dataBase.Repository.BannerRepository
+import com.sabuzak.yeonamplace.cheerupforyou.BaseActivity
+import com.sabuzak.yeonamplace.cheerupforyou.R
+import com.sabuzak.yeonamplace.cheerupforyou.data.model.Banner
+import com.sabuzak.yeonamplace.cheerupforyou.data.dataBase.AppDatabase
+import com.sabuzak.yeonamplace.cheerupforyou.data.repository.BannerRepository
 import com.sabuzak.yeonamplace.cheerupforyou.databinding.ActivityMakingCheerUpTextBinding
-import com.sabuzak.yeonamplace.cheerupforyou.popup.LodingSavePopUpActivity
-import com.sabuzak.yeonamplace.cheerupforyou.popup.SaveFullPopUpActivity
+import com.sabuzak.yeonamplace.cheerupforyou.presentation.cheeringboard.CheeringBoardActivity
+import com.sabuzak.yeonamplace.cheerupforyou.presentation.popup.LoadingSavePopUpActivity
+import com.sabuzak.yeonamplace.cheerupforyou.presentation.popup.SaveFullPopUpActivity
 import kotlinx.coroutines.runBlocking
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
@@ -289,7 +291,7 @@ class MakingCheerUpTextActivity :
 
                     bannerRepository.update(banner)
                 }
-                startActivity<LodingSavePopUpActivity>()
+                startActivity<LoadingSavePopUpActivity>()
 
             } else {
 
@@ -315,7 +317,7 @@ class MakingCheerUpTextActivity :
 
                         bannerRepository.insert(banner)
                     }
-                    startActivity<LodingSavePopUpActivity>()
+                    startActivity<LoadingSavePopUpActivity>()
                 }
             }
         }
@@ -817,7 +819,7 @@ class MakingCheerUpTextActivity :
                 val inputManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
                 inputManager.showSoftInput(binding.edtMakingText, 0)
 
-                startActivity<CheerUpViewActivity>(
+                startActivity<CheeringBoardActivity>(
                     "binding.edtMakingText" to binding.tvText.text.toString(),
                     "text_size" to text_size,
                     "background_color" to background_color,

@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/cl_cheerup_all"
-        tools:context=".CheerUpViewActivity">
+        tools:context=".presentation.cheeringboard.CheeringBoardActivity">
 
         <ImageView
             android:id="@+id/iv_cheerup_delete"
@@ -86,7 +86,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <com.sabuzak.yeonamplace.cheerupforyou.OutlineTextView
+                <com.sabuzak.yeonamplace.cheerupforyou.presentation.util.OutlineTextView
                     android:clickable="false"
                     android:visibility="visible"
                     app:textStroke="false"

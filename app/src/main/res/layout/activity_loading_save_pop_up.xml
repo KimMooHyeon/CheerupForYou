@@ -1,52 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#80000000"
-    tools:context=".popup.LoadingSavePopUpActivity">
-    <RelativeLayout
-        android:background="#2a2d3a"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_default="percent"
-        app:layout_constraintHeight_percent="0.42"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5"
-        app:layout_constraintWidth_default="percent"
-        app:layout_constraintWidth_percent="0.67">
-        <com.wang.avi.AVLoadingIndicatorView
-            android:layout_marginTop="56dp"
-            android:layout_centerHorizontal="true"
-            android:id="@+id/avi"
-            android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/AVLoadingIndicatorView.Large"
-        android:visibility="visible"
-        app:indicatorName="BallSpinFadeLoaderIndicator"
-        app:indicatorColor="#f637f3"
-        />
-        <TextView
+    xmlns:tools="http://schemas.android.com/tools">
 
-            android:id="@+id/tv_save_full_message"
-            android:fontFamily="@font/nanum"
-            android:includeFontPadding="false"
-            android:layout_marginTop="30dp"
-            android:layout_below="@+id/avi"
-            android:layout_centerHorizontal="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:textColor="#ffffff"
-            android:lineSpacingExtra="3sp"
-            android:gravity="center_horizontal"
-            android:text="@string/save_message"
-            />
+    <data>
 
-    </RelativeLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000"
+        tools:context=".presentation.popup.LoadingSavePopUpActivity">
+
+        <RelativeLayout
+            android:background="#2a2d3a"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.42"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.5"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent="0.67">
+
+            <com.wang.avi.AVLoadingIndicatorView
+                android:layout_marginTop="56dp"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/avi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/AVLoadingIndicatorView.Large"
+                android:visibility="visible"
+                app:indicatorName="BallSpinFadeLoaderIndicator"
+                app:indicatorColor="#f637f3" />
+
+            <TextView
+
+                android:id="@+id/tv_save_full_message"
+                android:fontFamily="@font/nanum"
+                android:includeFontPadding="false"
+                android:layout_marginTop="30dp"
+                android:layout_below="@+id/avi"
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="#ffffff"
+                android:lineSpacingExtra="3sp"
+                android:gravity="center_horizontal"
+                android:text="@string/save_message" />
+
+        </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

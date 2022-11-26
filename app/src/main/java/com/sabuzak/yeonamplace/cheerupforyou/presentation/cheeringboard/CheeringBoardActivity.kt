@@ -1,12 +1,10 @@
-package com.sabuzak.yeonamplace.cheerupforyou
+package com.sabuzak.yeonamplace.cheerupforyou.presentation.cheeringboard
 
 import android.content.res.Resources
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Point
 import android.graphics.Typeface
-import android.os.Bundle
-import android.os.Handler
 import android.util.Log
 import android.view.Gravity
 import android.view.View
@@ -14,20 +12,16 @@ import android.view.Window
 import android.view.WindowManager
 import android.view.animation.*
 import android.widget.FrameLayout
-import android.widget.HorizontalScrollView
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.Dimension
-import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
-import com.sabuzak.yeonamplace.cheerupforyou.databinding.ActivityCheerUpViewBinding
-import org.jetbrains.anko.toast
+import com.sabuzak.yeonamplace.cheerupforyou.BaseActivity
+import com.sabuzak.yeonamplace.cheerupforyou.R
+import com.sabuzak.yeonamplace.cheerupforyou.databinding.ActivityCheeringBoardBinding
 
-class CheerUpViewActivity :
-    BaseActivity<ActivityCheerUpViewBinding>(R.layout.activity_cheer_up_view) {
+
+class CheeringBoardActivity :
+    BaseActivity<ActivityCheeringBoardBinding>(R.layout.activity_cheering_board) {
     private var screenWidth = 0f
     private var fromX = 0f
 
@@ -152,7 +146,7 @@ class CheerUpViewActivity :
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
-        setContentView(R.layout.activity_cheer_up_view)
+        setContentView(R.layout.activity_cheering_board)
 
         binding.ivCheerupDelete.setOnClickListener {
             finish()

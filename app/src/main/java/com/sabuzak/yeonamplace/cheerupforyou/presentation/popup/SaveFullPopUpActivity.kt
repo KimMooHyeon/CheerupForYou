@@ -1,4 +1,4 @@
-package com.sabuzak.yeonamplace.cheerupforyou.popup
+package com.sabuzak.yeonamplace.cheerupforyou.presentation.popup
 
 import com.sabuzak.yeonamplace.cheerupforyou.BaseActivity
 import com.sabuzak.yeonamplace.cheerupforyou.R

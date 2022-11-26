@@ -1,11 +1,8 @@
-package com.sabuzak.yeonamplace.cheerupforyou.popup
+package com.sabuzak.yeonamplace.cheerupforyou.presentation.popup
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.widget.TextView
 import com.sabuzak.yeonamplace.cheerupforyou.BaseActivity
-import com.sabuzak.yeonamplace.cheerupforyou.dataBase.AppDatabase
-import com.sabuzak.yeonamplace.cheerupforyou.dataBase.repository.BannerRepository
+import com.sabuzak.yeonamplace.cheerupforyou.data.dataBase.AppDatabase
+import com.sabuzak.yeonamplace.cheerupforyou.data.repository.BannerRepository
 import com.sabuzak.yeonamplace.cheerupforyou.R
 import com.sabuzak.yeonamplace.cheerupforyou.databinding.ActivityDeleteBannerPopUpBinding
 import kotlinx.coroutines.runBlocking

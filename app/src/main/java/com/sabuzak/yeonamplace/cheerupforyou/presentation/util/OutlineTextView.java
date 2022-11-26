@@ -1,4 +1,4 @@
-package com.sabuzak.yeonamplace.cheerupforyou;
+package com.sabuzak.yeonamplace.cheerupforyou.presentation.util;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
@@ -6,8 +6,8 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.util.AttributeSet;
-
 import androidx.appcompat.widget.AppCompatTextView;
+import com.sabuzak.yeonamplace.cheerupforyou.R;
 
 public class OutlineTextView extends AppCompatTextView {
     private boolean stroke = false;

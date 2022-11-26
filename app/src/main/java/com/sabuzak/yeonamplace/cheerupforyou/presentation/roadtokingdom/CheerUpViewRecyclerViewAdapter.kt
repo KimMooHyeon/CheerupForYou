@@ -1,4 +1,4 @@
-package com.sabuzak.yeonamplace.cheerupforyou.Adapter
+package com.sabuzak.yeonamplace.cheerupforyou.presentation.roadtokingdom
 
 import android.content.Context
 import android.graphics.Canvas
@@ -11,9 +11,9 @@ import android.widget.*
 import androidx.annotation.Dimension
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.sabuzak.yeonamplace.cheerupforyou.CheerUpViewActivity
-import com.sabuzak.yeonamplace.cheerupforyou.data.CheerUpViewData
-import com.sabuzak.yeonamplace.cheerupforyou.OutlineTextView
+import com.sabuzak.yeonamplace.cheerupforyou.presentation.cheeringboard.CheeringBoardActivity
+import com.sabuzak.yeonamplace.cheerupforyou.data.model.CheerUpViewData
+import com.sabuzak.yeonamplace.cheerupforyou.presentation.util.OutlineTextView
 import com.sabuzak.yeonamplace.cheerupforyou.R
 import org.jetbrains.anko.startActivity
 
@@ -130,7 +130,7 @@ class CheerUpViewRecyclerViewAdapter(var ctx: Context, var dataList: ArrayList<C
         }*/
 
         holder.tv_rv_item.setOnClickListener {
-            ctx.startActivity<CheerUpViewActivity>("edt_making_text" to dataList[position].text,"text_size" to dataList[position].text_size , "background_color" to dataList[position].background_color , "text_color" to dataList[position].text_color , "speed" to dataList[position].speed , "direction" to dataList[position].direction,"font" to dataList[position].font , "effect0" to dataList[position].effect0,"effect1" to dataList[position].effect1,"effect2" to dataList[position].effect2,"effect3" to dataList[position].effect3)
+            ctx.startActivity<CheeringBoardActivity>("edt_making_text" to dataList[position].text,"text_size" to dataList[position].text_size , "background_color" to dataList[position].background_color , "text_color" to dataList[position].text_color , "speed" to dataList[position].speed , "direction" to dataList[position].direction,"font" to dataList[position].font , "effect0" to dataList[position].effect0,"effect1" to dataList[position].effect1,"effect2" to dataList[position].effect2,"effect3" to dataList[position].effect3)
 
         }
 

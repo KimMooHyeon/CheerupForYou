@@ -1,4 +1,4 @@
-package com.sabuzak.yeonamplace.cheerupforyou.Adapter
+package com.sabuzak.yeonamplace.cheerupforyou.presentation.main
 
 import android.content.Context
 import android.content.Intent
@@ -16,11 +16,11 @@ import android.widget.ImageView
 import androidx.annotation.Dimension
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
-import com.sabuzak.yeonamplace.cheerupforyou.dataBase.Entity.Banner
-import com.sabuzak.yeonamplace.cheerupforyou.MakingCheerUpTextActivity
-import com.sabuzak.yeonamplace.cheerupforyou.OutlineTextView
+import com.sabuzak.yeonamplace.cheerupforyou.presentation.makingcheerup.MakingCheerUpTextActivity
+import com.sabuzak.yeonamplace.cheerupforyou.presentation.util.OutlineTextView
 import com.sabuzak.yeonamplace.cheerupforyou.R
-import com.sabuzak.yeonamplace.cheerupforyou.popup.DeleteBannerPopUpActivity
+import com.sabuzak.yeonamplace.cheerupforyou.data.model.Banner
+import com.sabuzak.yeonamplace.cheerupforyou.presentation.popup.DeleteBannerPopUpActivity
 import org.jetbrains.anko.sdk27.coroutines.onClick
 
 class BannerRecyclerViewAdapter(var ctx: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -45,13 +45,8 @@ class BannerRecyclerViewAdapter(var ctx: Context) : RecyclerView.Adapter<Recycle
 
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-
-
     }
 
-    /*
-     *
-     */
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int, payloads: MutableList<Any>) {
         /**

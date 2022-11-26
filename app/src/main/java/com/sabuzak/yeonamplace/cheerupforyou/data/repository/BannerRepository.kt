@@ -1,10 +1,10 @@
-package com.sabuzak.yeonamplace.cheerupforyou.dataBase.Repository
+package com.sabuzak.yeonamplace.cheerupforyou.data.repository
 
 import androidx.lifecycle.LiveData
-import com.sabuzak.yeonamplace.cheerupforyou.dataBase.Dao.BannerDao
-import com.sabuzak.yeonamplace.cheerupforyou.dataBase.Entity.Banner
+import com.sabuzak.yeonamplace.cheerupforyou.data.dao.BannerDao
+import com.sabuzak.yeonamplace.cheerupforyou.data.model.Banner
 
-class BannerRepository(private val bannerDao:BannerDao){
+class BannerRepository(private val bannerDao: BannerDao){
 
     val allBanner:LiveData<List<Banner>> = bannerDao.getAll()
 
