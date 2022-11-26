@@ -15,17 +15,12 @@ import android.view.animation.AnimationSet
 import android.view.animation.AnimationUtils
 import android.view.animation.TranslateAnimation
 import android.view.inputmethod.InputMethodManager
-import android.widget.EditText
 import android.widget.FrameLayout
-import android.widget.HorizontalScrollView
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.annotation.Dimension
-import androidx.appcompat.app.AppCompatActivity
 import com.sabuzak.yeonamplace.cheerupforyou.dataBase.AppDatabase
 import com.sabuzak.yeonamplace.cheerupforyou.dataBase.Entity.Banner
 import com.sabuzak.yeonamplace.cheerupforyou.dataBase.Repository.BannerRepository
+import com.sabuzak.yeonamplace.cheerupforyou.databinding.ActivityMakingCheerUpTextBinding
 import com.sabuzak.yeonamplace.cheerupforyou.popup.LodingSavePopUpActivity
 import com.sabuzak.yeonamplace.cheerupforyou.popup.SaveFullPopUpActivity
 import kotlinx.coroutines.runBlocking
@@ -33,9 +28,11 @@ import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
 
-class MakingCheerUpTextActivity : AppCompatActivity() {
+class MakingCheerUpTextActivity :
+    BaseActivity<ActivityMakingCheerUpTextBinding>(R.layout.activity_making_cheer_up_text) {
     private lateinit var bannerRepository: BannerRepository
-    private  var bannerCount:Int = 0
+    private var bannerCount: Int = 0
+
     // 각 값 초기값 설정
     var text_size = 2
     var background_color = 0
@@ -43,6 +40,7 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
     var direction = 2
     var speed = 1
     var font = 0
+
     //효과가 없으면 0 있으면 1
     var effect0 = 0
     var effect1 = 0
@@ -52,48 +50,6 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
     private var screenHeight = 0f
     private var fromX = 0f
     private var fromY = 0f
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_making_cheer_up_text)
-        bannerCount = intent.getIntExtra("bannerCount",0)
-        // DEFAULT 값 설정
-
-        var tv_making_text_size_normal = findViewById<TextView>(R.id.tv_making_text_size_normal)
-        var tv_making_text_speed_normal = findViewById<TextView>(R.id.tv_making_text_speed_normal)
-        var tv_making_textcolor_white = findViewById<TextView>(R.id.tv_making_textcolor_white)
-
-        var iv_making_direction_left = findViewById<ImageView>(R.id.iv_making_direction_left)
-
-        var tv_making_color_black = findViewById<TextView>(R.id.tv_making_color_black)
-        var tv_making_text_font_nanum = findViewById<TextView>(R.id.tv_making_text_font_nanum)
-
-        var tv_making_text_font_hasuwon = findViewById<TextView>(R.id.tv_making_text_font_hasuwon)
-        var tv_making_text_font_uljiro = findViewById<TextView>(R.id.tv_making_text_font_uljiro)
-        var tv_making_text_font_hanna = findViewById<TextView>(R.id.tv_making_text_font_hanna)
-        var tv_making_text_font_yanolza = findViewById<TextView>(R.id.tv_making_text_font_yanolza)
-        var tv_making_text_font_jua = findViewById<TextView>(R.id.tv_making_text_font_jua)
-        var tv_making_text_font_tvn = findViewById<TextView>(R.id.tv_making_text_font_tvn)
-
-
-        tv_making_text_size_normal.isSelected=true
-        tv_making_text_speed_normal.isSelected=true
-        tv_making_textcolor_white.isSelected=true
-        iv_making_direction_left.isSelected=true
-        tv_making_color_black.isSelected=true
-        tv_making_text_font_nanum.isSelected=true
-
-        tv_making_text_font_hasuwon.setTypeface(Typeface.createFromAsset(getAssets(), "font/hansuwon.ttf"))
-        tv_making_text_font_uljiro.setTypeface(Typeface.createFromAsset(getAssets(), "font/uljiro.ttf"))
-        tv_making_text_font_hanna.setTypeface(Typeface.createFromAsset(getAssets(), "font/hanna.ttf"))
-        tv_making_text_font_yanolza.setTypeface(Typeface.createFromAsset(getAssets(), "font/yanolza.ttf"))
-        tv_making_text_font_jua.setTypeface(Typeface.createFromAsset(getAssets(), "font/jua.ttf"))
-        tv_making_text_font_tvn.setTypeface(Typeface.createFromAsset(getAssets(), "font/tvn.ttf"))
-
-
-
-
-    }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
 
@@ -107,292 +63,235 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
 
         var previousString = " "
 
-        var edt_making_text = findViewById<EditText>(R.id.edt_making_text)
-        var tv_making_save_confirm = findViewById<TextView>(R.id.tv_making_save_confirm)
-
-        var tv_making_direction_stop =findViewById<TextView>(R.id.tv_making_direction_stop)
-        var iv_making_direction_right = findViewById<ImageView>(R.id.iv_making_direction_right)
-        var iv_making_direction_left = findViewById<ImageView>(R.id.iv_making_direction_left)
-        var tv_making_text_speed_fast = findViewById<TextView>(R.id.tv_making_text_speed_fast)
-        var tv_making_text_speed_normal = findViewById<TextView>(R.id.tv_making_text_speed_normal)
-        var tv_making_text_speed_slow = findViewById<TextView>(R.id.tv_making_text_speed_slow)
-        var tv_making_cheerup_effect0 = findViewById<TextView>(R.id.tv_making_cheerup_effect0)
-        var tv_making_cheerup_effect1 = findViewById<TextView>(R.id.tv_making_cheerup_effect1)
-        var tv_making_cheerup_effect2 = findViewById<TextView>(R.id.tv_making_cheerup_effect2)
-        var tv_making_cheerup_effect3 = findViewById<TextView>(R.id.tv_making_cheerup_effect3)
-
-        var tv_making_textcolor_blue = findViewById<TextView>(R.id.tv_making_textcolor_blue)
-        var tv_text = findViewById<OutlineTextView>(R.id.tv_text)
         // 수정하기 부분
-        if (intent.getIntExtra("idx",-99) != -99){
+        if (intent.getIntExtra("idx", -99) != -99) {
 
             // 배너의 idx 값 intent.getIntExtra("idx")
-            edt_making_text.hint =intent.getStringExtra("edt_making_text")
-            tv_making_save_confirm.text="수정하기"
-            tv_text.text = intent.getStringExtra("edt_making_text")
-             text_size =  intent.getIntExtra("text_size",-99)
-             background_color = intent.getIntExtra("background_color",-99)
-             text_color = intent.getIntExtra("text_color",-99)
-             direction = intent.getIntExtra("direction",-99)
-             speed = intent.getIntExtra("speed",-99)
-             font = intent.getIntExtra("font",-99)
-            if (direction == 0 ) {
-                iv_making_direction_right.isSelected=true
-                iv_making_direction_left.isSelected=false
-            }else if (direction == 1){
-                tv_making_direction_stop.isSelected=true
-                iv_making_direction_left.isSelected=false
-            }else if (direction == 2 ){
-                iv_making_direction_left.isSelected=true
+            binding.edtMakingText.hint = intent.getStringExtra("binding.edtMakingText")
+            binding.tvMakingSaveConfirm.text = "수정하기"
+            binding.tvText.text = intent.getStringExtra("binding.edtMakingText")
+            text_size = intent.getIntExtra("text_size", -99)
+            background_color = intent.getIntExtra("background_color", -99)
+            text_color = intent.getIntExtra("text_color", -99)
+            direction = intent.getIntExtra("direction", -99)
+            speed = intent.getIntExtra("speed", -99)
+            font = intent.getIntExtra("font", -99)
+            
+            if (direction == 0) {
+                binding.ivMakingDirectionRight.isSelected = true
+                binding.ivMakingDirectionLeft.isSelected = false
+            } else if (direction == 1) {
+                binding.tvMakingDirectionStop.isSelected = true
+                binding.ivMakingDirectionLeft.isSelected = false
+            } else if (direction == 2) {
+                binding.ivMakingDirectionLeft.isSelected = true
             }
 
-            if (speed == 0 ){
-                tv_making_text_speed_fast.isSelected=true
-                tv_making_text_speed_normal.isSelected=false
-                tv_making_text_speed_slow.isSelected = false
-            }else if (speed ==1){
-                tv_making_text_speed_fast.isSelected=false
-                tv_making_text_speed_normal.isSelected=true
-                tv_making_text_speed_slow.isSelected = false
-            }else if (speed ==2 ){
-                tv_making_text_speed_fast.isSelected=false
-                tv_making_text_speed_normal.isSelected=false
-                tv_making_text_speed_slow.isSelected = true
+            if (speed == 0) {
+                binding.tvMakingTextSpeedFast.isSelected = true
+                binding.tvMakingTextSpeedNormal.isSelected = false
+                binding.tvMakingTextSpeedSlow.isSelected = false
+            } else if (speed == 1) {
+                binding.tvMakingTextSpeedFast.isSelected = false
+                binding.tvMakingTextSpeedNormal.isSelected = true
+                binding.tvMakingTextSpeedSlow.isSelected = false
+            } else if (speed == 2) {
+                binding.tvMakingTextSpeedFast.isSelected = false
+                binding.tvMakingTextSpeedNormal.isSelected = false
+                binding.tvMakingTextSpeedSlow.isSelected = true
             }
 
             //효과가 없으면 0 있으면 1
-            if (intent.getBooleanExtra("effect0",false)){
+            if (intent.getBooleanExtra("effect0", false)) {
                 effect0 = 1
-                tv_making_cheerup_effect0.isSelected = true
+                binding.tvMakingCheerupEffect0.isSelected = true
             }
-            if (intent.getBooleanExtra("effect1",false)){
+            if (intent.getBooleanExtra("effect1", false)) {
                 effect1 = 1
-                tv_making_cheerup_effect1.isSelected = true
+                binding.tvMakingCheerupEffect1.isSelected = true
             }
-            if (intent.getBooleanExtra("effect2",false)){
+            if (intent.getBooleanExtra("effect2", false)) {
                 effect2 = 1
-                tv_making_cheerup_effect2.isSelected = true
+                binding.tvMakingCheerupEffect2.isSelected = true
             }
-            if (intent.getBooleanExtra("effect3",false)){
+            if (intent.getBooleanExtra("effect3", false)) {
                 effect3 = 1
-                tv_making_cheerup_effect3.isSelected = true
+                binding.tvMakingCheerupEffect3.isSelected = true
             }
 
             //효과 받기
 
-            if(effect1==1) {
+            if (effect1 == 1) {
                 //있는거
-                tv_text.setStroke(true)
-                tv_text.draw(Canvas())
+                binding.tvText.setStroke(true)
+                binding.tvText.draw(Canvas())
             }
 
-            if(effect2==1) {
-                tv_text.setShadowLayer(15.0f,0.0f,0.0f,Color.parseColor("#ffffff"))
+            if (effect2 == 1) {
+                binding.tvText.setShadowLayer(15.0f, 0.0f, 0.0f, Color.parseColor("#ffffff"))
             }
-            if(effect3==1) {
-                tv_text.setShadowLayer(4.0f,8.0f,3.0f,Color.parseColor("#2AEFF5"))
+            if (effect3 == 1) {
+                binding.tvText.setShadowLayer(4.0f, 8.0f, 3.0f, Color.parseColor("#2AEFF5"))
             }
-
-            var tv_making_text_size_normal = findViewById<TextView>(R.id.tv_making_text_size_normal)
-            var tv_making_text_speed_normal = findViewById<TextView>(R.id.tv_making_text_speed_normal)
-            var tv_making_textcolor_white = findViewById<TextView>(R.id.tv_making_textcolor_white)
-
-            var iv_making_direction_left = findViewById<ImageView>(R.id.iv_making_direction_left)
-
-            var tv_making_color_black = findViewById<TextView>(R.id.tv_making_color_black)
-            var tv_making_text_font_nanum = findViewById<TextView>(R.id.tv_making_text_font_nanum)
-
-            var tv_making_text_font_hasuwon = findViewById<TextView>(R.id.tv_making_text_font_hasuwon)
-            var tv_making_text_font_uljiro = findViewById<TextView>(R.id.tv_making_text_font_uljiro)
-            var tv_making_text_font_hanna = findViewById<TextView>(R.id.tv_making_text_font_hanna)
-            var tv_making_text_font_yanolza = findViewById<TextView>(R.id.tv_making_text_font_yanolza)
-            var tv_making_text_font_jua = findViewById<TextView>(R.id.tv_making_text_font_jua)
-            var tv_making_text_font_tvn = findViewById<TextView>(R.id.tv_making_text_font_tvn)
-
-            var tv_making_textcolor_blue = findViewById<TextView>(R.id.tv_making_textcolor_blue)
-            var tv_text = findViewById<OutlineTextView>(R.id.tv_text)
+            
             // 폰트 받기
-            if(font==0){
-                tv_text.setTypeface(Typeface.createFromAsset(getAssets(), "font/nanum.ttf"))
-                tv_making_text_font_nanum.isSelected=true
-            }else if (font==1){
-                tv_text.setTypeface(Typeface.createFromAsset(getAssets(), "font/hansuwon.ttf"))
-                tv_making_text_font_nanum.isSelected=false
-                tv_making_text_font_hasuwon.isSelected=true
-            }else if (font==2){
-                tv_text.setTypeface(Typeface.createFromAsset(getAssets(), "font/uljiro.ttf"))
-                tv_making_text_font_nanum.isSelected=false
-                tv_making_text_font_uljiro.isSelected=true
-            }else if (font==3){
-                tv_text.setTypeface(Typeface.createFromAsset(getAssets(), "font/hanna.ttf"))
-                tv_making_text_font_nanum.isSelected=false
-                tv_making_text_font_hanna.isSelected=true
-            }else if (font==4){
-                tv_text.setTypeface(Typeface.createFromAsset(getAssets(), "font/yanolza.ttf"))
-                tv_making_text_font_nanum.isSelected=false
-                tv_making_text_font_yanolza.isSelected=true
-            }else if (font==5){
-                tv_text.setTypeface(Typeface.createFromAsset(getAssets(), "font/jua.ttf"))
-                tv_making_text_font_nanum.isSelected=false
-                tv_making_text_font_jua.isSelected=true
-            }else if (font==6){
-                tv_text.setTypeface(Typeface.createFromAsset(getAssets(), "font/tvn.ttf"))
-                tv_making_text_font_nanum.isSelected=false
-                tv_making_text_font_tvn.isSelected=true
+            if (font == 0) {
+                binding.tvText.typeface = Typeface.createFromAsset(assets, "font/nanum.ttf")
+                binding.tvMakingTextFontNanum.isSelected = true
+            } else if (font == 1) {
+                binding.tvText.typeface = Typeface.createFromAsset(assets, "font/hansuwon.ttf")
+                binding.tvMakingTextFontNanum.isSelected = false
+                binding.tvMakingTextFontHasuwon.isSelected = true
+            } else if (font == 2) {
+                binding.tvText.typeface = Typeface.createFromAsset(assets, "font/uljiro.ttf")
+                binding.tvMakingTextFontNanum.isSelected = false
+                binding.tvMakingTextFontUljiro.isSelected = true
+            } else if (font == 3) {
+                binding.tvText.typeface = Typeface.createFromAsset(assets, "font/hanna.ttf")
+                binding.tvMakingTextFontNanum.isSelected = false
+                binding.tvMakingTextFontHanna.isSelected = true
+            } else if (font == 4) {
+                binding.tvText.typeface = Typeface.createFromAsset(assets, "font/yanolza.ttf")
+                binding.tvMakingTextFontNanum.isSelected = false
+                binding.tvMakingTextFontYanolza.isSelected = true
+            } else if (font == 5) {
+                binding.tvText.typeface = Typeface.createFromAsset(assets, "font/jua.ttf")
+                binding.tvMakingTextFontNanum.isSelected = false
+                binding.tvMakingTextFontJua.isSelected = true
+            } else if (font == 6) {
+                binding.tvText.typeface = Typeface.createFromAsset(assets, "font/tvn.ttf")
+                binding.tvMakingTextFontNanum.isSelected = false
+                binding.tvMakingTextFontTvn.isSelected = true
             }
-
-            var tv_making_textcolor_dark_green = findViewById<TextView>(R.id.tv_making_textcolor_dark_green)
-            var tv_making_textcolor_yellow = findViewById<TextView>(R.id.tv_making_textcolor_yellow)
-
-            var tv_making_textcolor_orange = findViewById<TextView>(R.id.tv_making_textcolor_orange)
-            var tv_making_textcolor_pink = findViewById<TextView>(R.id.tv_making_textcolor_pink)
-
+            binding.tvMakingTextcolorDarkGreen
             // 글자 색 받기
-            if(text_color ==0 ) {
-                tv_text.setTextColor(Color.parseColor("#ffffff"))
-                tv_making_textcolor_white.isSelected = true
-            }else if(text_color ==1 ) {
-                tv_text.setTextColor(Color.parseColor("#3c3eda"))
-                tv_making_textcolor_white.isSelected = false
-                tv_making_textcolor_blue.isSelected = true
-            }else if(text_color ==2 ) {
-                tv_text.setTextColor(Color.parseColor("#0191b6"))
-                tv_making_textcolor_white.isSelected = false
-                tv_making_textcolor_dark_green.isSelected =true
-            }else if(text_color ==3 ) {
-                tv_text.setTextColor(Color.parseColor("#f9d80d"))
-                tv_making_textcolor_white.isSelected = false
-                tv_making_textcolor_yellow.isSelected= true
-            }else if(text_color ==4 ) {
-                tv_text.setTextColor(Color.parseColor( "#ff7b17"))
-                tv_making_textcolor_white.isSelected = false
-                tv_making_textcolor_orange.isSelected= true
-            }else if(text_color ==5 ) {
-                tv_text.setTextColor(Color.parseColor("#f637f3"))
-                tv_making_textcolor_white.isSelected = false
-                tv_making_textcolor_pink.isSelected =true
+            if (text_color == 0) {
+                binding.tvText.setTextColor(Color.parseColor("#ffffff"))
+                binding.tvMakingTextcolorWhite.isSelected = true
+            } else if (text_color == 1) {
+                binding.tvText.setTextColor(Color.parseColor("#3c3eda"))
+                binding.tvMakingTextcolorWhite.isSelected = false
+                binding.tvMakingTextcolorBlue.isSelected = true
+            } else if (text_color == 2) {
+                binding.tvText.setTextColor(Color.parseColor("#0191b6"))
+                binding.tvMakingTextcolorWhite.isSelected = false
+                binding.tvMakingTextcolorDarkGreen.isSelected = true
+            } else if (text_color == 3) {
+                binding.tvText.setTextColor(Color.parseColor("#f9d80d"))
+                binding.tvMakingTextcolorWhite.isSelected = false
+                binding.tvMakingTextcolorYellow.isSelected = true
+            } else if (text_color == 4) {
+                binding.tvText.setTextColor(Color.parseColor("#ff7b17"))
+                binding.tvMakingTextcolorWhite.isSelected = false
+                binding.tvMakingTextcolorOrange.isSelected = true
+            } else if (text_color == 5) {
+                binding.tvText.setTextColor(Color.parseColor("#f637f3"))
+                binding.tvMakingTextcolorWhite.isSelected = false
+                binding.tvMakingTextcolorPink.isSelected = true
             }
-            var tv_making_color_blue = findViewById<TextView>(R.id.tv_making_color_blue)
-            var tv_making_color_dark_green = findViewById<TextView>(R.id.tv_making_color_dark_green)
-            var tv_making_color_yellow = findViewById<TextView>(R.id.tv_making_color_yellow)
-            var tv_making_color_orange = findViewById<TextView>(R.id.tv_making_color_orange)
-            var tv_making_color_pink = findViewById<TextView>(R.id.tv_making_color_pink)
+  
             // 백그라운드 색 변경
-            var hs_makingtext = findViewById<HorizontalScrollView>(R.id.hs_makingtext)
-            if (background_color ==0){
-                hs_makingtext.setBackgroundColor(Color.parseColor("#000000"))
-                tv_making_color_black.isSelected=true
-                tv_making_color_blue.isSelected=false
-                tv_making_color_dark_green.isSelected=false
-                tv_making_color_yellow.isSelected=false
-                tv_making_color_orange.isSelected=false
-                tv_making_color_pink.isSelected=false
-            }else if (background_color ==1){
-                hs_makingtext.setBackgroundColor(Color.parseColor("#3c3eda"))
-                tv_making_color_black.isSelected=false
-                tv_making_color_blue.isSelected=true
-            }else if (background_color ==2){
-                hs_makingtext.setBackgroundColor(Color.parseColor("#0191b6"))
-                tv_making_color_black.isSelected=false
-                tv_making_color_dark_green.isSelected=true
-            }else if (background_color ==3){
-                hs_makingtext.setBackgroundColor(Color.parseColor("#f9d80d"))
-                tv_making_color_black.isSelected=false
-                tv_making_color_yellow.isSelected=true
-            }else if (background_color ==4){
-                hs_makingtext.setBackgroundColor(Color.parseColor("#ff7b17"))
-                tv_making_color_black.isSelected=false
-                tv_making_color_orange.isSelected=true
-            }else if (background_color ==5){
-                hs_makingtext.setBackgroundColor(Color.parseColor("#f637f3"))
-                tv_making_color_black.isSelected=false
-                tv_making_color_pink.isSelected=true
+            if (background_color == 0) {
+                binding.hsMakingtext.setBackgroundColor(Color.parseColor("#000000"))
+                binding.tvMakingColorBlack.isSelected = true
+                binding.tvMakingColorBlue.isSelected = false
+                binding.tvMakingColorDarkGreen.isSelected = false
+                binding.tvMakingColorYellow.isSelected = false
+                binding.tvMakingColorOrange.isSelected = false
+                binding.tvMakingColorPink.isSelected = false
+            } else if (background_color == 1) {
+                binding.hsMakingtext.setBackgroundColor(Color.parseColor("#3c3eda"))
+                binding.tvMakingColorBlack.isSelected = false
+                binding.tvMakingColorBlue.isSelected = true
+            } else if (background_color == 2) {
+                binding.hsMakingtext.setBackgroundColor(Color.parseColor("#0191b6"))
+                binding.tvMakingColorBlack.isSelected = false
+                binding.tvMakingColorDarkGreen.isSelected = true
+            } else if (background_color == 3) {
+                binding.hsMakingtext.setBackgroundColor(Color.parseColor("#f9d80d"))
+                binding.tvMakingColorBlack.isSelected = false
+                binding.tvMakingColorYellow.isSelected = true
+            } else if (background_color == 4) {
+                binding.hsMakingtext.setBackgroundColor(Color.parseColor("#ff7b17"))
+                binding.tvMakingColorBlack.isSelected = false
+                binding.tvMakingColorOrange.isSelected = true
+            } else if (background_color == 5) {
+                binding.hsMakingtext.setBackgroundColor(Color.parseColor("#f637f3"))
+                binding.tvMakingColorBlack.isSelected = false
+                binding.tvMakingColorPink.isSelected = true
             }
-            var tv_making_text_size_very_small = findViewById<TextView>(R.id.tv_making_text_size_very_small)
-            var tv_making_text_size_small = findViewById<TextView>(R.id.tv_making_text_size_small)
-            var tv_making_text_size_big = findViewById<TextView>(R.id.tv_making_text_size_big)
+      
             //글자 크기 변경
-            if (text_size ==0){
-                tv_text.setTextSize(Dimension.SP, 30.0f)
-                tv_making_text_size_very_small.isSelected=true
-                tv_making_text_size_normal.isSelected=false
-            } else if (text_size == 1){
-                tv_text.setTextSize(Dimension.SP, 60.0f)
-                tv_making_text_size_small.isSelected=true
-                tv_making_text_size_normal.isSelected=false
-            } else if (text_size ==2){
-                tv_text.setTextSize(Dimension.SP, 90.0f)
-                tv_making_text_size_normal.isSelected=true
-            } else if (text_size ==3){
-                tv_text.setTextSize(Dimension.SP, 120.0f)
-                tv_making_text_size_normal.isSelected=false
-                tv_making_text_size_big.isSelected=true
+            if (text_size == 0) {
+                binding.tvText.setTextSize(Dimension.SP, 30.0f)
+                binding.tvMakingTextSizeVerySmall.isSelected = true
+                binding.tvMakingTextSizeNormal.isSelected = false
+            } else if (text_size == 1) {
+                binding.tvText.setTextSize(Dimension.SP, 60.0f)
+                binding.tvMakingTextSizeSmall.isSelected = true
+                binding.tvMakingTextSizeNormal.isSelected = false
+            } else if (text_size == 2) {
+                binding.tvText.setTextSize(Dimension.SP, 90.0f)
+                binding.tvMakingTextSizeNormal.isSelected = true
+            } else if (text_size == 3) {
+                binding.tvText.setTextSize(Dimension.SP, 120.0f)
+                binding.tvMakingTextSizeNormal.isSelected = false
+                binding.tvMakingTextSizeBig.isSelected = true
             }
 
-            if (tv_text.animation != null) {
-                tv_text.clearAnimation()
+            if (binding.tvText.animation != null) {
+                binding.tvText.clearAnimation()
             }
 
             /**
              * 2020.05.12 width 0 되는 문제 해결
              */
-            tv_text.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
-            setAnim(tv_text.measuredWidth)
+            binding.tvText.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
+            setAnim(binding.tvText.measuredWidth)
 
         }
 
 
-
-
-
-
-
-
-
-
-
-        tv_making_save_confirm.setOnClickListener {
-            tv_making_save_confirm.isClickable=false
+        binding.tvMakingSaveConfirm.setOnClickListener {
+            binding.tvMakingSaveConfirm.isClickable = false
             val handler = Handler()
             handler.postDelayed(Runnable { // 저장하기 클릭후 2초 동안 클릭안되게하기
-                tv_making_save_confirm.isClickable=true
+                binding.tvMakingSaveConfirm.isClickable = true
             }, 2000)
 
 
-        /**
-         * 2020.05.06 [작성자 : 최선필] 배너 객체 생성해서 디비 저장 완료
-         */
-        val bannerDao = AppDatabase.getDatabase(application).bannerDao()
-        bannerRepository = BannerRepository(bannerDao)
-        /**
-         * 2020.05.07 TODO. 새로운 응원이 저장함에 저장되고 있습니다. 팝업 띄워야 함
-         * 2020.05.08 나중에 이거 사용~! 저장함 갯수 판별
-         * */
+            /**
+             * 2020.05.06 [작성자 : 최선필] 배너 객체 생성해서 디비 저장 완료
+             */
+            val bannerDao = AppDatabase.getDatabase(application).bannerDao()
+            bannerRepository = BannerRepository(bannerDao)
+            /**
+             * 2020.05.07 TODO. 새로운 응원이 저장함에 저장되고 있습니다. 팝업 띄워야 함
+             * 2020.05.08 나중에 이거 사용~! 저장함 갯수 판별
+             * */
 
-            if(tv_making_save_confirm.text == "수정하기")
-            {
+            if (binding.tvMakingSaveConfirm.text == "수정하기") {
                 runBlocking {
                     val banner = Banner(
-                        intent.getIntExtra("idx",-99),
-                        tv_text.text.toString(),
+                        intent.getIntExtra("idx", -99),
+                        binding.tvText.text.toString(),
                         font,
                         text_size,
                         background_color,
                         text_color,
                         direction,
                         speed,
-                        tv_making_cheerup_effect0.isSelected,
-                        tv_making_cheerup_effect1.isSelected,
-                        tv_making_cheerup_effect2.isSelected,
-                        tv_making_cheerup_effect3.isSelected
+                        binding.tvMakingCheerupEffect0.isSelected,
+                        binding.tvMakingCheerupEffect1.isSelected,
+                        binding.tvMakingCheerupEffect2.isSelected,
+                        binding.tvMakingCheerupEffect3.isSelected
                     )
 
                     bannerRepository.update(banner)
                 }
                 startActivity<LodingSavePopUpActivity>()
 
-            }
-            else {
+            } else {
 
                 if (bannerCount >= 5) {
                     startActivity<SaveFullPopUpActivity>()
@@ -401,17 +300,17 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
                     runBlocking {
                         val banner = Banner(
                             0,
-                            tv_text.text.toString(),
+                            binding.tvText.text.toString(),
                             font,
                             text_size,
                             background_color,
                             text_color,
                             direction,
                             speed,
-                            tv_making_cheerup_effect0.isSelected,
-                            tv_making_cheerup_effect1.isSelected,
-                            tv_making_cheerup_effect2.isSelected,
-                            tv_making_cheerup_effect3.isSelected
+                            binding.tvMakingCheerupEffect0.isSelected,
+                            binding.tvMakingCheerupEffect1.isSelected,
+                            binding.tvMakingCheerupEffect2.isSelected,
+                            binding.tvMakingCheerupEffect3.isSelected
                         )
 
                         bannerRepository.insert(banner)
@@ -419,43 +318,44 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
                     startActivity<LodingSavePopUpActivity>()
                 }
             }
-    }
-        var ll_making_text = findViewById<LinearLayout>(R.id.ll_making_text)
-        edt_making_text.addTextChangedListener(object : TextWatcher {
+        }
+
+        binding.edtMakingText.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
-                if (edt_making_text.getLineCount() >= 3)
-                {
-                    edt_making_text.setText(previousString)
-                    edt_making_text.setSelection(edt_making_text.length())
+                if (binding.edtMakingText.lineCount >= 3) {
+                    binding.edtMakingText.setText(previousString)
+                    binding.edtMakingText.setSelection(binding.edtMakingText.length())
                 }
 
 
-                tv_text.text = p0.toString()
-                if(tv_text.width < screenWidth){
+                binding.tvText.text = p0.toString()
+                if (binding.tvText.width < screenWidth) {
 
-                    val params = ll_making_text.layoutParams as FrameLayout.LayoutParams
+                    val params = binding.llMakingText.layoutParams as FrameLayout.LayoutParams
                     params.gravity = Gravity.CENTER
-                    ll_making_text.layoutParams = params
+                    binding.llMakingText.layoutParams = params
 
-                }else{
-                    val params = ll_making_text.layoutParams as FrameLayout.LayoutParams
+                } else {
+                    val params = binding.llMakingText.layoutParams as FrameLayout.LayoutParams
                     params.gravity = Gravity.CENTER_VERTICAL
-                    ll_making_text.layoutParams = params
+                    binding.llMakingText.layoutParams = params
                 }
 
-                if (tv_text.animation != null) {
-                    tv_text.clearAnimation()
+                if (binding.tvText.animation != null) {
+                    binding.tvText.clearAnimation()
                 }
-                if (tv_text.text !=""){
-                    tv_text.clearAnimation()
-                    setAnim(tv_text.width,p0.toString())
+                if (binding.tvText.text != "") {
+                    binding.tvText.clearAnimation()
+                    setAnim(binding.tvText.width, p0.toString())
                 }
 
 
             }
+
             override fun beforeTextChanged(p0: CharSequence?, start: Int, count: Int, after: Int) {
                 previousString = p0.toString()
             }
+
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
 
 
@@ -463,491 +363,474 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
         })
         // 효과 선택
 
-        tv_making_cheerup_effect0.setOnClickListener {
-            if(tv_making_cheerup_effect0.isSelected==false){
-                tv_making_cheerup_effect0.isSelected = true
+        binding.tvMakingCheerupEffect0.setOnClickListener {
+            if (!binding.tvMakingCheerupEffect0.isSelected) {
+                binding.tvMakingCheerupEffect0.isSelected = true
                 //깜빡임 효과
-                if (tv_text.animation != null) {
-                    tv_text.clearAnimation()
+                if (binding.tvText.animation != null) {
+                    binding.tvText.clearAnimation()
                 }
-                effect0=1
+                effect0 = 1
                 setAnim()
-            }else {
-                tv_making_cheerup_effect0.isSelected=false
+            } else {
+                binding.tvMakingCheerupEffect0.isSelected = false
                 //깜빡임 효과 끄기
-                if (tv_text.animation != null) {
-                    tv_text.clearAnimation()
+                if (binding.tvText.animation != null) {
+                    binding.tvText.clearAnimation()
                 }
-                effect0=0
+                effect0 = 0
                 setAnim()
             }
         }
-        tv_making_cheerup_effect1.setOnClickListener {
-            if(tv_making_cheerup_effect1.isSelected==false){
-                tv_making_cheerup_effect1.isSelected = true
+        binding.tvMakingCheerupEffect1.setOnClickListener {
+            if (!binding.tvMakingCheerupEffect1.isSelected) {
+                binding.tvMakingCheerupEffect1.isSelected = true
                 //외곽선 효과
-                effect1=1
-                tv_text.setStroke(true)
-                tv_text.draw(Canvas())
-            }else {
-                tv_making_cheerup_effect1.isSelected=false
+                effect1 = 1
+                binding.tvText.setStroke(true)
+                binding.tvText.draw(Canvas())
+            } else {
+                binding.tvMakingCheerupEffect1.isSelected = false
                 //외곽선 효과 끄기
-                tv_text.setStroke(false)
-                effect1=0
+                binding.tvText.setStroke(false)
+                effect1 = 0
             }
         }
-        tv_making_cheerup_effect2.setOnClickListener {
-            if(tv_making_cheerup_effect2.isSelected==false){
-                tv_making_cheerup_effect2.isSelected = true
-                tv_making_cheerup_effect3.isSelected = false
-                tv_text.setShadowLayer(15.0f,0.0f,0.0f,Color.parseColor("#ffffff"))
-                effect2=1
+        binding.tvMakingCheerupEffect2.setOnClickListener {
+            if (!binding.tvMakingCheerupEffect2.isSelected) {
+                binding.tvMakingCheerupEffect2.isSelected = true
+                binding.tvMakingCheerupEffect3.isSelected = false
+                binding.tvText.setShadowLayer(15.0f, 0.0f, 0.0f, Color.parseColor("#ffffff"))
+                effect2 = 1
 
-            }else {
-                tv_making_cheerup_effect2.isSelected=false
+            } else {
+                binding.tvMakingCheerupEffect2.isSelected = false
                 //빛나게 효과 끄기
-                effect2=0
-                tv_text.setShadowLayer(0.0f,0.0f,0.0f,Color.parseColor("#ffffff"))
+                effect2 = 0
+                binding.tvText.setShadowLayer(0.0f, 0.0f, 0.0f, Color.parseColor("#ffffff"))
             }
         }
-        tv_making_cheerup_effect3.setOnClickListener {
-            if(tv_making_cheerup_effect3.isSelected==false){
-                tv_making_cheerup_effect3.isSelected = true
-                tv_making_cheerup_effect2.isSelected = false
+        binding.tvMakingCheerupEffect3.setOnClickListener {
+            if (!binding.tvMakingCheerupEffect3.isSelected) {
+                binding.tvMakingCheerupEffect3.isSelected = true
+                binding.tvMakingCheerupEffect2.isSelected = false
                 //그림자 효과
-                effect3=1
-                tv_text.setShadowLayer(4.0f,8.0f,3.0f,Color.parseColor("#2AEFF5"))
-            }else {
-                tv_making_cheerup_effect3.isSelected=false
+                effect3 = 1
+                binding.tvText.setShadowLayer(4.0f, 8.0f, 3.0f, Color.parseColor("#2AEFF5"))
+            } else {
+                binding.tvMakingCheerupEffect3.isSelected = false
                 //그림자 효과 끄기
-                effect3=0
-                tv_text.setShadowLayer(0.0f,0.0f,0.0f,Color.parseColor("#ffffff"))
+                effect3 = 0
+                binding.tvText.setShadowLayer(0.0f, 0.0f, 0.0f, Color.parseColor("#ffffff"))
             }
         }
-        var tv_making_text_size_normal = findViewById<TextView>(R.id.tv_making_text_size_normal)
-        var tv_making_textcolor_white = findViewById<TextView>(R.id.tv_making_textcolor_white)
-        var tv_making_color_black = findViewById<TextView>(R.id.tv_making_color_black)
-        var tv_making_text_font_nanum = findViewById<TextView>(R.id.tv_making_text_font_nanum)
-        var tv_making_text_font_hasuwon = findViewById<TextView>(R.id.tv_making_text_font_hasuwon)
-        var tv_making_text_font_uljiro = findViewById<TextView>(R.id.tv_making_text_font_uljiro)
-        var tv_making_text_font_hanna = findViewById<TextView>(R.id.tv_making_text_font_hanna)
-        var tv_making_text_font_yanolza = findViewById<TextView>(R.id.tv_making_text_font_yanolza)
-        var tv_making_text_font_jua = findViewById<TextView>(R.id.tv_making_text_font_jua)
-        var tv_making_text_font_tvn = findViewById<TextView>(R.id.tv_making_text_font_tvn)
 
 
         // 폰트 선택
-        tv_making_text_font_nanum.setOnClickListener {
-            tv_making_text_font_nanum.isSelected=true
-            tv_making_text_font_hasuwon.isSelected=false
-            tv_making_text_font_uljiro.isSelected=false
-            tv_making_text_font_hanna.isSelected=false
-            tv_making_text_font_yanolza.isSelected=false
-            tv_making_text_font_jua.isSelected=false
-            tv_making_text_font_tvn.isSelected=false
-            font=0
-            tv_text.setTypeface(Typeface.createFromAsset(getAssets(), "font/nanum.ttf"))
-            edt_making_text.setTypeface(Typeface.createFromAsset(getAssets(), "font/nanum.ttf"))
+        binding.tvMakingTextFontNanum.setOnClickListener {
+            binding.tvMakingTextFontNanum.isSelected = true
+            binding.tvMakingTextFontHasuwon.isSelected = false
+            binding.tvMakingTextFontUljiro.isSelected = false
+            binding.tvMakingTextFontHanna.isSelected = false
+            binding.tvMakingTextFontYanolza.isSelected = false
+            binding.tvMakingTextFontJua.isSelected = false
+            binding.tvMakingTextFontTvn.isSelected = false
+            font = 0
+            binding.tvText.typeface = Typeface.createFromAsset(assets, "font/nanum.ttf")
+            binding.edtMakingText.typeface = Typeface.createFromAsset(assets, "font/nanum.ttf")
         }
-        tv_making_text_font_hasuwon.setOnClickListener {
-            tv_making_text_font_nanum.isSelected=false
-            tv_making_text_font_hasuwon.isSelected=true
-            tv_making_text_font_uljiro.isSelected=false
-            tv_making_text_font_hanna.isSelected=false
-            tv_making_text_font_yanolza.isSelected=false
-            tv_making_text_font_jua.isSelected=false
-            tv_making_text_font_tvn.isSelected=false
-            font=1
-            tv_text.setTypeface(Typeface.createFromAsset(getAssets(), "font/hansuwon.ttf"))
-            edt_making_text.setTypeface(Typeface.createFromAsset(getAssets(), "font/hansuwon.ttf"))
+        binding.tvMakingTextFontHasuwon.setOnClickListener {
+            binding.tvMakingTextFontNanum.isSelected = false
+            binding.tvMakingTextFontHasuwon.isSelected = true
+            binding.tvMakingTextFontUljiro.isSelected = false
+            binding.tvMakingTextFontHanna.isSelected = false
+            binding.tvMakingTextFontYanolza.isSelected = false
+            binding.tvMakingTextFontJua.isSelected = false
+            binding.tvMakingTextFontTvn.isSelected = false
+            font = 1
+            binding.tvText.typeface = Typeface.createFromAsset(assets, "font/hansuwon.ttf")
+            binding.edtMakingText.typeface = Typeface.createFromAsset(assets, "font/hansuwon.ttf")
         }
-        tv_making_text_font_uljiro.setOnClickListener {
-            tv_making_text_font_nanum.isSelected=false
-            tv_making_text_font_hasuwon.isSelected=false
-            tv_making_text_font_uljiro.isSelected=true
-            tv_making_text_font_hanna.isSelected=false
-            tv_making_text_font_yanolza.isSelected=false
-            tv_making_text_font_jua.isSelected=false
-            tv_making_text_font_tvn.isSelected=false
-            font=2
-            tv_text.setTypeface(Typeface.createFromAsset(getAssets(), "font/uljiro.ttf"))
-            edt_making_text.setTypeface(Typeface.createFromAsset(getAssets(), "font/uljiro.ttf"))
+        binding.tvMakingTextFontUljiro.setOnClickListener {
+            binding.tvMakingTextFontNanum.isSelected = false
+            binding.tvMakingTextFontHasuwon.isSelected = false
+            binding.tvMakingTextFontUljiro.isSelected = true
+            binding.tvMakingTextFontHanna.isSelected = false
+            binding.tvMakingTextFontYanolza.isSelected = false
+            binding.tvMakingTextFontJua.isSelected = false
+            binding.tvMakingTextFontTvn.isSelected = false
+            font = 2
+            binding.tvText.typeface = Typeface.createFromAsset(assets, "font/uljiro.ttf")
+            binding.edtMakingText.typeface = Typeface.createFromAsset(assets, "font/uljiro.ttf")
         }
-        tv_making_text_font_hanna.setOnClickListener {
-            tv_making_text_font_nanum.isSelected=false
-            tv_making_text_font_hasuwon.isSelected=false
-            tv_making_text_font_uljiro.isSelected=false
-            tv_making_text_font_hanna.isSelected=true
-            tv_making_text_font_yanolza.isSelected=false
-            tv_making_text_font_jua.isSelected=false
-            tv_making_text_font_tvn.isSelected=false
-            font=3
-            tv_text.setTypeface(Typeface.createFromAsset(getAssets(), "font/hanna.ttf"))
-            edt_making_text.setTypeface(Typeface.createFromAsset(getAssets(), "font/hanna.ttf"))
+        binding.tvMakingTextFontHanna.setOnClickListener {
+            binding.tvMakingTextFontNanum.isSelected = false
+            binding.tvMakingTextFontHasuwon.isSelected = false
+            binding.tvMakingTextFontUljiro.isSelected = false
+            binding.tvMakingTextFontHanna.isSelected = true
+            binding.tvMakingTextFontYanolza.isSelected = false
+            binding.tvMakingTextFontJua.isSelected = false
+            binding.tvMakingTextFontTvn.isSelected = false
+            font = 3
+            binding.tvText.typeface = Typeface.createFromAsset(assets, "font/hanna.ttf")
+            binding.edtMakingText.typeface = Typeface.createFromAsset(assets, "font/hanna.ttf")
         }
-        tv_making_text_font_yanolza.setOnClickListener {
-            tv_making_text_font_nanum.isSelected=false
-            tv_making_text_font_hasuwon.isSelected=false
-            tv_making_text_font_uljiro.isSelected=false
-            tv_making_text_font_hanna.isSelected=false
-            tv_making_text_font_yanolza.isSelected=true
-            tv_making_text_font_jua.isSelected=false
-            tv_making_text_font_tvn.isSelected=false
-            font=4
-            tv_text.setTypeface(Typeface.createFromAsset(getAssets(), "font/yanolza.ttf"))
-            edt_making_text.setTypeface(Typeface.createFromAsset(getAssets(), "font/yanolza.ttf"))
+        binding.tvMakingTextFontYanolza.setOnClickListener {
+            binding.tvMakingTextFontNanum.isSelected = false
+            binding.tvMakingTextFontHasuwon.isSelected = false
+            binding.tvMakingTextFontUljiro.isSelected = false
+            binding.tvMakingTextFontHanna.isSelected = false
+            binding.tvMakingTextFontYanolza.isSelected = true
+            binding.tvMakingTextFontJua.isSelected = false
+            binding.tvMakingTextFontTvn.isSelected = false
+            font = 4
+            binding.tvText.typeface = Typeface.createFromAsset(assets, "font/yanolza.ttf")
+            binding.edtMakingText.typeface = Typeface.createFromAsset(assets, "font/yanolza.ttf")
         }
-        tv_making_text_font_jua.setOnClickListener {
-            tv_making_text_font_nanum.isSelected=false
-            tv_making_text_font_hasuwon.isSelected=false
-            tv_making_text_font_uljiro.isSelected=false
-            tv_making_text_font_hanna.isSelected=false
-            tv_making_text_font_yanolza.isSelected=false
-            tv_making_text_font_jua.isSelected=true
-            tv_making_text_font_tvn.isSelected=false
-            font=5
-            tv_text.setTypeface(Typeface.createFromAsset(getAssets(), "font/jua.ttf"))
-            edt_making_text.setTypeface(Typeface.createFromAsset(getAssets(), "font/jua.ttf"))
+        binding.tvMakingTextFontJua.setOnClickListener {
+            binding.tvMakingTextFontNanum.isSelected = false
+            binding.tvMakingTextFontHasuwon.isSelected = false
+            binding.tvMakingTextFontUljiro.isSelected = false
+            binding.tvMakingTextFontHanna.isSelected = false
+            binding.tvMakingTextFontYanolza.isSelected = false
+            binding.tvMakingTextFontJua.isSelected = true
+            binding.tvMakingTextFontTvn.isSelected = false
+            font = 5
+            binding.tvText.typeface = Typeface.createFromAsset(assets, "font/jua.ttf")
+            binding.edtMakingText.typeface = Typeface.createFromAsset(assets, "font/jua.ttf")
         }
-        tv_making_text_font_tvn.setOnClickListener {
-            tv_making_text_font_nanum.isSelected=false
-            tv_making_text_font_hasuwon.isSelected=false
-            tv_making_text_font_uljiro.isSelected=false
-            tv_making_text_font_hanna.isSelected=false
-            tv_making_text_font_yanolza.isSelected=false
-            tv_making_text_font_jua.isSelected=false
-            tv_making_text_font_tvn.isSelected=true
-            font=6
-            tv_text.setTypeface(Typeface.createFromAsset(getAssets(), "font/tvn.ttf"))
-            edt_making_text.setTypeface(Typeface.createFromAsset(getAssets(), "font/tvn.ttf"))
+        binding.tvMakingTextFontTvn.setOnClickListener {
+            binding.tvMakingTextFontNanum.isSelected = false
+            binding.tvMakingTextFontHasuwon.isSelected = false
+            binding.tvMakingTextFontUljiro.isSelected = false
+            binding.tvMakingTextFontHanna.isSelected = false
+            binding.tvMakingTextFontYanolza.isSelected = false
+            binding.tvMakingTextFontJua.isSelected = false
+            binding.tvMakingTextFontTvn.isSelected = true
+            font = 6
+            binding.tvText.typeface = Typeface.createFromAsset(assets, "font/tvn.ttf")
+            binding.edtMakingText.typeface = Typeface.createFromAsset(assets, "font/tvn.ttf")
         }
         val handler = Handler()
-        var tv_making_text_size_very_small = findViewById<TextView>(R.id.tv_making_text_size_very_small)
-        var tv_making_text_size_small = findViewById<TextView>(R.id.tv_making_text_size_small)
-        var tv_making_text_size_big = findViewById<TextView>(R.id.tv_making_text_size_big)
+
         //글자 크기 클릭 이벤트
-        tv_making_text_size_very_small.setOnClickListener {
-            tv_making_text_size_very_small.isSelected=true
-            tv_making_text_size_small.isSelected=false
-            tv_making_text_size_normal.isSelected=false
-            tv_making_text_size_big.isSelected=false
-            tv_text.setTextSize(Dimension.SP, 30.0f)
-            text_size=0
+        binding.tvMakingTextSizeVerySmall.setOnClickListener {
+            binding.tvMakingTextSizeVerySmall.isSelected = true
+            binding.tvMakingTextSizeSmall.isSelected = false
+            binding.tvMakingTextSizeNormal.isSelected = false
+            binding.tvMakingTextSizeBig.isSelected = false
+            binding.tvText.setTextSize(Dimension.SP, 30.0f)
+            text_size = 0
 
             handler.postDelayed(Runnable {
-                if(tv_text.width < screenWidth){
+                if (binding.tvText.width < screenWidth) {
 
-                    val params = ll_making_text.layoutParams as FrameLayout.LayoutParams
+                    val params = binding.llMakingText.layoutParams as FrameLayout.LayoutParams
                     params.gravity = Gravity.CENTER
-                    ll_making_text.layoutParams = params
+                    binding.llMakingText.layoutParams = params
 
-                }else{
-                    val params = ll_making_text.layoutParams as FrameLayout.LayoutParams
+                } else {
+                    val params = binding.llMakingText.layoutParams as FrameLayout.LayoutParams
                     params.gravity = Gravity.CENTER_VERTICAL
-                    ll_making_text.layoutParams = params
+                    binding.llMakingText.layoutParams = params
                 }
             }, 1)
-            if (tv_text.animation != null) {
-                tv_text.clearAnimation()
+            if (binding.tvText.animation != null) {
+                binding.tvText.clearAnimation()
             }
             setAnim()
 
         }
-        tv_making_text_size_small.setOnClickListener {
-            tv_making_text_size_very_small.isSelected=false
-            tv_making_text_size_small.isSelected=true
-            tv_making_text_size_normal.isSelected=false
-            tv_making_text_size_big.isSelected=false
-            tv_text.setTextSize(Dimension.SP, 60.0f)
-            text_size=1
+        binding.tvMakingTextSizeSmall.setOnClickListener {
+            binding.tvMakingTextSizeVerySmall.isSelected = false
+            binding.tvMakingTextSizeSmall.isSelected = true
+            binding.tvMakingTextSizeNormal.isSelected = false
+            binding.tvMakingTextSizeBig.isSelected = false
+            binding.tvText.setTextSize(Dimension.SP, 60.0f)
+            text_size = 1
             handler.postDelayed(Runnable {
-                if(tv_text.width < screenWidth){
+                if (binding.tvText.width < screenWidth) {
 
-                    val params = ll_making_text.layoutParams as FrameLayout.LayoutParams
+                    val params = binding.llMakingText.layoutParams as FrameLayout.LayoutParams
                     params.gravity = Gravity.CENTER
-                    ll_making_text.layoutParams = params
+                    binding.llMakingText.layoutParams = params
 
-                }else{
-                    val params = ll_making_text.layoutParams as FrameLayout.LayoutParams
+                } else {
+                    val params = binding.llMakingText.layoutParams as FrameLayout.LayoutParams
                     params.gravity = Gravity.CENTER_VERTICAL
-                    ll_making_text.layoutParams = params
+                    binding.llMakingText.layoutParams = params
                 }
             }, 1)
-            if (tv_text.animation != null) {
-                tv_text.clearAnimation()
+            if (binding.tvText.animation != null) {
+                binding.tvText.clearAnimation()
             }
             setAnim()
         }
-        tv_making_text_size_normal.setOnClickListener {
-            tv_making_text_size_very_small.isSelected=false
-            tv_making_text_size_small.isSelected=false
-            tv_making_text_size_normal.isSelected=true
-            tv_making_text_size_big.isSelected=false
-            tv_text.setTextSize(Dimension.SP, 90.0f)
-            text_size=2
+        binding.tvMakingTextSizeNormal.setOnClickListener {
+            binding.tvMakingTextSizeVerySmall.isSelected = false
+            binding.tvMakingTextSizeSmall.isSelected = false
+            binding.tvMakingTextSizeNormal.isSelected = true
+            binding.tvMakingTextSizeBig.isSelected = false
+            binding.tvText.setTextSize(Dimension.SP, 90.0f)
+            text_size = 2
             handler.postDelayed(Runnable {
-                if(tv_text.width < screenWidth){
+                if (binding.tvText.width < screenWidth) {
 
-                    val params = ll_making_text.layoutParams as FrameLayout.LayoutParams
+                    val params = binding.llMakingText.layoutParams as FrameLayout.LayoutParams
                     params.gravity = Gravity.CENTER
-                    ll_making_text.layoutParams = params
+                    binding.llMakingText.layoutParams = params
 
-                }else{
-                    val params = ll_making_text.layoutParams as FrameLayout.LayoutParams
+                } else {
+                    val params = binding.llMakingText.layoutParams as FrameLayout.LayoutParams
                     params.gravity = Gravity.CENTER_VERTICAL
-                    ll_making_text.layoutParams = params
+                    binding.llMakingText.layoutParams = params
                 }
             }, 1)
-            if (tv_text.animation != null) {
-                tv_text.clearAnimation()
+            if (binding.tvText.animation != null) {
+                binding.tvText.clearAnimation()
             }
             setAnim()
         }
-        tv_making_text_size_big.setOnClickListener {
-            tv_making_text_size_very_small.isSelected=false
-            tv_making_text_size_small.isSelected=false
-            tv_making_text_size_normal.isSelected=false
-            tv_making_text_size_big.isSelected=true
-            tv_text.setTextSize(Dimension.SP, 120.0f);
-            text_size=3
+        binding.tvMakingTextSizeBig.setOnClickListener {
+            binding.tvMakingTextSizeVerySmall.isSelected = false
+            binding.tvMakingTextSizeSmall.isSelected = false
+            binding.tvMakingTextSizeNormal.isSelected = false
+            binding.tvMakingTextSizeBig.isSelected = true
+            binding.tvText.setTextSize(Dimension.SP, 120.0f);
+            text_size = 3
             handler.postDelayed(Runnable {
-                if(tv_text.width < screenWidth){
+                if (binding.tvText.width < screenWidth) {
 
-                    val params = ll_making_text.layoutParams as FrameLayout.LayoutParams
+                    val params = binding.llMakingText.layoutParams as FrameLayout.LayoutParams
                     params.gravity = Gravity.CENTER
-                    ll_making_text.layoutParams = params
+                    binding.llMakingText.layoutParams = params
 
-                }else{
-                    val params = ll_making_text.layoutParams as FrameLayout.LayoutParams
+                } else {
+                    val params = binding.llMakingText.layoutParams as FrameLayout.LayoutParams
                     params.gravity = Gravity.CENTER_VERTICAL
-                    ll_making_text.layoutParams = params
+                    binding.llMakingText.layoutParams = params
                 }
             }, 1)
-            if (tv_text.animation != null) {
-                tv_text.clearAnimation()
+            if (binding.tvText.animation != null) {
+                binding.tvText.clearAnimation()
             }
             setAnim()
         }
-        var tv_making_color_blue = findViewById<TextView>(R.id.tv_making_color_blue)
-        var tv_making_color_dark_green = findViewById<TextView>(R.id.tv_making_color_dark_green)
-        var tv_making_color_yellow = findViewById<TextView>(R.id.tv_making_color_yellow)
-        var tv_making_color_orange = findViewById<TextView>(R.id.tv_making_color_orange)
-        var tv_making_color_pink = findViewById<TextView>(R.id.tv_making_color_pink)
-        var hs_makingtext = findViewById<HorizontalScrollView>(R.id.hs_makingtext)
+
         //배경 색깔 선택
-        tv_making_color_black.setOnClickListener {
-            tv_making_color_black.isSelected=true
-            tv_making_color_blue.isSelected=false
-            tv_making_color_dark_green.isSelected=false
-            tv_making_color_yellow.isSelected=false
-            tv_making_color_orange.isSelected=false
-            tv_making_color_pink.isSelected=false
-            hs_makingtext.setBackgroundColor(Color.parseColor("#000000"))
-            background_color=0
+        binding.tvMakingColorBlack.setOnClickListener {
+            binding.tvMakingColorBlack.isSelected = true
+            binding.tvMakingColorBlue.isSelected = false
+            binding.tvMakingColorDarkGreen.isSelected = false
+            binding.tvMakingColorYellow.isSelected = false
+            binding.tvMakingColorOrange.isSelected = false
+            binding.tvMakingColorPink.isSelected = false
+            binding.hsMakingtext.setBackgroundColor(Color.parseColor("#000000"))
+            background_color = 0
         }
-        tv_making_color_blue.setOnClickListener {
-            tv_making_color_black.isSelected=false
-            tv_making_color_blue.isSelected=true
-            tv_making_color_dark_green.isSelected=false
-            tv_making_color_yellow.isSelected=false
-            tv_making_color_orange.isSelected=false
-            tv_making_color_pink.isSelected=false
-            hs_makingtext.setBackgroundColor(Color.parseColor("#3c3eda"))
-            background_color=1
+        binding.tvMakingColorBlue.setOnClickListener {
+            binding.tvMakingColorBlack.isSelected = false
+            binding.tvMakingColorBlue.isSelected = true
+            binding.tvMakingColorDarkGreen.isSelected = false
+            binding.tvMakingColorYellow.isSelected = false
+            binding.tvMakingColorOrange.isSelected = false
+            binding.tvMakingColorPink.isSelected = false
+            binding.hsMakingtext.setBackgroundColor(Color.parseColor("#3c3eda"))
+            background_color = 1
         }
-        tv_making_color_dark_green.setOnClickListener {
-            tv_making_color_black.isSelected=false
-            tv_making_color_blue.isSelected=false
-            tv_making_color_dark_green.isSelected=true
-            tv_making_color_yellow.isSelected=false
-            tv_making_color_orange.isSelected=false
-            tv_making_color_pink.isSelected=false
-            hs_makingtext.setBackgroundColor(Color.parseColor("#0191b6"))
-            background_color=2
+        binding.tvMakingColorDarkGreen.setOnClickListener {
+            binding.tvMakingColorBlack.isSelected = false
+            binding.tvMakingColorBlue.isSelected = false
+            binding.tvMakingColorDarkGreen.isSelected = true
+            binding.tvMakingColorYellow.isSelected = false
+            binding.tvMakingColorOrange.isSelected = false
+            binding.tvMakingColorPink.isSelected = false
+            binding.hsMakingtext.setBackgroundColor(Color.parseColor("#0191b6"))
+            background_color = 2
         }
-        tv_making_color_yellow.setOnClickListener {
-            tv_making_color_black.isSelected=false
-            tv_making_color_blue.isSelected=false
-            tv_making_color_dark_green.isSelected=false
-            tv_making_color_yellow.isSelected=true
-            tv_making_color_orange.isSelected=false
-            tv_making_color_pink.isSelected=false
-            hs_makingtext.setBackgroundColor(Color.parseColor("#f9d80d"))
-            background_color=3
+        binding.tvMakingColorYellow.setOnClickListener {
+            binding.tvMakingColorBlack.isSelected = false
+            binding.tvMakingColorBlue.isSelected = false
+            binding.tvMakingColorDarkGreen.isSelected = false
+            binding.tvMakingColorYellow.isSelected = true
+            binding.tvMakingColorOrange.isSelected = false
+            binding.tvMakingColorPink.isSelected = false
+            binding.hsMakingtext.setBackgroundColor(Color.parseColor("#f9d80d"))
+            background_color = 3
         }
-        tv_making_color_orange.setOnClickListener {
-            tv_making_color_black.isSelected=false
-            tv_making_color_blue.isSelected=false
-            tv_making_color_dark_green.isSelected=false
-            tv_making_color_yellow.isSelected=false
-            tv_making_color_orange.isSelected=true
-            tv_making_color_pink.isSelected=false
-            hs_makingtext.setBackgroundColor(Color.parseColor("#ff7b17"))
-            background_color=4
+        binding.tvMakingColorOrange.setOnClickListener {
+            binding.tvMakingColorBlack.isSelected = false
+            binding.tvMakingColorBlue.isSelected = false
+            binding.tvMakingColorDarkGreen.isSelected = false
+            binding.tvMakingColorYellow.isSelected = false
+            binding.tvMakingColorOrange.isSelected = true
+            binding.tvMakingColorPink.isSelected = false
+            binding.hsMakingtext.setBackgroundColor(Color.parseColor("#ff7b17"))
+            background_color = 4
         }
-        tv_making_color_pink.setOnClickListener {
-            tv_making_color_black.isSelected=false
-            tv_making_color_blue.isSelected=false
-            tv_making_color_dark_green.isSelected=false
-            tv_making_color_yellow.isSelected=false
-            tv_making_color_orange.isSelected=false
-            tv_making_color_pink.isSelected=true
-            hs_makingtext.setBackgroundColor(Color.parseColor("#f637f3"))
-            background_color=5
+        binding.tvMakingColorPink.setOnClickListener {
+            binding.tvMakingColorBlack.isSelected = false
+            binding.tvMakingColorBlue.isSelected = false
+            binding.tvMakingColorDarkGreen.isSelected = false
+            binding.tvMakingColorYellow.isSelected = false
+            binding.tvMakingColorOrange.isSelected = false
+            binding.tvMakingColorPink.isSelected = true
+            binding.hsMakingtext.setBackgroundColor(Color.parseColor("#f637f3"))
+            background_color = 5
         }
-
-        var tv_making_textcolor_dark_green = findViewById<TextView>(R.id.tv_making_textcolor_dark_green)
-        var tv_making_textcolor_yellow = findViewById<TextView>(R.id.tv_making_textcolor_yellow)
-
-        var tv_making_textcolor_orange = findViewById<TextView>(R.id.tv_making_textcolor_orange)
-        var tv_making_textcolor_pink = findViewById<TextView>(R.id.tv_making_textcolor_pink)
 
         // 글자 색깔
-        tv_making_textcolor_white.setOnClickListener {
-            tv_making_textcolor_white.isSelected = true
-            tv_making_textcolor_blue.isSelected = false
-            tv_making_textcolor_dark_green.isSelected =false
-            tv_making_textcolor_yellow.isSelected= false
-            tv_making_textcolor_orange.isSelected= false
-            tv_making_textcolor_pink.isSelected =false
-            tv_text.setTextColor(Color.parseColor("#FFFFFF"))
-            text_color=0
+        binding.tvMakingTextcolorWhite.setOnClickListener {
+            binding.tvMakingTextcolorWhite.isSelected = true
+            binding.tvMakingTextcolorBlue.isSelected = false
+            binding.tvMakingTextcolorDarkGreen.isSelected = false
+            binding.tvMakingTextcolorYellow.isSelected = false
+            binding.tvMakingTextcolorOrange.isSelected = false
+            binding.tvMakingTextcolorPink.isSelected = false
+            binding.tvText.setTextColor(Color.parseColor("#FFFFFF"))
+            text_color = 0
         }
-        tv_making_textcolor_blue.setOnClickListener {
-            tv_making_textcolor_white.isSelected = false
-            tv_making_textcolor_blue.isSelected = true
-            tv_making_textcolor_dark_green.isSelected =false
-            tv_making_textcolor_yellow.isSelected= false
-            tv_making_textcolor_orange.isSelected= false
-            tv_making_textcolor_pink.isSelected =false
-            tv_text.setTextColor(Color.parseColor("#3c3eda"))
-            text_color=1
+        binding.tvMakingTextcolorBlue.setOnClickListener {
+            binding.tvMakingTextcolorWhite.isSelected = false
+            binding.tvMakingTextcolorBlue.isSelected = true
+            binding.tvMakingTextcolorDarkGreen.isSelected = false
+            binding.tvMakingTextcolorYellow.isSelected = false
+            binding.tvMakingTextcolorOrange.isSelected = false
+            binding.tvMakingTextcolorPink.isSelected = false
+            binding.tvText.setTextColor(Color.parseColor("#3c3eda"))
+            text_color = 1
         }
-        tv_making_textcolor_dark_green.setOnClickListener {
-            tv_making_textcolor_white.isSelected = false
-            tv_making_textcolor_blue.isSelected = false
-            tv_making_textcolor_dark_green.isSelected =true
-            tv_making_textcolor_yellow.isSelected= false
-            tv_making_textcolor_orange.isSelected= false
-            tv_making_textcolor_pink.isSelected =false
-            tv_text.setTextColor(Color.parseColor("#0191b6"))
-            text_color=2
+        binding.tvMakingTextcolorDarkGreen.setOnClickListener {
+            binding.tvMakingTextcolorWhite.isSelected = false
+            binding.tvMakingTextcolorBlue.isSelected = false
+            binding.tvMakingTextcolorDarkGreen.isSelected = true
+            binding.tvMakingTextcolorYellow.isSelected = false
+            binding.tvMakingTextcolorOrange.isSelected = false
+            binding.tvMakingTextcolorPink.isSelected = false
+            binding.tvText.setTextColor(Color.parseColor("#0191b6"))
+            text_color = 2
         }
-        tv_making_textcolor_yellow.setOnClickListener {
-            tv_making_textcolor_white.isSelected = false
-            tv_making_textcolor_blue.isSelected = false
-            tv_making_textcolor_dark_green.isSelected =false
-            tv_making_textcolor_yellow.isSelected= true
-            tv_making_textcolor_orange.isSelected= false
-            tv_making_textcolor_pink.isSelected =false
-            tv_text.setTextColor(Color.parseColor("#f9d80d"))
-            text_color=3
+        binding.tvMakingTextcolorYellow.setOnClickListener {
+            binding.tvMakingTextcolorWhite.isSelected = false
+            binding.tvMakingTextcolorBlue.isSelected = false
+            binding.tvMakingTextcolorDarkGreen.isSelected = false
+            binding.tvMakingTextcolorYellow.isSelected = true
+            binding.tvMakingTextcolorOrange.isSelected = false
+            binding.tvMakingTextcolorPink.isSelected = false
+            binding.tvText.setTextColor(Color.parseColor("#f9d80d"))
+            text_color = 3
         }
-        tv_making_textcolor_orange.setOnClickListener {
-            tv_making_textcolor_white.isSelected = false
-            tv_making_textcolor_blue.isSelected = false
-            tv_making_textcolor_dark_green.isSelected =false
-            tv_making_textcolor_yellow.isSelected= false
-            tv_making_textcolor_orange.isSelected= true
-            tv_making_textcolor_pink.isSelected =false
-            tv_text.setTextColor(Color.parseColor("#ff7b17"))
-            text_color=4
+        binding.tvMakingTextcolorOrange.setOnClickListener {
+            binding.tvMakingTextcolorWhite.isSelected = false
+            binding.tvMakingTextcolorBlue.isSelected = false
+            binding.tvMakingTextcolorDarkGreen.isSelected = false
+            binding.tvMakingTextcolorYellow.isSelected = false
+            binding.tvMakingTextcolorOrange.isSelected = true
+            binding.tvMakingTextcolorPink.isSelected = false
+            binding.tvText.setTextColor(Color.parseColor("#ff7b17"))
+            text_color = 4
         }
-        tv_making_textcolor_pink.setOnClickListener {
-            tv_making_textcolor_white.isSelected = false
-            tv_making_textcolor_blue.isSelected = false
-            tv_making_textcolor_dark_green.isSelected =false
-            tv_making_textcolor_yellow.isSelected= false
-            tv_making_textcolor_orange.isSelected= false
-            tv_making_textcolor_pink.isSelected =true
-            tv_text.setTextColor(Color.parseColor("#f637f3"))
-            text_color=5
+        binding.tvMakingTextcolorPink.setOnClickListener {
+            binding.tvMakingTextcolorWhite.isSelected = false
+            binding.tvMakingTextcolorBlue.isSelected = false
+            binding.tvMakingTextcolorDarkGreen.isSelected = false
+            binding.tvMakingTextcolorYellow.isSelected = false
+            binding.tvMakingTextcolorOrange.isSelected = false
+            binding.tvMakingTextcolorPink.isSelected = true
+            binding.tvText.setTextColor(Color.parseColor("#f637f3"))
+            text_color = 5
         }
         // 글자 속도 선택
-        tv_making_text_speed_fast.setOnClickListener {
-            tv_making_text_speed_fast.isSelected=true
-            tv_making_text_speed_normal.isSelected=false
-            tv_making_text_speed_slow.isSelected = false
-            if (tv_text.animation != null) {
-                tv_text.clearAnimation()
+        binding.tvMakingTextSpeedFast.setOnClickListener {
+            binding.tvMakingTextSpeedFast.isSelected = true
+            binding.tvMakingTextSpeedNormal.isSelected = false
+            binding.tvMakingTextSpeedSlow.isSelected = false
+            if (binding.tvText.animation != null) {
+                binding.tvText.clearAnimation()
             }
-            speed=0
+            speed = 0
             setAnim()
         }
-        tv_making_text_speed_normal.setOnClickListener {
-            tv_making_text_speed_fast.isSelected=false
-            tv_making_text_speed_normal.isSelected=true
-            tv_making_text_speed_slow.isSelected = false
-            if (tv_text.animation != null) {
-                tv_text.clearAnimation()
+        binding.tvMakingTextSpeedNormal.setOnClickListener {
+            binding.tvMakingTextSpeedFast.isSelected = false
+            binding.tvMakingTextSpeedNormal.isSelected = true
+            binding.tvMakingTextSpeedSlow.isSelected = false
+            if (binding.tvText.animation != null) {
+                binding.tvText.clearAnimation()
             }
-            speed=1
+            speed = 1
             setAnim()
 
         }
-        tv_making_text_speed_slow.setOnClickListener {
-            tv_making_text_speed_fast.isSelected=false
-            tv_making_text_speed_normal.isSelected=false
-            tv_making_text_speed_slow.isSelected = true
-            if (tv_text.animation != null) {
-                tv_text.clearAnimation()
+        binding.tvMakingTextSpeedSlow.setOnClickListener {
+            binding.tvMakingTextSpeedFast.isSelected = false
+            binding.tvMakingTextSpeedNormal.isSelected = false
+            binding.tvMakingTextSpeedSlow.isSelected = true
+            if (binding.tvText.animation != null) {
+                binding.tvText.clearAnimation()
             }
-            speed=2
+            speed = 2
             setAnim()
         }
         //방향
-        iv_making_direction_right.setOnClickListener {
-            iv_making_direction_right.isSelected=true
-            tv_making_direction_stop.isSelected=false
-            iv_making_direction_left.isSelected=false
-            if (tv_text.animation != null) {
-                tv_text.clearAnimation()
+        binding.ivMakingDirectionRight.setOnClickListener {
+            binding.ivMakingDirectionRight.isSelected = true
+            binding.tvMakingDirectionStop.isSelected = false
+            binding.ivMakingDirectionLeft.isSelected = false
+            if (binding.tvText.animation != null) {
+                binding.tvText.clearAnimation()
             }
-            direction=0
+            direction = 0
             setAnim()
         }
-        tv_making_direction_stop.setOnClickListener {
-            iv_making_direction_right.isSelected=false
-            tv_making_direction_stop.isSelected=true
-            iv_making_direction_left.isSelected=false
-            if (tv_text.animation != null) {
-                tv_text.clearAnimation()
+        binding.tvMakingDirectionStop.setOnClickListener {
+            binding.ivMakingDirectionRight.isSelected = false
+            binding.tvMakingDirectionStop.isSelected = true
+            binding.ivMakingDirectionLeft.isSelected = false
+            if (binding.tvText.animation != null) {
+                binding.tvText.clearAnimation()
             }
-            direction=1
+            direction = 1
             setAnim()
 
 
         }
-        iv_making_direction_left.setOnClickListener {
-            iv_making_direction_right.isSelected=false
-            tv_making_direction_stop.isSelected=false
-            iv_making_direction_left.isSelected=true
-            if (tv_text.animation != null) {
-                tv_text.clearAnimation()
+        binding.ivMakingDirectionLeft.setOnClickListener {
+            binding.ivMakingDirectionRight.isSelected = false
+            binding.tvMakingDirectionStop.isSelected = false
+            binding.ivMakingDirectionLeft.isSelected = true
+            if (binding.tvText.animation != null) {
+                binding.tvText.clearAnimation()
             }
-            direction=2
+            direction = 2
             setAnim()
         }
-
-
-
-
-        var iv_making_back_button = findViewById<ImageView>(R.id.iv_making_back_button)
-        var iv_making_expand_button = findViewById<ImageView>(R.id.iv_making_expand_button)
-
+        
         //뒤로가기 버튼
-        iv_making_back_button.setOnClickListener {
+        binding.ivMakingBackButton.setOnClickListener {
             finish()
         }
         // 확대 하기
-        iv_making_expand_button.setOnClickListener {
-            if (edt_making_text.text.toString().isNotEmpty() || tv_text.text != ""){
+        binding.ivMakingExpandButton.setOnClickListener {
+            if (binding.edtMakingText.text.toString().isNotEmpty() || binding.tvText.text != "") {
                 //포커스 문제 ....
-                var inputManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
-                inputManager.showSoftInput(edt_making_text, 0)
+                val inputManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+                inputManager.showSoftInput(binding.edtMakingText, 0)
 
-                startActivity<CheerUpViewActivity>("edt_making_text" to tv_text.text.toString(),"text_size" to text_size , "background_color" to background_color , "text_color" to text_color , "speed" to speed , "direction" to direction,"font" to font , "effect0" to effect0,"effect1" to effect1,"effect2" to effect2,"effect3" to effect3)
-            }else {
+                startActivity<CheerUpViewActivity>(
+                    "binding.edtMakingText" to binding.tvText.text.toString(),
+                    "text_size" to text_size,
+                    "background_color" to background_color,
+                    "text_color" to text_color,
+                    "speed" to speed,
+                    "direction" to direction,
+                    "font" to font,
+                    "effect0" to effect0,
+                    "effect1" to effect1,
+                    "effect2" to effect2,
+                    "effect3" to effect3
+                )
+            } else {
                 toast("메세지를 입력해주세요")
             }
         }
@@ -955,51 +838,99 @@ class MakingCheerUpTextActivity : AppCompatActivity() {
 
     }
 
-    fun setAnim(width: Int = 1, text: CharSequence = "" ){
-        var tv_text = findViewById<OutlineTextView>(R.id.tv_text)
-        var width=tv_text.width
-        var text=tv_text.text
+    fun setAnim(width: Int = 1, text: CharSequence = "") {
+        val width = binding.tvText.width
+        var text = binding.tvText.text
         //애니메이션 두개 넣기 set
-        var set = AnimationSet(false)
+        val set = AnimationSet(false)
 
-        var animation = TranslateAnimation((screenWidth).toFloat(), (-(width).toFloat()), 0.0f, -0.0f)
-        if (direction==2){
-            if (-screenWidth.toFloat() < -(width).toFloat()){
-                animation = TranslateAnimation((screenWidth).toFloat(), (-screenWidth.toFloat()), 0.0f, -0.0f)
-            }else
-                animation = TranslateAnimation((screenWidth).toFloat(), (-(width).toFloat()), 0.0f, -0.0f)
-        }else if (direction==0){
-            if (-screenWidth.toFloat() < -(width).toFloat()){
-                animation = TranslateAnimation(-screenWidth.toFloat(), (screenWidth).toFloat(), 0.0f, -0.0f)
+        var animation =
+            TranslateAnimation((screenWidth).toFloat(), (-(width).toFloat()), 0.0f, -0.0f)
+        if (direction == 2) {
+            if (-screenWidth.toFloat() < -(width).toFloat()) {
+                animation = TranslateAnimation(
+                    (screenWidth).toFloat(),
+                    (-screenWidth.toFloat()),
+                    0.0f,
+                    -0.0f
+                )
             } else
-                animation = TranslateAnimation((-(width).toFloat()), (screenWidth).toFloat(), 0.0f, -0.0f)
-        }else if (direction==1){
+                animation =
+                    TranslateAnimation((screenWidth).toFloat(), (-(width).toFloat()), 0.0f, -0.0f)
+        } else if (direction == 0) {
+            if (-screenWidth.toFloat() < -(width).toFloat()) {
+                animation =
+                    TranslateAnimation(-screenWidth.toFloat(), (screenWidth).toFloat(), 0.0f, -0.0f)
+            } else
+                animation =
+                    TranslateAnimation((-(width).toFloat()), (screenWidth).toFloat(), 0.0f, -0.0f)
+        } else if (direction == 1) {
             animation = TranslateAnimation(0.0f, 0.0f, 0.0f, -0.0f)
         }
 
-        animation.setInterpolator( AnimationUtils.loadInterpolator( this, android.R.anim.linear_interpolator) )
+        animation.interpolator = AnimationUtils.loadInterpolator(
+            this,
+            android.R.anim.linear_interpolator
+        )
 
 
-        if(speed==0){
-            animation.duration = (((screenWidth).toLong() + (width).toLong())*0.8).toLong()
+        if (speed == 0) {
+            animation.duration = (((screenWidth).toLong() + (width).toLong()) * 0.8).toLong()
 
-        }else if (speed ==1) {
+        } else if (speed == 1) {
             animation.duration = ((screenWidth).toLong() + (width).toLong())
-        }else if (speed ==2){
-            animation.duration = (((screenWidth).toLong() + (width).toLong())*1.2).toLong()
+        } else if (speed == 2) {
+            animation.duration = (((screenWidth).toLong() + (width).toLong()) * 1.2).toLong()
         }
 
-        animation.repeatCount= -1
+        animation.repeatCount = -1
 
-        if (effect0 == 1){
+        if (effect0 == 1) {
             val alphaAnim = AlphaAnimation(0F, 1.0F)
             alphaAnim.duration = 600
             alphaAnim.repeatCount = -1
             set.addAnimation(alphaAnim)
         }
-        var ll_making_text = findViewById<LinearLayout>(R.id.ll_making_text)
+     
         set.addAnimation(animation)
-        ll_making_text.animation=set
-        ll_making_text.animation.start()
+        binding.llMakingText.animation = set
+        binding.llMakingText.animation.start()
+    }
+
+    override fun initView() {
+        bannerCount = intent.getIntExtra("bannerCount", 0)
+        // DEFAULT 값 설정
+
+        binding.tvMakingTextSizeNormal.isSelected = true
+        binding.tvMakingTextSpeedNormal.isSelected = true
+        binding.tvMakingTextcolorWhite.isSelected = true
+        binding.ivMakingDirectionLeft.isSelected = true
+        binding.tvMakingColorBlack.isSelected = true
+        binding.tvMakingTextFontNanum.isSelected = true
+
+        binding.tvMakingTextFontHasuwon.typeface = Typeface.createFromAsset(
+            assets,
+            "font/hansuwon.ttf"
+        )
+        binding.tvMakingTextFontUljiro.typeface = Typeface.createFromAsset(
+            assets,
+            "font/uljiro.ttf"
+        )
+        binding.tvMakingTextFontHanna.typeface = Typeface.createFromAsset(
+            assets,
+            "font/hanna.ttf"
+        )
+        binding.tvMakingTextFontYanolza.typeface = Typeface.createFromAsset(
+            assets,
+            "font/yanolza.ttf"
+        )
+        binding.tvMakingTextFontJua.typeface = Typeface.createFromAsset(
+            assets,
+            "font/jua.ttf"
+        )
+        binding.tvMakingTextFontTvn.typeface = Typeface.createFromAsset(
+            assets,
+            "font/tvn.ttf"
+        )
     }
 }
