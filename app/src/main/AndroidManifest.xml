@@ -12,12 +12,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RoadToKingdomCheerUpActivity" />
+        <activity android:name=".presentation.RoadToKingdomCheerUpActivity" />
         <activity
-            android:name=".popup.LodingSavePopUpActivity"
+            android:name=".popup.LoadingSavePopUpActivity"
             android:theme="@style/categoryEditTheme" />
         <activity
-            android:name=".popup.RequestTempletePopUpActivity"
+            android:name=".popup.RequestReviewPopUpActivity"
             android:theme="@style/categoryEditTheme" />
         <activity
             android:name=".popup.DeleteBannerPopUpActivity"
@@ -31,15 +31,15 @@
             android:value="ca-app-pub-5263527473804623~2650031418" />
 
         <activity
-            android:name=".MakingCheerUpTextActivity"
+            android:name=".presentation.MakingCheerUpTextActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".CheerUpViewActivity"
+            android:name=".presentation.CheerUpViewActivity"
             android:screenOrientation="landscape"
             android:theme="@style/FullTheme" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".presentation.MainActivity" />
         <activity
-            android:name=".SplashActivity"
+            android:name=".presentation.SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/SplashTheme"
             android:exported="true">
