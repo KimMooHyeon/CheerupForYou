@@ -1,96 +1,63 @@
 package com.sabuzak.yeonamplace.cheerupforyou
 
 import android.content.Intent
-import android.graphics.drawable.Drawable
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.util.Log
-import android.view.Gravity
-import android.view.Gravity.RIGHT
-import android.view.Gravity.TOP
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import androidx.room.Room
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
 import com.sabuzak.yeonamplace.cheerupforyou.Adapter.BannerRecyclerViewAdapter
 import com.sabuzak.yeonamplace.cheerupforyou.DataBase.AppDatabase
 import com.sabuzak.yeonamplace.cheerupforyou.DataBase.ViewModel.BannerViewModel
-import com.sabuzak.yeonamplace.cheerupforyou.popup.DeleteBannerPopUpActivity
-import com.sabuzak.yeonamplace.cheerupforyou.MakingCheerUpTextActivity
-import com.sabuzak.yeonamplace.cheerupforyou.R
+import com.sabuzak.yeonamplace.cheerupforyou.databinding.ActivityMainBinding
 import com.sabuzak.yeonamplace.cheerupforyou.popup.RequestTempletePopUpActivity
-import org.jetbrains.anko.sdk27.coroutines.onClick
 import org.jetbrains.anko.startActivity
 
 
-class MainActivity : AppCompatActivity() {
-    private var db: AppDatabase? =  null
+class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
+    private var db: AppDatabase? = null
     private var isRemoveActive = false
     private lateinit var bannerViewModel: BannerViewModel
+    private val REQUEST_SAVE = 1
+    lateinit var mAdView: AdView
 
-    private  val REQUEST_SAVE = 1
-
-
-    lateinit var mAdView : AdView
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        var ll_main_loadtokingdom = findViewById<LinearLayout>(R.id.ll_main_loadtokingdom)
-        var banner_recyclerview = findViewById<RecyclerView>(R.id.banner_recyclerview)
-        var req_image = findViewById<ImageView>(R.id.req_image)
-        var user_plus_image =  findViewById<ImageView>(R.id.user_plus_image)
-        var save_count = findViewById<TextView>(R.id.save_count)
-        var btn_main_make_new_cheerup_text = findViewById<Button>(R.id.btn_main_make_new_cheerup_text)
-        var remove_button = findViewById<TextView>(R.id.remove_button)
-        var adView = findViewById<AdView>(R.id.adView)
-
-        ll_main_loadtokingdom.setOnClickListener {
-
+    override fun initView() {
+        binding.llMainLoadtokingdom.setOnClickListener {
             isRemoveActive = false
-            for (i in 0..(banner_recyclerview.adapter as BannerRecyclerViewAdapter).itemCount) {
-                (banner_recyclerview.adapter as BannerRecyclerViewAdapter).notifyItemChanged(
+            for (i in 0..(binding.bannerRecyclerview.adapter as BannerRecyclerViewAdapter).itemCount) {
+                (binding.bannerRecyclerview.adapter as BannerRecyclerViewAdapter).notifyItemChanged(
                     i,
                     "disable"
                 )
             }
-
             startActivity<RoadToKingdomCheetUpActivity>()
         }
 
-        req_image.setOnClickListener {
+        binding.reqImage.setOnClickListener {
 
             isRemoveActive = false
-            for (i in 0..(banner_recyclerview.adapter as BannerRecyclerViewAdapter).itemCount) {
-                (banner_recyclerview.adapter as BannerRecyclerViewAdapter).notifyItemChanged(
+            for (i in 0..(binding.bannerRecyclerview.adapter as BannerRecyclerViewAdapter).itemCount) {
+                (binding.bannerRecyclerview.adapter as BannerRecyclerViewAdapter).notifyItemChanged(
                     i,
                     "disable"
                 )
             }
-
             startActivity<RequestTempletePopUpActivity>()
             this.overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
         }
 
 
-
-        user_plus_image.setOnClickListener {
-            user_plus_image.isClickable=false
+        binding.userPlusImage.setOnClickListener {
+            binding.userPlusImage.isClickable = false
             val handler = Handler()
             handler.postDelayed(Runnable {
-                user_plus_image.isClickable=true
+                binding.userPlusImage.isClickable = true
             }, 2000)
             var intent = Intent(Intent.ACTION_SEND)
 
@@ -105,43 +72,35 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-
-
-
-        banner_recyclerview.adapter = BannerRecyclerViewAdapter(ctx = this.applicationContext)
-        banner_recyclerview.layoutManager = LinearLayoutManager(this)
+        binding.bannerRecyclerview.adapter =
+            BannerRecyclerViewAdapter(ctx = this.applicationContext)
+        binding.bannerRecyclerview.layoutManager = LinearLayoutManager(this)
         bannerViewModel = ViewModelProvider(this).get(BannerViewModel::class.java)
 
-        bannerViewModel.allBanner.observe(this, Observer {
-            banners-> banners?.let{
-            (banner_recyclerview.adapter as BannerRecyclerViewAdapter).setBanners(it)
-            save_count.text = " "+ (banner_recyclerview.adapter as BannerRecyclerViewAdapter).itemCount+"/5"
-        }
+        bannerViewModel.allBanner.observe(this, Observer { banners ->
+            banners?.let {
+                (binding.bannerRecyclerview.adapter as BannerRecyclerViewAdapter).setBanners(it)
+                binding.saveCount.text =
+                    " " + (binding.bannerRecyclerview.adapter as BannerRecyclerViewAdapter).itemCount + "/5"
+            }
         })
 
-
-        btn_main_make_new_cheerup_text.setOnClickListener {
-
+        binding.btnMainMakeNewCheerupText.setOnClickListener {
             isRemoveActive = false
-            for (i in 0..(banner_recyclerview.adapter as BannerRecyclerViewAdapter).itemCount) {
-                (banner_recyclerview.adapter as BannerRecyclerViewAdapter).notifyItemChanged(
+            for (i in 0..(binding.bannerRecyclerview.adapter as BannerRecyclerViewAdapter).itemCount) {
+                (binding.bannerRecyclerview.adapter as BannerRecyclerViewAdapter).notifyItemChanged(
                     i,
                     "disable"
                 )
             }
 
             var intent = Intent(this, MakingCheerUpTextActivity::class.java)
-            intent.putExtra("bannerCount",
-                (banner_recyclerview.adapter as BannerRecyclerViewAdapter).bannerArray.size)
-
-
-
+            intent.putExtra(
+                "bannerCount",
+                (binding.bannerRecyclerview.adapter as BannerRecyclerViewAdapter).bannerArray.size
+            )
             startActivity(intent)
-
-
-
         }
-
 
         /**
          * 2020.05.04 최선필
@@ -149,22 +108,19 @@ class MainActivity : AppCompatActivity() {
          * 한번 누르면 하위 배너 삭제 버튼 활성화
          * 다시 누르면 하위 배너 삭제 버튼 비활성
          */
-        remove_button.setOnClickListener {
-
-            if(!isRemoveActive) {
+        binding.removeButton.setOnClickListener {
+            if (!isRemoveActive) {
                 isRemoveActive = true
-                for (i in 0..(banner_recyclerview.adapter as BannerRecyclerViewAdapter).itemCount) {
-                    (banner_recyclerview.adapter as BannerRecyclerViewAdapter).notifyItemChanged(
+                for (i in 0..(binding.bannerRecyclerview.adapter as BannerRecyclerViewAdapter).itemCount) {
+                    (binding.bannerRecyclerview.adapter as BannerRecyclerViewAdapter).notifyItemChanged(
                         i,
                         "active"
                     )
                 }
-            }
-            else
-            {
+            } else {
                 isRemoveActive = false
-                for (i in 0..(banner_recyclerview.adapter as BannerRecyclerViewAdapter).itemCount) {
-                    (banner_recyclerview.adapter as BannerRecyclerViewAdapter).notifyItemChanged(
+                for (i in 0..(binding.bannerRecyclerview.adapter as BannerRecyclerViewAdapter).itemCount) {
+                    (binding.bannerRecyclerview.adapter as BannerRecyclerViewAdapter).notifyItemChanged(
                         i,
                         "disable"
                     )
@@ -174,13 +130,10 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-
         MobileAds.initialize(this) {}
-        mAdView = adView
+        mAdView = binding.adView
         val adRequest = AdRequest.Builder().build()
         mAdView.loadAd(adRequest)
 
-
     }
-
 }
