@@ -1,22 +1,19 @@
 package com.sabuzak.yeonamplace.cheerupforyou.popup
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.widget.TextView
+import com.sabuzak.yeonamplace.cheerupforyou.BaseActivity
 import com.sabuzak.yeonamplace.cheerupforyou.R
+import com.sabuzak.yeonamplace.cheerupforyou.databinding.ActivitySaveFullPopUpBinding
 
 
-class SaveFullPopUpActivity : AppCompatActivity() {
+class SaveFullPopUpActivity : BaseActivity<ActivitySaveFullPopUpBinding>(R.layout.activity_save_full_pop_up) {
     override fun onBackPressed() {
         finish()
         this.overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
 
     }
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_save_full_pop_up)
-        var tv_save_confirm = findViewById<TextView>(R.id.tv_save_confirm)
-        tv_save_confirm.setOnClickListener {
+
+    override fun initView() {
+        binding.tvSaveConfirm.setOnClickListener {
             finish()
             this.overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
         }
