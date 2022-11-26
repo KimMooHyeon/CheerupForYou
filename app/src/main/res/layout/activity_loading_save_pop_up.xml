@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#80000000"
-        tools:context=".presentation.popup.SaveFullPopUpActivity">
+        tools:context=".presentation.popup.LoadingSavePopUpActivity">
 
         <RelativeLayout
             android:background="#2a2d3a"
@@ -28,20 +28,24 @@
             app:layout_constraintWidth_default="percent"
             app:layout_constraintWidth_percent="0.67">
 
-            <ImageView
-                android:id="@+id/iv_save_img"
-                android:layout_marginTop="51dp"
+            <com.wang.avi.AVLoadingIndicatorView
+                android:layout_marginTop="56dp"
                 android:layout_centerHorizontal="true"
-                android:src="@drawable/image_full"
+                android:id="@+id/avi"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"></ImageView>
+                android:layout_height="wrap_content"
+                style="@style/AVLoadingIndicatorView.Large"
+                android:visibility="visible"
+                app:indicatorName="BallSpinFadeLoaderIndicator"
+                app:indicatorColor="#f637f3" />
 
             <TextView
+
                 android:id="@+id/tv_save_full_message"
                 android:fontFamily="@font/nanum"
                 android:includeFontPadding="false"
                 android:layout_marginTop="30dp"
-                android:layout_below="@+id/iv_save_img"
+                android:layout_below="@+id/avi"
                 android:layout_centerHorizontal="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -49,23 +53,8 @@
                 android:textColor="#ffffff"
                 android:lineSpacingExtra="3sp"
                 android:gravity="center_horizontal"
-                android:text="@string/save_full" />
+                android:text="@string/save_message" />
 
-            <TextView
-                android:id="@+id/tv_save_confirm"
-                android:gravity="center"
-                android:fontFamily="@font/nanum"
-                android:includeFontPadding="false"
-                android:textSize="18sp"
-                android:textColor="#ffffff"
-                android:lineSpacingExtra="3sp"
-                android:text="@string/confirm"
-                android:layout_marginBottom="30dp"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:background="@drawable/bt_save"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"></TextView>
         </RelativeLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

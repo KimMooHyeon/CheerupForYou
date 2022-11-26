@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#80000000"
+        android:id="@+id/cl_templete_allview"
         tools:context=".presentation.popup.SaveFullPopUpActivity">
 
         <RelativeLayout
@@ -20,7 +21,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.42"
+            app:layout_constraintHeight_percent="0.46"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -29,10 +30,18 @@
             app:layout_constraintWidth_percent="0.67">
 
             <ImageView
-                android:id="@+id/iv_save_img"
+                android:id="@+id/iv_request_cancle"
+                android:layout_margin="8dp"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/ic_delete"
+                android:layout_width="16dp"
+                android:layout_height="16dp" />
+
+            <ImageView
+                android:id="@+id/iv_request_templete"
                 android:layout_marginTop="51dp"
                 android:layout_centerHorizontal="true"
-                android:src="@drawable/image_full"
+                android:src="@drawable/newtemplate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"></ImageView>
 
@@ -41,26 +50,26 @@
                 android:fontFamily="@font/nanum"
                 android:includeFontPadding="false"
                 android:layout_marginTop="30dp"
-                android:layout_below="@+id/iv_save_img"
+                android:layout_below="@+id/iv_request_templete"
                 android:layout_centerHorizontal="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
+                android:textSize="12sp"
                 android:textColor="#ffffff"
                 android:lineSpacingExtra="3sp"
                 android:gravity="center_horizontal"
-                android:text="@string/save_full" />
+                android:text="@string/want_review_message" />
 
             <TextView
-                android:id="@+id/tv_save_confirm"
+                android:id="@+id/tv_request_confirm"
                 android:gravity="center"
                 android:fontFamily="@font/nanum"
                 android:includeFontPadding="false"
                 android:textSize="18sp"
                 android:textColor="#ffffff"
                 android:lineSpacingExtra="3sp"
-                android:text="@string/confirm"
-                android:layout_marginBottom="30dp"
+                android:text="@string/go_to_review"
+                android:layout_marginBottom="40dp"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/bt_save"

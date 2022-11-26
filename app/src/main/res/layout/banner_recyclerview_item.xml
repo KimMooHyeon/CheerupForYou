@@ -29,7 +29,7 @@
             android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="match_parent">
-            <com.sabuzak.yeonamplace.cheerupforyou.OutlineTextView
+            <com.sabuzak.yeonamplace.cheerupforyou.presentation.util.OutlineTextView
                 android:fontFamily="@font/nanum"
                 android:text=""
                 android:gravity="center"
