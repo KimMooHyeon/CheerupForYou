@@ -13,13 +13,13 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
         val handler = Handler()
 
-        if(SharedPreferenceController.getCheckFirestLogin(this)!!){
+        if (SharedPreferenceController.getCheckFirestLogin(this)!!) {
             handler.postDelayed(Runnable { // 5초 뒤에 작동!! -> 5s = 5000ms
                 startActivity<MakingCheerUpTextActivity>()
                 finish()
             }, 500)
-            SharedPreferenceController.setCheckFirestLogin(this,false)
-        }else{
+            SharedPreferenceController.setCheckFirestLogin(this, false)
+        } else {
             handler.postDelayed(Runnable { // 5초 뒤에 작동!! -> 5s = 5000ms
 
                 startActivity<MainActivity>()

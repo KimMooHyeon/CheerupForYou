@@ -76,7 +76,7 @@ class MakingCheerUpTextActivity :
             direction = intent.getIntExtra("direction", -99)
             speed = intent.getIntExtra("speed", -99)
             font = intent.getIntExtra("font", -99)
-            
+
             if (direction == 0) {
                 binding.ivMakingDirectionRight.isSelected = true
                 binding.ivMakingDirectionLeft.isSelected = false
@@ -133,7 +133,7 @@ class MakingCheerUpTextActivity :
             if (effect3 == 1) {
                 binding.tvText.setShadowLayer(4.0f, 8.0f, 3.0f, Color.parseColor("#2AEFF5"))
             }
-            
+
             // 폰트 받기
             if (font == 0) {
                 binding.tvText.typeface = Typeface.createFromAsset(assets, "font/nanum.ttf")
@@ -189,7 +189,7 @@ class MakingCheerUpTextActivity :
                 binding.tvMakingTextcolorWhite.isSelected = false
                 binding.tvMakingTextcolorPink.isSelected = true
             }
-  
+
             // 백그라운드 색 변경
             if (background_color == 0) {
                 binding.hsMakingtext.setBackgroundColor(Color.parseColor("#000000"))
@@ -220,7 +220,7 @@ class MakingCheerUpTextActivity :
                 binding.tvMakingColorBlack.isSelected = false
                 binding.tvMakingColorPink.isSelected = true
             }
-      
+
             //글자 크기 변경
             if (text_size == 0) {
                 binding.tvText.setTextSize(Dimension.SP, 30.0f)
@@ -805,7 +805,7 @@ class MakingCheerUpTextActivity :
             direction = 2
             setAnim()
         }
-        
+
         //뒤로가기 버튼
         binding.ivMakingBackButton.setOnClickListener {
             finish()
@@ -891,7 +891,7 @@ class MakingCheerUpTextActivity :
             alphaAnim.repeatCount = -1
             set.addAnimation(alphaAnim)
         }
-     
+
         set.addAnimation(animation)
         binding.llMakingText.animation = set
         binding.llMakingText.animation.start()
