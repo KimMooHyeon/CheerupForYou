@@ -32,7 +32,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
                     "disable"
                 )
             }
-            startActivity<RoadToKingdomCheetUpActivity>()
+            startActivity<RoadToKingdomCheerUpActivity>()
         }
 
         binding.reqImage.setOnClickListener {

@@ -5,7 +5,7 @@
     android:background="#1d2029"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.sabuzak.yeonamplace.cheerupforyou.RoadToKingdomCheetUpActivity">
+    tools:context="com.sabuzak.yeonamplace.cheerupforyou.RoadToKingdomCheerUpActivity">
 
     <ImageView
         android:id="@+id/iv_road_back"

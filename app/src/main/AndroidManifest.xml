@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RoadToKingdomCheetUpActivity" />
+        <activity android:name=".RoadToKingdomCheerUpActivity" />
         <activity
             android:name=".popup.LodingSavePopUpActivity"
             android:theme="@style/categoryEditTheme" />

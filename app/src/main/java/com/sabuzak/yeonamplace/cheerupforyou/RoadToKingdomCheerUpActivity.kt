@@ -12,7 +12,7 @@ import com.sabuzak.yeonamplace.cheerupforyou.Adapter.CheerUpViewRecyclerViewAdap
 import com.sabuzak.yeonamplace.cheerupforyou.data.CheerUpViewData
 
 
-class RoadToKingdomCheetUpActivity : AppCompatActivity() {
+class RoadToKingdomCheerUpActivity : AppCompatActivity() {
     lateinit var cheerUpViewRecyclerViewAdapter: CheerUpViewRecyclerViewAdapter
     var arrayList: ArrayList<CheerUpViewData> = ArrayList()
     lateinit var mAdView : AdView
