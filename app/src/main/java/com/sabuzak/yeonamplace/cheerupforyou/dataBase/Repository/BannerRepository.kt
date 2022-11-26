@@ -1,8 +1,8 @@
-package com.sabuzak.yeonamplace.cheerupforyou.DataBase.Repository
+package com.sabuzak.yeonamplace.cheerupforyou.dataBase.Repository
 
 import androidx.lifecycle.LiveData
-import com.sabuzak.yeonamplace.cheerupforyou.DataBase.Dao.BannerDao
-import com.sabuzak.yeonamplace.cheerupforyou.DataBase.Entity.Banner
+import com.sabuzak.yeonamplace.cheerupforyou.dataBase.Dao.BannerDao
+import com.sabuzak.yeonamplace.cheerupforyou.dataBase.Entity.Banner
 
 class BannerRepository(private val bannerDao:BannerDao){
 

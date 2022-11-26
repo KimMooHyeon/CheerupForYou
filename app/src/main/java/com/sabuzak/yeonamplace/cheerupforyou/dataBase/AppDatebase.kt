@@ -1,11 +1,11 @@
-package com.sabuzak.yeonamplace.cheerupforyou.DataBase
+package com.sabuzak.yeonamplace.cheerupforyou.dataBase
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.sabuzak.yeonamplace.cheerupforyou.DataBase.Dao.BannerDao
-import com.sabuzak.yeonamplace.cheerupforyou.DataBase.Entity.Banner
+import com.sabuzak.yeonamplace.cheerupforyou.dataBase.Dao.BannerDao
+import com.sabuzak.yeonamplace.cheerupforyou.dataBase.Entity.Banner
 
 @Database(entities = arrayOf(Banner::class), version = 1)
 abstract class AppDatabase : RoomDatabase() {

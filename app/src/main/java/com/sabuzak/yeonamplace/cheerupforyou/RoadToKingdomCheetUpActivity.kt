@@ -3,15 +3,13 @@ package com.sabuzak.yeonamplace.cheerupforyou
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.RelativeLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.AdRequest
 import com.sabuzak.yeonamplace.cheerupforyou.Adapter.CheerUpViewRecyclerViewAdapter
-import com.sabuzak.yeonamplace.cheerupforyou.Data.CheerUpViewData
+import com.sabuzak.yeonamplace.cheerupforyou.data.CheerUpViewData
 
 
 class RoadToKingdomCheetUpActivity : AppCompatActivity() {

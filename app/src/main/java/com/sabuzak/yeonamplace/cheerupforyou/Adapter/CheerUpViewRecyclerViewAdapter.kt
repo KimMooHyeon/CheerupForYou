@@ -3,9 +3,7 @@ package com.sabuzak.yeonamplace.cheerupforyou.Adapter
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
-import android.graphics.Point
 import android.graphics.Typeface
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,12 +12,10 @@ import androidx.annotation.Dimension
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.sabuzak.yeonamplace.cheerupforyou.CheerUpViewActivity
-import com.sabuzak.yeonamplace.cheerupforyou.Data.CheerUpViewData
+import com.sabuzak.yeonamplace.cheerupforyou.data.CheerUpViewData
 import com.sabuzak.yeonamplace.cheerupforyou.OutlineTextView
 import com.sabuzak.yeonamplace.cheerupforyou.R
 import org.jetbrains.anko.startActivity
-import org.jetbrains.anko.toast
-import org.jetbrains.anko.windowManager
 
 class CheerUpViewRecyclerViewAdapter(var ctx: Context, var dataList: ArrayList<CheerUpViewData>) :
     RecyclerView.Adapter<CheerUpViewRecyclerViewAdapter.Holder>() {

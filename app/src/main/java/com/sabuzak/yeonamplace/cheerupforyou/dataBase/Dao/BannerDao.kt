@@ -1,8 +1,8 @@
-package com.sabuzak.yeonamplace.cheerupforyou.DataBase.Dao
+package com.sabuzak.yeonamplace.cheerupforyou.dataBase.Dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.sabuzak.yeonamplace.cheerupforyou.DataBase.Entity.Banner
+import com.sabuzak.yeonamplace.cheerupforyou.dataBase.Entity.Banner
 
 @Dao
 interface BannerDao {

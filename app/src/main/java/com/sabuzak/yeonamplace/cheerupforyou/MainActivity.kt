@@ -1,11 +1,7 @@
 package com.sabuzak.yeonamplace.cheerupforyou
 
 import android.content.Intent
-import android.os.Bundle
 import android.os.Handler
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,8 +9,8 @@ import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
 import com.sabuzak.yeonamplace.cheerupforyou.Adapter.BannerRecyclerViewAdapter
-import com.sabuzak.yeonamplace.cheerupforyou.DataBase.AppDatabase
-import com.sabuzak.yeonamplace.cheerupforyou.DataBase.ViewModel.BannerViewModel
+import com.sabuzak.yeonamplace.cheerupforyou.dataBase.AppDatabase
+import com.sabuzak.yeonamplace.cheerupforyou.dataBase.ViewModel.BannerViewModel
 import com.sabuzak.yeonamplace.cheerupforyou.databinding.ActivityMainBinding
 import com.sabuzak.yeonamplace.cheerupforyou.popup.RequestTempletePopUpActivity
 import org.jetbrains.anko.startActivity

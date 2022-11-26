@@ -13,11 +13,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.HorizontalScrollView
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.annotation.Dimension
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
-import com.sabuzak.yeonamplace.cheerupforyou.DataBase.Entity.Banner
+import com.sabuzak.yeonamplace.cheerupforyou.dataBase.Entity.Banner
 import com.sabuzak.yeonamplace.cheerupforyou.MakingCheerUpTextActivity
 import com.sabuzak.yeonamplace.cheerupforyou.OutlineTextView
 import com.sabuzak.yeonamplace.cheerupforyou.R

@@ -2,12 +2,9 @@ package com.sabuzak.yeonamplace.cheerupforyou.popup
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ImageView
 import android.widget.TextView
-import androidx.room.Room
-import com.sabuzak.yeonamplace.cheerupforyou.DataBase.AppDatabase
-import com.sabuzak.yeonamplace.cheerupforyou.DataBase.Entity.Banner
-import com.sabuzak.yeonamplace.cheerupforyou.DataBase.Repository.BannerRepository
+import com.sabuzak.yeonamplace.cheerupforyou.dataBase.AppDatabase
+import com.sabuzak.yeonamplace.cheerupforyou.dataBase.Repository.BannerRepository
 import com.sabuzak.yeonamplace.cheerupforyou.R
 import kotlinx.coroutines.runBlocking
 

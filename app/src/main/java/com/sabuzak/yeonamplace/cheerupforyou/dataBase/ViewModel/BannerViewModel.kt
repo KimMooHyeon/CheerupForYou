@@ -1,12 +1,12 @@
-package com.sabuzak.yeonamplace.cheerupforyou.DataBase.ViewModel
+package com.sabuzak.yeonamplace.cheerupforyou.dataBase.ViewModel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import com.sabuzak.yeonamplace.cheerupforyou.DataBase.AppDatabase
-import com.sabuzak.yeonamplace.cheerupforyou.DataBase.Entity.Banner
-import com.sabuzak.yeonamplace.cheerupforyou.DataBase.Repository.BannerRepository
+import com.sabuzak.yeonamplace.cheerupforyou.dataBase.AppDatabase
+import com.sabuzak.yeonamplace.cheerupforyou.dataBase.Entity.Banner
+import com.sabuzak.yeonamplace.cheerupforyou.dataBase.Repository.BannerRepository
 import kotlinx.coroutines.launch
 
 class BannerViewModel(application: Application): AndroidViewModel(application) {

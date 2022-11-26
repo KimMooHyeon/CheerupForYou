@@ -4,12 +4,10 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Point
 import android.graphics.Typeface
-import android.hardware.input.InputManager
 import android.os.Bundle
 import android.os.Handler
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.view.animation.AlphaAnimation
@@ -25,9 +23,9 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.Dimension
 import androidx.appcompat.app.AppCompatActivity
-import com.sabuzak.yeonamplace.cheerupforyou.DataBase.AppDatabase
-import com.sabuzak.yeonamplace.cheerupforyou.DataBase.Entity.Banner
-import com.sabuzak.yeonamplace.cheerupforyou.DataBase.Repository.BannerRepository
+import com.sabuzak.yeonamplace.cheerupforyou.dataBase.AppDatabase
+import com.sabuzak.yeonamplace.cheerupforyou.dataBase.Entity.Banner
+import com.sabuzak.yeonamplace.cheerupforyou.dataBase.Repository.BannerRepository
 import com.sabuzak.yeonamplace.cheerupforyou.popup.LodingSavePopUpActivity
 import com.sabuzak.yeonamplace.cheerupforyou.popup.SaveFullPopUpActivity
 import kotlinx.coroutines.runBlocking
