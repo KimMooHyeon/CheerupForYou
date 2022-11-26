@@ -1,32 +1,24 @@
 package com.sabuzak.yeonamplace.cheerupforyou
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.widget.ImageView
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.AdRequest
 import com.sabuzak.yeonamplace.cheerupforyou.Adapter.CheerUpViewRecyclerViewAdapter
 import com.sabuzak.yeonamplace.cheerupforyou.data.CheerUpViewData
+import com.sabuzak.yeonamplace.cheerupforyou.databinding.ActivityRoadToKingdomCheerUpBinding
 
-
-class RoadToKingdomCheerUpActivity : AppCompatActivity() {
+class RoadToKingdomCheerUpActivity :
+    BaseActivity<ActivityRoadToKingdomCheerUpBinding>(R.layout.activity_road_to_kingdom_cheer_up) {
     lateinit var cheerUpViewRecyclerViewAdapter: CheerUpViewRecyclerViewAdapter
     var arrayList: ArrayList<CheerUpViewData> = ArrayList()
     lateinit var mAdView: AdView
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_road_to_kingdom_cheet_up)
-        var iv_road_back = findViewById<ImageView>(R.id.iv_road_back)
-        var rl_road_to_kingdom = findViewById<RecyclerView>(R.id.rl_road_to_kingdom)
-        var ad_roadtokingdom = findViewById<AdView>(R.id.ad_roadtokingdom)
 
-        iv_road_back.setOnClickListener {
+    override fun initView() {
+
+        binding.ivRoadBack.setOnClickListener {
             finish()
         }
-
         arrayList.add(CheerUpViewData("골든차일드 응원해", 3, 6, 0, 2, 1, 5, 1, 0, 1, 0))
         arrayList.add(CheerUpViewData("더보이즈 응원해", 3, 7, 0, 2, 1, 5, 1, 0, 1, 0))
         arrayList.add(CheerUpViewData("베리베리 응원해", 3, 8, 0, 2, 1, 5, 1, 0, 1, 0))
@@ -36,13 +28,13 @@ class RoadToKingdomCheerUpActivity : AppCompatActivity() {
         arrayList.add(CheerUpViewData("TOO 응원해", 3, 12, 0, 2, 1, 5, 1, 0, 1, 0))
 
         cheerUpViewRecyclerViewAdapter = CheerUpViewRecyclerViewAdapter(this, arrayList)
-        rl_road_to_kingdom.adapter = cheerUpViewRecyclerViewAdapter
-        rl_road_to_kingdom.layoutManager =
+        binding.rlRoadToKingdom.adapter = cheerUpViewRecyclerViewAdapter
+        binding.rlRoadToKingdom.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
 
         MobileAds.initialize(this) {}
-        mAdView = ad_roadtokingdom
+        mAdView = binding.adRoadtokingdom
         val adRequest = AdRequest.Builder().build()
         mAdView.loadAd(adRequest)
 

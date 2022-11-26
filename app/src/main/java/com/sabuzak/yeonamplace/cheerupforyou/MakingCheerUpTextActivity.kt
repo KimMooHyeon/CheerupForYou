@@ -67,9 +67,9 @@ class MakingCheerUpTextActivity :
         if (intent.getIntExtra("idx", -99) != -99) {
 
             // 배너의 idx 값 intent.getIntExtra("idx")
-            binding.edtMakingText.hint = intent.getStringExtra("binding.edtMakingText")
+            binding.edtMakingText.hint = intent.getStringExtra("edt_making_text")
             binding.tvMakingSaveConfirm.text = "수정하기"
-            binding.tvText.text = intent.getStringExtra("binding.edtMakingText")
+            binding.tvText.text = intent.getStringExtra("edt_making_text")
             text_size = intent.getIntExtra("text_size", -99)
             background_color = intent.getIntExtra("background_color", -99)
             text_color = intent.getIntExtra("text_color", -99)
