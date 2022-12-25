@@ -15,24 +15,27 @@ import android.view.animation.AnimationUtils
 import android.view.animation.TranslateAnimation
 import android.view.inputmethod.InputMethodManager
 import android.widget.FrameLayout
+import androidx.activity.viewModels
 import androidx.annotation.Dimension
 import com.sabuzak.yeonamplace.cheerupforyou.BaseActivity
 import com.sabuzak.yeonamplace.cheerupforyou.R
 import com.sabuzak.yeonamplace.cheerupforyou.data.model.Banner
 import com.sabuzak.yeonamplace.cheerupforyou.data.dataBase.AppDatabase
-import com.sabuzak.yeonamplace.cheerupforyou.data.repository.BannerRepository
+import com.sabuzak.yeonamplace.cheerupforyou.data.main.HomeLocalDataSource
 import com.sabuzak.yeonamplace.cheerupforyou.databinding.ActivityMakingCheerUpTextBinding
 import com.sabuzak.yeonamplace.cheerupforyou.presentation.cheeringboard.CheeringBoardActivity
 import com.sabuzak.yeonamplace.cheerupforyou.presentation.popup.LoadingSavePopUpActivity
 import com.sabuzak.yeonamplace.cheerupforyou.presentation.popup.SaveFullPopUpActivity
+import com.sabuzak.yeonamplace.cheerupforyou.presentation.popup.delete.DeleteViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.runBlocking
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
-
+@AndroidEntryPoint
 class MakingCheerUpTextActivity :
     BaseActivity<ActivityMakingCheerUpTextBinding>(R.layout.activity_making_cheer_up_text) {
-    private lateinit var bannerRepository: BannerRepository
+    private val viewModel: MakingCheerUpTextViewModel by viewModels()
     private var bannerCount: Int = 0
 
     // 각 값 초기값 설정
@@ -265,8 +268,6 @@ class MakingCheerUpTextActivity :
             /**
              * 2020.05.06 [작성자 : 최선필] 배너 객체 생성해서 디비 저장 완료
              */
-            val bannerDao = AppDatabase.getDatabase(application).bannerDao()
-            bannerRepository = BannerRepository(bannerDao)
             /**
              * 2020.05.07 TODO. 새로운 응원이 저장함에 저장되고 있습니다. 팝업 띄워야 함
              * 2020.05.08 나중에 이거 사용~! 저장함 갯수 판별
@@ -288,8 +289,7 @@ class MakingCheerUpTextActivity :
                         binding.tvMakingCheerupEffect2.isSelected,
                         binding.tvMakingCheerupEffect3.isSelected
                     )
-
-                    bannerRepository.update(banner)
+                    viewModel.update(banner)
                 }
                 startActivity<LoadingSavePopUpActivity>()
 
@@ -314,8 +314,7 @@ class MakingCheerUpTextActivity :
                             binding.tvMakingCheerupEffect2.isSelected,
                             binding.tvMakingCheerupEffect3.isSelected
                         )
-
-                        bannerRepository.insert(banner)
+                        viewModel.insert(banner)
                     }
                     startActivity<LoadingSavePopUpActivity>()
                 }
@@ -524,7 +523,7 @@ class MakingCheerUpTextActivity :
             binding.tvText.setTextSize(Dimension.SP, 30.0f)
             text_size = 0
 
-            handler.postDelayed(Runnable {
+            handler.postDelayed({
                 if (binding.tvText.width < screenWidth) {
 
                     val params = binding.llMakingText.layoutParams as FrameLayout.LayoutParams
@@ -550,7 +549,7 @@ class MakingCheerUpTextActivity :
             binding.tvMakingTextSizeBig.isSelected = false
             binding.tvText.setTextSize(Dimension.SP, 60.0f)
             text_size = 1
-            handler.postDelayed(Runnable {
+            handler.postDelayed({
                 if (binding.tvText.width < screenWidth) {
 
                     val params = binding.llMakingText.layoutParams as FrameLayout.LayoutParams
@@ -820,7 +819,7 @@ class MakingCheerUpTextActivity :
                 inputManager.showSoftInput(binding.edtMakingText, 0)
 
                 startActivity<CheeringBoardActivity>(
-                    "binding.edtMakingText" to binding.tvText.text.toString(),
+                    "edt_making_text" to binding.tvText.text.toString(),
                     "text_size" to text_size,
                     "background_color" to background_color,
                     "text_color" to text_color,

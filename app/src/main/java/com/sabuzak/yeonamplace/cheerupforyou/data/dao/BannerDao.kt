@@ -1,8 +1,8 @@
 package com.sabuzak.yeonamplace.cheerupforyou.data.dao
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.sabuzak.yeonamplace.cheerupforyou.data.model.Banner
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface BannerDao {
@@ -10,7 +10,7 @@ interface BannerDao {
     suspend fun insert(banner: Banner): Long
 
     @Query("SELECT * FROM BANNER_TB")
-    fun getAll(): LiveData<List<Banner>>
+    fun getAll(): Flow<List<Banner>>
 
     @Query("SELECT COUNT(*) FROM BANNER_TB")
     fun getCount(): Int

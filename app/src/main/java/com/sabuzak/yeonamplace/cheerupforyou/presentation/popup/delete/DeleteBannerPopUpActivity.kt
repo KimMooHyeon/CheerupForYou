@@ -1,15 +1,16 @@
-package com.sabuzak.yeonamplace.cheerupforyou.presentation.popup
+package com.sabuzak.yeonamplace.cheerupforyou.presentation.popup.delete
 
+import androidx.activity.viewModels
 import com.sabuzak.yeonamplace.cheerupforyou.BaseActivity
-import com.sabuzak.yeonamplace.cheerupforyou.data.dataBase.AppDatabase
-import com.sabuzak.yeonamplace.cheerupforyou.data.repository.BannerRepository
 import com.sabuzak.yeonamplace.cheerupforyou.R
 import com.sabuzak.yeonamplace.cheerupforyou.databinding.ActivityDeleteBannerPopUpBinding
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.runBlocking
 
+@AndroidEntryPoint
 class DeleteBannerPopUpActivity :
     BaseActivity<ActivityDeleteBannerPopUpBinding>(R.layout.activity_delete_banner_pop_up) {
-    private lateinit var bannerRepository: BannerRepository
+    private val viewModel: DeleteViewModel by viewModels()
     override fun onBackPressed() {
         finish()
         this.overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
@@ -19,10 +20,8 @@ class DeleteBannerPopUpActivity :
         binding.tvDeleteConfirm.setOnClickListener {
             val bannerIdx = intent.getIntExtra("bannerIdx", -1)
             if (bannerIdx != -1) {
-                val bannerDao = AppDatabase.getDatabase(application).bannerDao()
-                bannerRepository = BannerRepository(bannerDao)
                 runBlocking {
-                    bannerRepository.deleteByIdx(bannerIdx)
+                    viewModel.deleteByIdx(bannerIdx)
                 }
             }
             finish()

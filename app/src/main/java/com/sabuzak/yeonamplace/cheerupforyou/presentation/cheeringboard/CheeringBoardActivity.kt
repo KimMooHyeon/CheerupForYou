@@ -5,26 +5,33 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Point
 import android.graphics.Typeface
+import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
 import android.view.View
-import android.view.Window
 import android.view.WindowManager
 import android.view.animation.*
 import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.annotation.Dimension
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import com.sabuzak.yeonamplace.cheerupforyou.BaseActivity
 import com.sabuzak.yeonamplace.cheerupforyou.R
 import com.sabuzak.yeonamplace.cheerupforyou.databinding.ActivityCheeringBoardBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
-class CheeringBoardActivity :
-    BaseActivity<ActivityCheeringBoardBinding>(R.layout.activity_cheering_board) {
+@AndroidEntryPoint
+class CheeringBoardActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityCheeringBoardBinding
     private var screenWidth = 0f
     private var fromX = 0f
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityCheeringBoardBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        initView()
+    }
     override fun onWindowFocusChanged(hasFocus: Boolean) {
 
         val display = windowManager.defaultDisplay
@@ -130,23 +137,12 @@ class CheeringBoardActivity :
 
     }
 
-    private fun doFullScreen() {
-        val decorView = window.decorView
-        decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_IMMERSIVE or
-                View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
-                View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION or
-                View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
-                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or
-                View.SYSTEM_UI_FLAG_FULLSCREEN
-    }
+     fun initView() {
 
-    override fun initView() {
-        requestWindowFeature(Window.FEATURE_NO_TITLE)
         window.setFlags(
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
-        setContentView(R.layout.activity_cheering_board)
 
         binding.ivCheerupDelete.setOnClickListener {
             finish()
@@ -156,13 +152,12 @@ class CheeringBoardActivity :
         binding.ivCheerupLock.setOnClickListener {
 
             binding.clCheerupAll.setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION)
-            doFullScreen()
+
             if (binding.ivCheerupLock.isSelected) {
                 Toast.makeText(this, "잠금 화면이 설정되었습니다.", Toast.LENGTH_SHORT).show()
                 binding.ivCheerupLock.isSelected = false
                 binding.ivCheerupDelete.visibility = View.INVISIBLE
                 binding.ivCheerupDelete.isClickable = false
-                doFullScreen()
             } else {
                 Toast.makeText(this, "잠금 화면이 해제되었습니다.", Toast.LENGTH_SHORT).show()
                 binding.ivCheerupLock.isSelected = true
@@ -174,7 +169,6 @@ class CheeringBoardActivity :
         }
 
         binding.tvCheerUpViewText.text = intent.getStringExtra("edt_making_text")
-
         //효과 받기
 
         if (intent.getIntExtra("effect1", 0) == 1) {

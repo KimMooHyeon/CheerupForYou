@@ -11,10 +11,10 @@ import android.widget.*
 import androidx.annotation.Dimension
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.sabuzak.yeonamplace.cheerupforyou.presentation.cheeringboard.CheeringBoardActivity
 import com.sabuzak.yeonamplace.cheerupforyou.data.model.CheerUpViewData
-import com.sabuzak.yeonamplace.cheerupforyou.presentation.util.OutlineTextView
 import com.sabuzak.yeonamplace.cheerupforyou.R
+import com.sabuzak.yeonamplace.cheerupforyou.presentation.cheeringboard.CheeringBoardActivity
+import com.sabuzak.yeonamplace.cheerupforyou.presentation.util.CheerUpCustomView
 import org.jetbrains.anko.startActivity
 
 class CheerUpViewRecyclerViewAdapter(var ctx: Context, var dataList: ArrayList<CheerUpViewData>) :
@@ -140,7 +140,7 @@ class CheerUpViewRecyclerViewAdapter(var ctx: Context, var dataList: ArrayList<C
 
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-         var tv_rv_item=itemView.findViewById(R.id.tv_rv_item) as OutlineTextView
+         var tv_rv_item=itemView.findViewById(R.id.tv_rv_item) as CheerUpCustomView
          var hs_rv_item = itemView.findViewById(R.id.hs_rv_item) as HorizontalScrollView
         var ll_rv_item = itemView.findViewById(R.id.ll_rv_item) as LinearLayout
 
