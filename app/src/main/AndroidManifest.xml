@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".CheerUpForYouApplication"
         android:allowBackup="true"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
@@ -20,7 +21,7 @@
             android:name=".presentation.popup.RequestReviewPopUpActivity"
             android:theme="@style/categoryEditTheme" />
         <activity
-            android:name=".presentation.popup.DeleteBannerPopUpActivity"
+            android:name=".presentation.popup.delete.DeleteBannerPopUpActivity"
             android:theme="@style/categoryEditTheme" />
         <activity
             android:name=".presentation.popup.SaveFullPopUpActivity"
@@ -37,7 +38,7 @@
             android:name=".presentation.cheeringboard.CheeringBoardActivity"
             android:screenOrientation="landscape"
             android:theme="@style/FullTheme" />
-        <activity android:name=".presentation.main.MainActivity" />
+        <activity android:name=".presentation.home.HomeActivity" />
         <activity
             android:name=".presentation.splash.SplashActivity"
             android:screenOrientation="portrait"
