@@ -1,47 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/rl_rv_cheerup_view_all"
-    android:layout_marginTop="12dp"
-    android:layout_width="match_parent"
-    android:layout_height="90dp">
-    <ImageView
-        android:elevation="1dp"
-        android:id ="@+id/delete_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
-        android:visibility="gone"
-        android:src ="@drawable/ic_delete"
-        >
-    </ImageView>
-    <HorizontalScrollView
-        android:background="#111111"
-        android:scrollbars="none"
-        android:id="@+id/hs_rv_main_item"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="item"
+            type="com.sabuzak.yeonamplace.cheerupforyou.data.model.Banner" />
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/rl_rv_cheerup_view_all"
+        android:layout_marginTop="12dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <LinearLayout
-            android:layout_gravity="center"
-            android:id="@+id/ll_rv_item"
-            android:orientation="horizontal"
+        android:layout_height="90dp">
+
+        <ImageView
+            android:elevation="1dp"
+            android:id="@+id/delete_image"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"
+            android:src="@drawable/ic_delete"/>
+
+        <HorizontalScrollView
+            android:background="#111111"
+            android:scrollbars="none"
+            android:id="@+id/hs_rv_main_item"
+            android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <com.sabuzak.yeonamplace.cheerupforyou.presentation.util.OutlineTextView
-                android:fontFamily="@font/nanum"
-                android:text=""
-                android:gravity="center"
-                android:textColor="#ffffff"
-                android:id="@+id/banner_text"
-                android:textSize="25sp"
-                android:includeFontPadding="false"
+
+            <LinearLayout
+                android:layout_gravity="center"
+                android:id="@+id/ll_rv_item"
+                android:orientation="horizontal"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                app:textStroke="false"
-                app:textStrokeWidth="10.0"
-                app:textStrokeColor="#2AEFF5" />
-        </LinearLayout>
-    </HorizontalScrollView>
-</RelativeLayout>
+                android:layout_height="match_parent">
+
+                <com.sabuzak.yeonamplace.cheerupforyou.presentation.util.CheerUpCustomView
+                    android:fontFamily="@font/nanum"
+                    android:text="@{item.text}"
+                    android:gravity="center"
+                    android:textColor="#ffffff"
+                    android:id="@+id/banner_text"
+                    android:textSize="25sp"
+                    android:includeFontPadding="false"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    app:textStroke="false"
+                    app:textStrokeWidth="10.0"
+                    app:textStrokeColor="#2AEFF5" />
+            </LinearLayout>
+        </HorizontalScrollView>
+    </RelativeLayout>
+</layout>
