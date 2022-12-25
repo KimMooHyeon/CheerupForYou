@@ -86,7 +86,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <com.sabuzak.yeonamplace.cheerupforyou.presentation.util.OutlineTextView
+                <com.sabuzak.yeonamplace.cheerupforyou.presentation.util.CheerUpCustomView
                     android:clickable="false"
                     android:visibility="visible"
                     app:textStroke="false"

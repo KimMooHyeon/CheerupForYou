@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="OutlineTextView">
+    <declare-styleable name="CheerUpCustomView">
         <attr format="boolean" name="textStroke"/>
         <attr format="float" name="textStrokeWidth"/>
         <attr format="color" name="textStrokeColor"/>
