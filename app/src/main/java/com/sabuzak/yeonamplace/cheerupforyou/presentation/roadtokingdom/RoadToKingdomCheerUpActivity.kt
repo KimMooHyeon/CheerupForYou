@@ -8,7 +8,9 @@ import com.sabuzak.yeonamplace.cheerupforyou.BaseActivity
 import com.sabuzak.yeonamplace.cheerupforyou.data.model.CheerUpViewData
 import com.sabuzak.yeonamplace.cheerupforyou.R
 import com.sabuzak.yeonamplace.cheerupforyou.databinding.ActivityRoadToKingdomCheerUpBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class RoadToKingdomCheerUpActivity :
     BaseActivity<ActivityRoadToKingdomCheerUpBinding>(R.layout.activity_road_to_kingdom_cheer_up) {
     lateinit var cheerUpViewRecyclerViewAdapter: CheerUpViewRecyclerViewAdapter

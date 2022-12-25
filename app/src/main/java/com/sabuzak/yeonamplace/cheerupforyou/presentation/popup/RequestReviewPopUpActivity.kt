@@ -5,8 +5,9 @@ import android.net.Uri
 import com.sabuzak.yeonamplace.cheerupforyou.BaseActivity
 import com.sabuzak.yeonamplace.cheerupforyou.R
 import com.sabuzak.yeonamplace.cheerupforyou.databinding.ActivityRequestReviewPopUpBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class RequestReviewPopUpActivity :
     BaseActivity<ActivityRequestReviewPopUpBinding>(R.layout.activity_request_review_pop_up) {
     override fun onBackPressed() {

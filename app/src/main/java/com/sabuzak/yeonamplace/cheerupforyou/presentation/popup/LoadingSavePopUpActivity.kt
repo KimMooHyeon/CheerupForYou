@@ -5,7 +5,9 @@ import android.widget.Toast
 import com.sabuzak.yeonamplace.cheerupforyou.BaseActivity
 import com.sabuzak.yeonamplace.cheerupforyou.R
 import com.sabuzak.yeonamplace.cheerupforyou.databinding.ActivityLoadingSavePopUpBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class LoadingSavePopUpActivity : BaseActivity<ActivityLoadingSavePopUpBinding>(R.layout.activity_loading_save_pop_up) {
 
     override fun initView() {
