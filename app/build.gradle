@@ -29,7 +29,6 @@ android {
     }
     namespace 'com.sabuzak.yeonamplace.cheerupforyou'
     buildFeatures {
-        viewBinding true
         dataBinding true
     }
 }
